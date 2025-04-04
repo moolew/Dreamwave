@@ -1,19 +1,20 @@
+Enemy Chart
+
 the code below demonstrates a single note and all of its data
 
-there are 4 lanes but you start iterating from 0 so 0-3 lanes
+there are 4 lanes but you start iterating from 0 so 0-3 lanes / left-down-up-right / lane 4 is for events
 ---
 position is the y position on the chart, higher the value the further down the note goes
 ---
 type is which note will be instanced / N = normal - H = hold
 ---
 length is checked only if the type is of H and if so you define how long the hold is
+---
+event creates an event rather than a note, it takes a type like PF which is for Player Focus
 
-# start
-lane=0
-position=0.5
-type=N
-# end
+-------------------------start turn
 
+- section 0
 # start
 lane=3
 position=2
@@ -22,12 +23,385 @@ type=N
 
 # start
 lane=2
-position=4.5
+position=4
 type=N
 # end
 
 # start
 lane=1
+position=8
+type=N
+# end
+
+# start
+lane=0
 position=10
 type=N
 # end
+
+# start
+lane=2
+position=12
+type=N
+# end
+
+# start
+lane=2
+position=13
+type=N
+# end
+- section 0 end
+
+- section 1
+# start
+lane=3
+position=18
+type=N
+# end
+
+# start
+lane=2
+position=20
+type=N
+# end
+
+# start
+lane=3
+position=24
+type=N
+# end
+
+# start
+lane=0
+position=26
+type=N
+# end
+
+# start
+lane=2
+position=28
+type=N
+# end
+
+# start
+lane=1
+position=30
+type=N
+# end
+- section 1 end
+
+-section 2
+# start
+lane=3
+position=34
+type=N
+# end
+
+# start
+lane=1
+position=36
+type=N
+# end
+
+
+# start
+lane=1
+position=38
+type=N
+# end
+
+# start
+lane=1
+position=39
+type=N
+# end
+
+# start
+lane=0
+position=40
+type=N
+# end
+
+# start
+lane=3
+position=42
+type=N
+# end
+
+# start
+lane=2
+position=44
+type=N
+# end
+
+# start
+lane=2
+position=45
+type=N
+# end
+-section 2 end
+
+-section 3
+# start
+lane=0
+position=47
+type=N
+# end
+
+# start
+lane=1
+position=49
+type=N
+# end
+
+# start
+lane=0
+position=51
+type=N
+# end
+
+# start
+lane=3
+position=53
+type=N
+# end
+
+# start
+lane=3
+position=54
+type=N
+# end
+
+# start
+lane=3
+position=55
+type=N
+# end
+
+# start
+lane=1
+position=57
+type=N
+# end
+
+# start
+lane=3
+position=61
+type=N
+# end
+-section 3 end
+
+-------------------------end turn
+
+
+-------------------------start turn
+
+- section 8
+# start
+lane=3
+position=134
+type=N
+# end
+
+# start
+lane=2
+position=136
+type=N
+# end
+
+# start
+lane=1
+position=140
+type=N
+# end
+
+# start
+lane=0
+position=141
+type=N
+# end
+
+# start
+lane=2
+position=144
+type=N
+# end
+
+# start
+lane=2
+position=145
+type=N
+# end
+- section 8 end
+
+- section 9
+# start
+lane=3
+position=150
+type=N
+# end
+
+# start
+lane=2
+position=152
+type=N
+# end
+
+# start
+lane=3
+position=155
+type=N
+# end
+
+# start
+lane=0
+position=157
+type=N
+# end
+
+# start
+lane=2
+position=159
+type=N
+# end
+
+# start
+lane=1
+position=161
+type=N
+# end
+- section 10 end
+
+-section 11
+# start
+lane=3
+position=165
+type=N
+# end
+
+# start
+lane=2
+position=167
+type=N
+# end
+
+# start
+lane=1
+position=169
+type=N
+# end
+
+# start
+lane=1
+position=171
+type=N
+# end
+
+# start
+lane=0
+position=173
+type=N
+# end
+
+# start
+lane=3
+position=174
+type=N
+# end
+
+# start
+lane=2
+position=176
+type=N
+# end
+
+# start
+lane=2
+position=178
+type=N
+# end
+-section 11 end
+
+-section 12
+# start
+lane=0
+position=179
+type=N
+# end
+
+# start
+lane=1
+position=181
+type=N
+# end
+
+# start
+lane=0
+position=183
+type=N
+# end
+
+# start
+lane=3
+position=185
+type=N
+# end
+
+# start
+lane=3
+position=189
+type=N
+# end
+
+# start
+lane=2
+position=193
+type=N
+# end
+
+# start
+lane=1
+position=195
+type=N
+# end
+-section 12 end
+
+-section 13
+# start
+lane=3
+position=197
+type=N
+# end
+
+# start
+lane=1
+position=201
+type=N
+# end
+
+# start
+lane=3
+position=203
+type=N
+# end
+
+# start
+lane=1
+position=207
+type=N
+# end
+
+# start
+lane=2
+position=209
+type=N
+# end
+
+# start
+lane=2
+position=210
+type=N
+# end
+-section 13 end
+
+-------------------------end turn

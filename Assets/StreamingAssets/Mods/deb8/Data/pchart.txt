@@ -1,33 +1,194 @@
+Player Chart
+
 the code below demonstrates a single note and all of its data
 
-there are 4 lanes but you start iterating from 0 so 0-3 lanes
+there are 4 lanes but you start iterating from 0 so 0-3 lanes / left-down-up-right / lane 4 is for events
 ---
 position is the y position on the chart, higher the value the further down the note goes
 ---
 type is which note will be instanced / N = normal - H = hold
 ---
 length is checked only if the type is of H and if so you define how long the hold is
+---
+event creates an event rather than a note, it takes a type like PF which is for Player Focus
 
-# start
-lane=0
-position=0.5
-type=N
-# end
+-------------------------start turn
 
+- section 4
 # start
 lane=3
-position=2
+position=68
 type=N
 # end
 
 # start
 lane=2
-position=4.5
+position=70
 type=N
 # end
 
 # start
 lane=1
-position=10
+position=73
 type=N
 # end
+
+# start
+lane=0
+position=75
+type=N
+# end
+
+# start
+lane=2
+position=77
+type=N
+# end
+
+# start
+lane=2
+position=78
+type=N
+# end
+- section 4 end
+
+- section 5
+# start
+lane=3
+position=83
+type=N
+# end
+
+# start
+lane=2
+position=85
+type=N
+# end
+
+# start
+lane=3
+position=90
+type=N
+# end
+
+# start
+lane=0
+position=92
+type=N
+# end
+
+# start
+lane=3
+position=94
+type=N
+# end
+
+# start
+lane=1
+position=96
+type=N
+# end
+- section 5 end
+
+-section 6
+# start
+lane=2
+position=100
+type=N
+# end
+
+# start
+lane=1
+position=102
+type=N
+# end
+
+# start
+lane=3
+position=104
+type=N
+# end
+
+# start
+lane=3
+position=105
+type=N
+# end
+
+# start
+lane=0
+position=107
+type=N
+# end
+
+# start
+lane=1
+position=109
+type=N
+# end
+
+# start
+lane=0
+position=112
+type=N
+# end
+
+# start
+lane=0
+position=115
+type=N
+# end
+-section 6 end
+
+-section 7
+# start
+lane=2
+position=117
+type=N
+# end
+
+# start
+lane=0
+position=119
+type=N
+# end
+
+# start
+lane=3
+position=121
+type=N
+# end
+
+# start
+lane=3
+position=123
+type=N
+# end
+
+# start
+lane=3
+position=124
+type=N
+# end
+
+# start
+lane=2
+position=125
+type=N
+# end
+
+# start
+lane=3
+position=129
+type=N
+# end
+-section 7 end
+
+-------------------------end turn
+
+
+-------------------------start turn
+
+
+
+-------------------------end turn

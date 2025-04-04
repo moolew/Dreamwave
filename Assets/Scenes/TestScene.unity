@@ -330,6 +330,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &4286497
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2917,6 +2918,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &78779413
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17829,6 +17831,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &340647525
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18848,6 +18851,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &364066439
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32191,6 +32195,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &660157065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32458,6 +32463,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &663895088
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34071,6 +34077,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &728867096
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34517,6 +34524,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &735981610
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37165,6 +37173,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &789195064
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38063,6 +38072,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!1 &818148756
 GameObject:
   m_ObjectHideFlags: 0
@@ -39113,6 +39123,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &831840627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39729,6 +39740,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &841518130
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40407,6 +40419,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &850756919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41124,6 +41137,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &876397264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41676,6 +41690,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &891726845
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42913,6 +42928,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &912641013
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44228,6 +44244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollManager: {fileID: 1069307948}
   _fanfareEventScript: {fileID: 926711911}
+  DreamwaveVideoStreamer: {fileID: 0}
   focus: 2
   canSongStart: 0
   canGhostTap: 1
@@ -48223,6 +48240,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1048149843
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50152,6 +50170,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1115624616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50841,6 +50860,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1134128136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51721,6 +51741,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1160935861
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55001,6 +55022,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1226252063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59156,6 +59178,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &1294241035
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69237,6 +69260,7 @@ MonoBehaviour:
   typeOfScrollEvent: 8
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &1389966636
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -77596,6 +77620,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1499788508
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -80292,6 +80317,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1566797813
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -83882,6 +83908,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &1692636545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -86871,6 +86898,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1767999353
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87390,6 +87418,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &1772624098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -88831,6 +88860,7 @@ MonoBehaviour:
   typeOfScrollEvent: 2
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &1801780809
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -90292,6 +90322,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &1835517625
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -90900,6 +90931,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &1841774653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -93675,6 +93707,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &1899383121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -93971,6 +94004,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1903180534
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95133,6 +95167,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1941253584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -97577,6 +97612,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &1996410034
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -97699,6 +97735,7 @@ MonoBehaviour:
   typeOfScrollEvent: 7
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 330585548}
+  _cutscenePath: 
 --- !u!61 &1999530550
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -101582,6 +101619,7 @@ MonoBehaviour:
   typeOfScrollEvent: 1
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
+  _cutscenePath: 
 --- !u!61 &2075567417
 BoxCollider2D:
   m_ObjectHideFlags: 0
