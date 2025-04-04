@@ -18,7 +18,10 @@ public class DreamwaveModLoader : MonoBehaviour
     public GameObject DownNote;
     public GameObject UpNote;
     public GameObject RightNote;
-    public GameObject HoldNote;
+    public GameObject LeftHoldNote;
+    public GameObject DownHoldNote;
+    public GameObject UpHoldNote;
+    public GameObject RightHoldNote;
 
     private void Start()
     {
@@ -83,7 +86,7 @@ public class DreamwaveModLoader : MonoBehaviour
             }
             else if (line.StartsWith("type="))
             {
-                if (line.Split("=")[1] == "N")
+                if (line.Split("=")[1] == "N") // normal note
                 {
                     if (lane == 0)
                     {
@@ -115,6 +118,41 @@ public class DreamwaveModLoader : MonoBehaviour
                         iNote.transform.SetParent(chartParent);
                         if (layer == 6) { iNote.layer = 6; iNote.tag = "Note"; }
                         else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
+                        Debug.Log($"Right note created at {currentNote.transform.localPosition}");
+                    }
+                }
+                else if (line.Split("=")[1] == "H") // hold note
+                {
+                    if (lane == 0)
+                    {
+                        var iNote = Instantiate(LeftHoldNote, currentNote.transform.position, LeftHoldNote.transform.rotation);
+                        iNote.transform.SetParent(chartParent);
+                        if (layer == 6) { iNote.layer = 6; }
+                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
+                        Debug.Log($"Left note created at {currentNote.transform.localPosition}");
+                    }
+                    else if (lane == 1)
+                    {
+                        var iNote = Instantiate(DownHoldNote, currentNote.transform.position, DownHoldNote.transform.rotation);
+                        iNote.transform.SetParent(chartParent);
+                        if (layer == 6) { iNote.layer = 6; }
+                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
+                        Debug.Log($"Down note created at {currentNote.transform.localPosition}");
+                    }
+                    else if (lane == 2)
+                    {
+                        var iNote = Instantiate(UpHoldNote, currentNote.transform.position, UpHoldNote.transform.rotation);
+                        iNote.transform.SetParent(chartParent);
+                        if (layer == 6) { iNote.layer = 6; }
+                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
+                        Debug.Log($"Up note created at {currentNote.transform.localPosition}");
+                    }
+                    else if (lane == 3)
+                    {
+                        var iNote = Instantiate(RightHoldNote, currentNote.transform.position, RightHoldNote.transform.rotation);
+                        iNote.transform.SetParent(chartParent);
+                        if (layer == 6) { iNote.layer = 6; }
+                        else if (layer == 7) { iNote.layer = 7; }
                         Debug.Log($"Right note created at {currentNote.transform.localPosition}");
                     }
                 }
