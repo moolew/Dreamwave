@@ -1,0 +1,33 @@
+the code below demonstrates a single note and all of its data
+
+there are 4 lanes but you start iterating from 0 so 0-3 lanes
+---
+position is the y position on the chart, higher the value the further down the note goes
+---
+type is which note will be instanced / N = normal - H = hold
+---
+length is checked only if the type is of H and if so you define how long the hold is
+
+# start
+lane=0
+position=0.5
+type=N
+# end
+
+# start
+lane=3
+position=2
+type=N
+# end
+
+# start
+lane=2
+position=4.5
+type=N
+# end
+
+# start
+lane=1
+position=10
+type=N
+# end
