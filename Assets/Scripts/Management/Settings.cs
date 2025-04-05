@@ -41,6 +41,7 @@ public class Settings : MonoBehaviour
 
     private void Awake()
     {
+        //PlayerPrefs.SetInt("fps", -1);
         localFps = PlayerPrefs.GetInt("fps");
         localFfps = PlayerPrefs.GetFloat("ffps");
         _quality = PlayerPrefs.GetInt("quality");
