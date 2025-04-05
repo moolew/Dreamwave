@@ -7,7 +7,7 @@ public class DisableOnCollision : MonoBehaviour
 {
     public bool _ai = false;
     [SerializeField] private WhichSide _whichSide;
-    [SerializeField] private string _colName;
+    [SerializeField] public string _colName;
 
     public bool _keyWasDown = false;
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,6 +37,14 @@ public class DisableOnCollision : MonoBehaviour
                 }
             }
             else
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        if (_ai)
+        {
+            if (collision.gameObject.name == "Hitbox")
             {
                 gameObject.SetActive(false);
             }

@@ -15,14 +15,14 @@ event creates an event rather than a note, it takes a type like PF which is for 
 
 # start
 lane=3
-position=20
+position=15
 type=H
 length=2
 # end
 
 # start
 lane=0
-position=30
+position=15
 type=H
 length=2
 # end

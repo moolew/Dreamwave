@@ -151,11 +151,21 @@ public class DreamwaveModLoader : MonoBehaviour
                             var chunk = Instantiate(chunkPrefab, chartParent);
                             chunk.transform.localPosition = new Vector3(spawnPosition.x, y, 0);
                             chunk.layer = layer;
+                            if (chartParent == EnemyChart)
+                            {
+                                var doc = chunk.GetComponent<DisableOnCollision>();
+                                doc._ai = true;
+                            }
                         }
 
                         var endNote = Instantiate(endPrefab, chartParent);
                         endNote.transform.localPosition = new Vector3(spawnPosition.x, endY, 0);
                         endNote.layer = layer;
+                        if (chartParent == EnemyChart)
+                        {
+                            var doc = endNote.GetComponent<DisableOnCollision>();
+                            doc._ai = true;
+                        }
                     }
                 }
 
