@@ -37975,7 +37975,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d438be538890dad45aaaa68e00aeb0e6, type: 3}
   plrAnim: {fileID: 0}
   currentAnimationPlaying: 
-  noteAnimSpeed: 0.03
+  noteAnimSpeed: 0.015
 --- !u!1 &1525967938
 GameObject:
   m_ObjectHideFlags: 0
