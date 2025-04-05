@@ -4,7 +4,6 @@ using System.IO;
 using UnityEngine;
 using static TempoManager;
 using static GameManager;
-using TreeEditor;
 
 public class DreamwaveModLoader : MonoBehaviour
 {
@@ -18,10 +17,22 @@ public class DreamwaveModLoader : MonoBehaviour
     public GameObject DownNote;
     public GameObject UpNote;
     public GameObject RightNote;
+
     public GameObject LeftHoldNote;
+    public GameObject LeftHoldNoteChunk;
+    public GameObject LeftHoldNoteEnd;
+
     public GameObject DownHoldNote;
+    public GameObject DownHoldChunk;
+    public GameObject DownHoldEnd;
+
     public GameObject UpHoldNote;
+    public GameObject UpHoldChunk;
+    public GameObject UpHoldEnd;
+
     public GameObject RightHoldNote;
+    public GameObject RightHoldChunk;
+    public GameObject RightHoldEnd;
 
     private void Start()
     {
@@ -34,7 +45,6 @@ public class DreamwaveModLoader : MonoBehaviour
     public void SetupChartSettings(string location)
     {
         string[] lines = File.ReadAllLines(Application.streamingAssetsPath + location);
-
         foreach (string line in lines)
         {
             if (line.StartsWith("startScrollAtStep="))
@@ -54,6 +64,8 @@ public class DreamwaveModLoader : MonoBehaviour
 
     GameObject currentNote;
     int lane;
+    float holdLength = 0f;
+    string noteType = "";
     public void CreateChart(string location, Transform chartParent, int layer)
     {
         string[] lines = File.ReadAllLines(Application.streamingAssetsPath + location);
@@ -62,100 +74,116 @@ public class DreamwaveModLoader : MonoBehaviour
         {
             if (line.Contains("# start"))
             {
-                currentNote = new GameObject();
+                currentNote = new GameObject("NoteHolder");
                 currentNote.transform.SetParent(chartParent);
+                currentNote.transform.localPosition = Vector3.zero;
+                holdLength = 0f;
+                noteType = "";
             }
             else if (line.Contains("# end"))
             {
+                if (noteType == "N" || noteType == "H")
+                {
+                    Vector3 spawnPosition = currentNote.transform.localPosition;
+
+                    GameObject prefab = null;
+                    GameObject chunkPrefab = null;
+                    GameObject endPrefab = null;
+
+                    switch (lane)
+                    {
+                        case 0:
+                            prefab = (noteType == "N") ? LeftNote : LeftHoldNote;
+                            chunkPrefab = LeftHoldNoteChunk;
+                            endPrefab = LeftHoldNoteEnd;
+                            break;
+                        case 1:
+                            prefab = (noteType == "N") ? DownNote : DownHoldNote;
+                            chunkPrefab = DownHoldChunk;
+                            endPrefab = DownHoldEnd;
+                            break;
+                        case 2:
+                            prefab = (noteType == "N") ? UpNote : UpHoldNote;
+                            chunkPrefab = UpHoldChunk;
+                            endPrefab = UpHoldEnd;
+                            break;
+                        case 3:
+                            prefab = (noteType == "N") ? RightNote : RightHoldNote;
+                            chunkPrefab = RightHoldChunk;
+                            endPrefab = RightHoldEnd;
+                            break;
+                    }
+
+                    if (prefab != null)
+                    {
+                        var note = Instantiate(prefab, chartParent);
+                        note.transform.localPosition = spawnPosition;
+                        note.layer = layer;
+                        note.tag = (layer == 6) ? "Note" : "EnemyNote";
+
+                        if (noteType == "H" && chunkPrefab != null && endPrefab != null)
+                        {
+                            float chunkStep = 0.5f;
+                            float startY = spawnPosition.y;
+                            float endY = spawnPosition.y - holdLength;
+
+                            for (float y = startY - chunkStep; y > endY; y -= chunkStep)
+                            {
+                                var chunk = Instantiate(chunkPrefab, note.transform.position, chunkPrefab.transform.rotation); // parented to hold note
+                                chunk.transform.localPosition = new Vector3(0, y - startY, 0); // local relative to note
+                                chunk.layer = layer;
+                            }
+
+                            var endNote = Instantiate(endPrefab, note.transform.position, endPrefab.transform.rotation); // parented to hold note
+                            endNote.transform.localPosition = new Vector3(0, endY - startY, 0); // local relative to note
+                            endNote.layer = layer;
+                        }
+                    }
+
+                    if (noteType == "H" && chunkPrefab != null && endPrefab != null)
+                    {
+                        float chunkStep = 0.39f;
+                        float startY = spawnPosition.y;
+                        float endY = spawnPosition.y - holdLength;
+
+                        for (float y = startY - chunkStep; y > endY; y -= chunkStep)
+                        {
+                            var chunk = Instantiate(chunkPrefab, chartParent);
+                            chunk.transform.localPosition = new Vector3(spawnPosition.x, y, 0);
+                            chunk.layer = layer;
+                        }
+
+                        var endNote = Instantiate(endPrefab, chartParent);
+                        endNote.transform.localPosition = new Vector3(spawnPosition.x, endY, 0);
+                        endNote.layer = layer;
+                    }
+                }
+
                 Destroy(currentNote);
                 currentNote = null;
             }
-
-            if (line.StartsWith("lane="))
+            else if (line.StartsWith("lane="))
             {
                 lane = int.Parse(line.Split("=")[1]);
-
-                if (lane == 0) currentNote.transform.localPosition = new Vector3(2.248f, 0, 0);
-                else if (lane == 1) currentNote.transform.localPosition = new Vector3(0.7479999f, 0, 0);
-                else if (lane == 2) currentNote.transform.localPosition = new Vector3(-0.7520001f, 0, 0);
-                else if (lane == 3) currentNote.transform.localPosition = new Vector3(-2.252f, 0, 0);
+                float x = 0f;
+                if (lane == 0) x = 2.248f;
+                else if (lane == 1) x = 0.748f;
+                else if (lane == 2) x = -0.752f;
+                else if (lane == 3) x = -2.252f;
+                currentNote.transform.localPosition = new Vector3(x, currentNote.transform.localPosition.y, 0);
             }
             else if (line.StartsWith("position="))
             {
-                currentNote.transform.localPosition = new Vector3(currentNote.transform.localPosition.x, -float.Parse(line.Split("=")[1]), 0);
+                float y = -float.Parse(line.Split("=")[1]);
+                currentNote.transform.localPosition = new Vector3(currentNote.transform.localPosition.x, y, 0);
             }
             else if (line.StartsWith("type="))
             {
-                if (line.Split("=")[1] == "N") // normal note
-                {
-                    if (lane == 0)
-                    {
-                        var iNote = Instantiate(LeftNote, currentNote.transform.position, LeftNote.transform.rotation);
-                        iNote.transform.SetParent(chartParent);
-                        if (layer == 6) { iNote.layer = 6; iNote.tag = "Note"; }
-                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
-                        Debug.Log($"Left note created at {currentNote.transform.localPosition}");
-                    }
-                    else if (lane == 1)
-                    {
-                        var iNote = Instantiate(DownNote, currentNote.transform.position, DownNote.transform.rotation);
-                        iNote.transform.SetParent(chartParent);
-                        if (layer == 6) { iNote.layer = 6; iNote.tag = "Note"; }
-                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
-                        Debug.Log($"Down note created at {currentNote.transform.localPosition}");
-                    }
-                    else if (lane == 2)
-                    {
-                        var iNote = Instantiate(UpNote, currentNote.transform.position, UpNote.transform.rotation);
-                        iNote.transform.SetParent(chartParent);
-                        if (layer == 6) { iNote.layer = 6; iNote.tag = "Note"; }
-                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
-                        Debug.Log($"Up note created at {currentNote.transform.localPosition}");
-                    }
-                    else if (lane == 3)
-                    {
-                        var iNote = Instantiate(RightNote, currentNote.transform.position, RightNote.transform.rotation);
-                        iNote.transform.SetParent(chartParent);
-                        if (layer == 6) { iNote.layer = 6; iNote.tag = "Note"; }
-                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
-                        Debug.Log($"Right note created at {currentNote.transform.localPosition}");
-                    }
-                }
-                else if (line.Split("=")[1] == "H") // hold note
-                {
-                    if (lane == 0)
-                    {
-                        var iNote = Instantiate(LeftHoldNote, currentNote.transform.position, LeftHoldNote.transform.rotation);
-                        iNote.transform.SetParent(chartParent);
-                        if (layer == 6) { iNote.layer = 6; }
-                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
-                        Debug.Log($"Left note created at {currentNote.transform.localPosition}");
-                    }
-                    else if (lane == 1)
-                    {
-                        var iNote = Instantiate(DownHoldNote, currentNote.transform.position, DownHoldNote.transform.rotation);
-                        iNote.transform.SetParent(chartParent);
-                        if (layer == 6) { iNote.layer = 6; }
-                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
-                        Debug.Log($"Down note created at {currentNote.transform.localPosition}");
-                    }
-                    else if (lane == 2)
-                    {
-                        var iNote = Instantiate(UpHoldNote, currentNote.transform.position, UpHoldNote.transform.rotation);
-                        iNote.transform.SetParent(chartParent);
-                        if (layer == 6) { iNote.layer = 6; }
-                        else if (layer == 7) { iNote.layer = 7; iNote.tag = "EnemyNote"; }
-                        Debug.Log($"Up note created at {currentNote.transform.localPosition}");
-                    }
-                    else if (lane == 3)
-                    {
-                        var iNote = Instantiate(RightHoldNote, currentNote.transform.position, RightHoldNote.transform.rotation);
-                        iNote.transform.SetParent(chartParent);
-                        if (layer == 6) { iNote.layer = 6; }
-                        else if (layer == 7) { iNote.layer = 7; }
-                        Debug.Log($"Right note created at {currentNote.transform.localPosition}");
-                    }
-                }
+                noteType = line.Split("=")[1];
+            }
+            else if (line.StartsWith("length=") && noteType == "H")
+            {
+                holdLength = float.Parse(line.Split("=")[1]);
             }
         }
     }
@@ -169,18 +197,19 @@ public class DreamwaveModLoader : MonoBehaviour
         {
             if (line.StartsWith("# start"))
             {
-                currentEvent = new GameObject();
+                currentEvent = new GameObject("EventHolder");
                 currentEvent.transform.SetParent(chartParent);
+                currentEvent.transform.localPosition = Vector3.zero;
             }
             else if (line.StartsWith("# end"))
             {
                 Destroy(currentEvent);
                 currentEvent = null;
             }
-
-            if (line.StartsWith("position="))
+            else if (line.StartsWith("position="))
             {
-                currentEvent.transform.position = new Vector3(0, -float.Parse(line.Split("=")[1], 0));
+                float y = -float.Parse(line.Split("=")[1]);
+                currentEvent.transform.localPosition = new Vector3(0, y, 0);
             }
             else if (line.StartsWith("type="))
             {
@@ -191,27 +220,14 @@ public class DreamwaveModLoader : MonoBehaviour
                 {
                     string focus = splitEv.Length > 1 ? splitEv[1] : "";
 
-                    if (focus == "p")
-                    {
-                        var r = Instantiate(Event, currentEvent.transform.position, Event.transform.rotation);
-                        r.transform.SetParent(chartParent);
-                        r.layer = 6;
-                        r.GetComponent<ScrollEvents>().typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerRight;
-                    }
-                    else if (focus == "e")
-                    {
-                        var r = Instantiate(Event, currentEvent.transform.position, Event.transform.rotation);
-                        r.transform.SetParent(chartParent);
-                        r.layer = 6;
-                        r.GetComponent<ScrollEvents>().typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerLeft;
-                    }
-                    else if (focus == "c")
-                    {
-                        var r = Instantiate(Event, currentEvent.transform.position, Event.transform.rotation);
-                        r.transform.SetParent(chartParent);
-                        r.layer = 6;
-                        r.GetComponent<ScrollEvents>().typeOfScrollEvent = TypeOfScrollEvent.FocusCentre;
-                    }
+                    var r = Instantiate(Event, chartParent);
+                    r.transform.localPosition = currentEvent.transform.localPosition;
+                    r.layer = 6;
+
+                    var se = r.GetComponent<ScrollEvents>();
+                    if (focus == "p") se.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerRight;
+                    else if (focus == "e") se.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerLeft;
+                    else if (focus == "c") se.typeOfScrollEvent = TypeOfScrollEvent.FocusCentre;
                 }
             }
         }

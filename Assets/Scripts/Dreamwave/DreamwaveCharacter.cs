@@ -23,7 +23,7 @@ public class DreamwaveCharacter : DreamwaveAnimation
     public bool IsCustom = false; // decides whether you're using a base character or a custom character
 
     [Header("States")]
-    [SerializeField] protected bool _isSinging = false;
+    [SerializeField] public bool _isSinging = false;
     [SerializeField] protected bool _canAnimate = true;
 
     [Header("Rendering")]

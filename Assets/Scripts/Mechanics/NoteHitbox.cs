@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using NUnit.Framework;
 using UnityEngine;
 
 public enum Side
@@ -123,6 +124,15 @@ public class NoteHitbox : MonoBehaviour
             notesWithinHitBox.Add(collision.gameObject);
             stopwatch.Restart();
             noteHit = false;  // Reset note hit flag
+        }
+
+        if (collision.gameObject.CompareTag("Note Hold Parent") ||
+            collision.gameObject.CompareTag("Note Hold"))
+        {
+            if (Input.GetKey(keyForSide) && !GameManager.Instance._playerScript._isSinging)
+            {
+                NoteHit("Dreamy", delayInMs, 0, keyForSide.ToString());
+            }
         }
     }
 

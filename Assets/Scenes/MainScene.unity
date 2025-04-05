@@ -18792,6 +18792,8 @@ MonoBehaviour:
   scrollManager: {fileID: 1069307948}
   _fanfareEventScript: {fileID: 926711911}
   DreamwaveVideoStreamer: {fileID: 0}
+  _playerScript: {fileID: 1895532699}
+  _aiScript: {fileID: 1751173952}
   focus: 2
   canSongStart: 0
   canGhostTap: 1
@@ -18986,11 +18988,27 @@ MonoBehaviour:
     type: 3}
   LeftHoldNote: {fileID: 6915421572351660716, guid: 72a5debd2d5fd3248bc5dc30d9f81ca7,
     type: 3}
+  LeftHoldNoteChunk: {fileID: 3082176984373615150, guid: 609682c7442f9244cae7faa1f3a60b04,
+    type: 3}
+  LeftHoldNoteEnd: {fileID: 2363196492018466227, guid: fc84ee9fa73409245aac7585d3a07375,
+    type: 3}
   DownHoldNote: {fileID: 8888526875997741929, guid: a5c76a29e8ffb3a4595cd151cf00d06c,
+    type: 3}
+  DownHoldChunk: {fileID: 8888508147113361861, guid: f390c7c3a37f494468424045ae92e234,
+    type: 3}
+  DownHoldEnd: {fileID: 6139598958674481200, guid: 60b9f571842381d419039e67ee1ad782,
     type: 3}
   UpHoldNote: {fileID: 9051830009340388339, guid: 6235264038236f14387ca3f85739db54,
     type: 3}
+  UpHoldChunk: {fileID: 5115423233033344613, guid: 5ea7220b57f2fe54ba17726cfabb650a,
+    type: 3}
+  UpHoldEnd: {fileID: 7022465276843870674, guid: 8ec63918d4065354b818eb32c5828342,
+    type: 3}
   RightHoldNote: {fileID: 3529011863574266872, guid: 44c1db9415eaa4e43b204370d0279870,
+    type: 3}
+  RightHoldChunk: {fileID: 6737064712301552001, guid: cdad12c4495ee0e4f80f5bd3e24e764d,
+    type: 3}
+  RightHoldEnd: {fileID: 7264093781116829770, guid: ee57056ef7251ac42b9e15a578711917,
     type: 3}
 --- !u!1 &947138878
 GameObject:
@@ -21149,7 +21167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2773.75, y: -27.320312}
+  m_AnchoredPosition: {x: -2773.7498, y: -27.320312}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1076836766

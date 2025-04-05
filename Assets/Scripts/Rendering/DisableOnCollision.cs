@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class DisableOnCollision : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class DisableOnCollision : MonoBehaviour
     [SerializeField] private WhichSide _whichSide;
     [SerializeField] private string _colName;
 
+    public bool _keyWasDown = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(_colName))

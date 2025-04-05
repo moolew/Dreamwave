@@ -14,21 +14,32 @@ event creates an event rather than a note, it takes a type like PF which is for 
 
 
 # start
-lane=0
+lane=3
 position=20
 type=H
+length=2
 # end
 
 # start
-lane=2
+lane=0
 position=30
 type=H
+length=2
 # end
 
 # start
 lane=1
 position=40
 type=H
+length=10
+# end
+
+
+# start
+lane=2
+position=50
+type=H
+length=17
 # end
 
 -------------------------start turn
