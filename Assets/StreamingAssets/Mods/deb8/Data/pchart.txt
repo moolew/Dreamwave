@@ -12,36 +12,6 @@ length is checked only if the type is of H and if so you define how long the hol
 ---
 event creates an event rather than a note, it takes a type like PF which is for Player Focus
 
-
-# start
-lane=3
-position=15
-type=H
-length=2
-# end
-
-# start
-lane=0
-position=15
-type=H
-length=2
-# end
-
-# start
-lane=1
-position=40
-type=H
-length=10
-# end
-
-
-# start
-lane=2
-position=50
-type=H
-length=17
-# end
-
 -------------------------start turn
 
 - section 4
@@ -72,13 +42,8 @@ type=N
 # start
 lane=2
 position=77
-type=N
-# end
-
-# start
-lane=2
-position=78
-type=N
+type=H
+length=2
 # end
 - section 4 end
 
@@ -179,19 +144,13 @@ type=N
 
 # start
 lane=0
-position=119
-type=N
-# end
-
-# start
-lane=3
 position=121
 type=N
 # end
 
 # start
 lane=3
-position=123
+position=122
 type=N
 # end
 
@@ -202,14 +161,20 @@ type=N
 # end
 
 # start
-lane=2
+lane=3
 position=125
 type=N
 # end
 
 # start
+lane=2
+position=126
+type=N
+# end
+
+# start
 lane=3
-position=129
+position=130
 type=N
 # end
 -section 7 end
