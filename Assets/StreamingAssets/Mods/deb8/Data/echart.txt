@@ -729,25 +729,25 @@ type=N
 
 # start
 lane=0
-position=376
+position=374
 type=N
 # end
 
 # start
 lane=2
+position=378
+type=N
+# end
+
+# start
+lane=1
+position=379
+type=N
+# end
+
+# start
+lane=1
 position=380
-type=N
-# end
-
-# start
-lane=1
-position=381
-type=N
-# end
-
-# start
-lane=1
-position=382
 type=N
 # end
 -section 22 end

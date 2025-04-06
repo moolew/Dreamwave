@@ -33,11 +33,6 @@ type=PF-p
 # end
 
 # start
-position=520
-type=PF-c
-# end
-
-# start
 position=530
 type=PF-e
 # end
