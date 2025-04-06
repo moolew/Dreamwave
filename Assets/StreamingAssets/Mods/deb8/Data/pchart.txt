@@ -632,9 +632,105 @@ type=N
 
 # start
 lane=0
-position=599
+position=499
 type=N
 # end
 -section 29 end
+
+-section 30
+# start
+lane=3
+position=501
+type=N
+# end
+
+# start
+lane=2
+position=503
+type=N
+# end
+
+# start
+lane=3
+position=505
+type=N
+# end
+
+# start
+lane=1
+position=506
+type=N
+# end
+
+# start
+lane=1
+position=508
+type=N
+# end
+
+# start
+lane=2
+position=512
+type=N
+# end
+
+# start
+lane=0
+position=514
+type=N
+# end
+
+# start
+lane=0
+position=516
+type=N
+# end
+-section 30 end
+
+-section 31
+# start
+lane=1
+position=518
+type=N
+# end
+
+# start
+lane=2
+position=520
+type=N
+# end
+
+# start
+lane=0
+position=522
+type=N
+# end
+
+# start
+lane=3
+position=524
+type=H
+length=3
+# end
+
+# start
+lane=1
+position=528
+type=N
+# end
+
+# start
+lane=3
+position=530
+type=N
+# end
+
+# start
+lane=2
+position=532
+type=N
+# end
+
+-section 31 end
 
 -------------------------end turn
