@@ -364,4 +364,54 @@ length=2
 -------------------------end turn
 
 
+-------------------------start turn
 
+-section 14
+# start
+lane=1
+position=231
+type=N
+# end
+-section 14 end
+
+-section 15
+
+# start
+lane=3
+position=233
+type=N
+# end
+
+# start
+lane=3
+position=235
+type=H
+length=2
+# end
+
+# start
+lane=0
+position=239
+type=N
+# end
+
+# start
+lane=2
+position=241
+type=H
+length=2
+# end
+
+# start
+lane=1
+position=245
+type=N
+# end
+
+# start
+lane=1
+position=247
+type=H
+length=2
+# end
+-section 15 end
