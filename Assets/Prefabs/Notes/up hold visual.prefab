@@ -178,3 +178,4 @@ MonoBehaviour:
   _ai: 0
   _whichSide: 1
   _colName: Note Hold Culler
+  _keyWasDown: 0
