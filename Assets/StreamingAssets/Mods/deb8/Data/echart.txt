@@ -222,25 +222,25 @@ type=N
 
 # start
 lane=3
-position=155
+position=158
 type=N
 # end
 
 # start
 lane=0
-position=157
+position=160
 type=N
 # end
 
 # start
 lane=2
-position=159
+position=162
 type=N
 # end
 
 # start
 lane=1
-position=161
+position=164
 type=N
 # end
 - section 10 end
@@ -248,66 +248,49 @@ type=N
 -section 11
 # start
 lane=3
-position=165
+position=168
 type=N
 # end
 
 # start
 lane=2
-position=167
+position=170
 type=N
 # end
 
 # start
 lane=1
-position=169
+position=172
 type=N
 # end
 
 # start
 lane=1
-position=171
-type=N
-# end
-
-# start
-lane=0
-position=173
-type=N
-# end
-
-# start
-lane=3
 position=174
 type=N
 # end
 
 # start
-lane=2
-position=176
+lane=0
+position=175
+type=N
+# end
+
+# start
+lane=3
+position=177
 type=N
 # end
 
 # start
 lane=2
-position=178
-type=N
+position=179
+type=H
+length=2
 # end
 -section 11 end
 
 -section 12
-# start
-lane=0
-position=179
-type=N
-# end
-
-# start
-lane=1
-position=181
-type=N
-# end
-
 # start
 lane=0
 position=183
@@ -315,8 +298,14 @@ type=N
 # end
 
 # start
-lane=3
+lane=1
 position=185
+type=N
+# end
+
+# start
+lane=0
+position=187
 type=N
 # end
 
@@ -327,14 +316,20 @@ type=N
 # end
 
 # start
-lane=2
+lane=3
 position=193
 type=N
 # end
 
 # start
+lane=2
+position=197
+type=N
+# end
+
+# start
 lane=1
-position=195
+position=199
 type=N
 # end
 -section 12 end
@@ -342,19 +337,7 @@ type=N
 -section 13
 # start
 lane=3
-position=197
-type=N
-# end
-
-# start
-lane=1
 position=201
-type=N
-# end
-
-# start
-lane=3
-position=203
 type=N
 # end
 
@@ -365,11 +348,20 @@ type=N
 # end
 
 # start
-lane=2
+lane=3
 position=208
+type=N
+# end
+
+# start
+lane=2
+position=209
 type=H
 length=2
 # end
 -section 13 end
 
 -------------------------end turn
+
+
+

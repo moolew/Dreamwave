@@ -123,7 +123,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _WarpScale: -0.4174254
+    - _WarpScale: -10.777139
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

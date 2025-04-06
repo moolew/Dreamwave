@@ -94,19 +94,19 @@ type=N
 
 # start
 lane=1
-position=102
-type=N
-# end
-
-# start
-lane=3
-position=104
+position=103
 type=N
 # end
 
 # start
 lane=3
 position=105
+type=N
+# end
+
+# start
+lane=3
+position=106
 type=N
 # end
 
@@ -125,32 +125,27 @@ type=N
 # start
 lane=0
 position=112
-type=N
-# end
-
-# start
-lane=0
-position=115
-type=N
+type=H
+length=2
 # end
 -section 6 end
 
 -section 7
 # start
 lane=2
-position=117
+position=116
 type=N
 # end
 
 # start
 lane=0
-position=121
+position=118
 type=N
 # end
 
 # start
 lane=3
-position=122
+position=121
 type=N
 # end
 
@@ -174,7 +169,7 @@ type=N
 
 # start
 lane=3
-position=130
+position=129
 type=N
 # end
 -section 7 end

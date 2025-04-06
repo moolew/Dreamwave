@@ -16,3 +16,28 @@ type=PF-p
 position=134
 type=PF-e
 # end
+
+# start
+position=202
+type=PF-c
+# end
+
+# start
+position=267
+type=PF-e
+# end
+
+# start
+position=400
+type=PF-p
+# end
+
+# start
+position=520
+type=PF-c
+# end
+
+# start
+position=530
+type=PF-e
+# end
