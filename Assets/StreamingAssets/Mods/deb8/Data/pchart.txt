@@ -179,6 +179,170 @@ type=N
 
 -------------------------start turn
 
+-section 13
+# start
+lane=2
+position=202
+type=N
+# end
 
+# start
+lane=1
+position=204
+type=N
+# end
+
+# start
+lane=1
+position=208
+type=N
+# end
+
+# start
+lane=0
+position=210
+type=N
+# end
+
+# start
+lane=1
+position=212
+type=H
+length=2
+# end
+-section 13 end
+
+-section 14
+# start
+lane=2
+position=218
+type=N
+# end
+
+# start
+lane=1
+position=220
+type=N
+# end
+
+# start
+lane=3
+position=224
+type=N
+# end
+
+# start
+lane=0
+position=226
+type=N
+# end
+
+# start
+lane=3
+position=228
+type=N
+# end
+
+# start
+lane=0
+position=230
+type=N
+# end
+-section 14 end
+
+-section 15
+# start
+lane=3
+position=234
+type=N
+# end
+
+# start
+lane=2
+position=236
+type=N
+# end
+
+# start
+lane=3
+position=239
+type=N
+# end
+
+# start
+lane=3
+position=240
+type=N
+# end
+
+# start
+lane=0
+position=241
+type=N
+# end
+
+# start
+lane=1
+position=243
+type=N
+# end
+
+# start
+lane=0
+position=246
+type=H
+length=2
+# end
+-section 15 end
+
+-section 16
+# start
+lane=2
+position=250
+type=N
+# end
+
+# start
+lane=0
+position=252
+type=N
+# end
+
+# start
+lane=1
+position=254
+type=N
+# end
+
+# start
+lane=3
+position=256
+type=N
+# end
+
+# start
+lane=2
+position=258
+type=N
+# end
+
+# start
+lane=0
+position=260
+type=N
+# end
+
+# start
+lane=3
+position=262
+type=N
+# end
+
+# start
+lane=1
+position=264
+type=N
+# end
+-section 16 end
 
 -------------------------end turn
