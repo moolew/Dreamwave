@@ -1,2 +1,2 @@
 startScrollAtStep=0
-scrollSpeedMultiplier=4.2
+scrollSpeedMultiplier=4.65

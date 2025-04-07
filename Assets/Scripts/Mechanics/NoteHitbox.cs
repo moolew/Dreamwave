@@ -84,7 +84,7 @@ public class NoteHitbox : MonoBehaviour
                 NoteHit("Cool", delayInMs, dist, keyForSide.ToString());
                 if (GameManager.Instance.shouldDrawNoteSplashes)
                 {
-                    Instantiate(NoteHitParticle, fn.transform.position, Quaternion.identity).SetActive(true);
+                    Instantiate(NoteHitParticle, NoteHitParticle.transform.position, Quaternion.identity).SetActive(true);
                 }
             }
             else if (dist >= ratingThresholds[1])
@@ -92,7 +92,7 @@ public class NoteHitbox : MonoBehaviour
                 NoteHit("Sick", delayInMs, dist, keyForSide.ToString());
                 if (GameManager.Instance.shouldDrawNoteSplashes)
                 {
-                    Instantiate(NoteHitParticle, fn.transform.position, Quaternion.identity).SetActive(true);
+                    Instantiate(NoteHitParticle, NoteHitParticle.transform.position, Quaternion.identity).SetActive(true);
                 }
             }
             else if (dist >= ratingThresholds[0])
@@ -100,7 +100,7 @@ public class NoteHitbox : MonoBehaviour
                 NoteHit("Dreamy", delayInMs, dist, keyForSide.ToString());
                 if (GameManager.Instance.shouldDrawNoteSplashes)
                 {
-                    Instantiate(NoteHitParticle, fn.transform.position, Quaternion.identity).SetActive(true);
+                    Instantiate(NoteHitParticle, NoteHitParticle.transform.position, Quaternion.identity).SetActive(true);
                 }
             }
             else if (dist <= ratingThresholds[0])
@@ -164,6 +164,10 @@ public class NoteHitbox : MonoBehaviour
         else if (noteObject.CompareTag("Note Hold Parent"))
         {
             noteObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        else if (noteObject.CompareTag("Note Hold"))
+        {
+            noteObject.SetActive(false);
         }
     }
 }

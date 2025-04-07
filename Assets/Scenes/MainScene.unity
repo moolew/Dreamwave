@@ -18783,6 +18783,7 @@ MonoBehaviour:
   shouldDisplayIncomingNoteWarning: 1
   shouldAutoPause: 1
   shouldDrawNoteSplashes: 1
+  BpmBump: 1
   left: 97
   down: 115
   up: 59
@@ -40852,6 +40853,7 @@ MonoBehaviour:
   _canAnimate: 1
   Renderer: {fileID: 1751173951}
   AnimationSpeed: 0.1
+  AnimationHoldSpeed: 0.1
   SingAnimationHold: 0.3
   LeftAnimations:
   - {fileID: 1087356312, guid: bfa7e4c737c264149906dce81e19fa4b, type: 3}
@@ -44222,6 +44224,7 @@ MonoBehaviour:
   _canAnimate: 1
   Renderer: {fileID: 1895532698}
   AnimationSpeed: 0.1
+  AnimationHoldSpeed: 0.1
   SingAnimationHold: 0.3
   LeftAnimations:
   - {fileID: 1754866359, guid: 52b6b777950797743b27447d13b85436, type: 3}

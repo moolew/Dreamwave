@@ -35,6 +35,8 @@ public class ScrollManager : MonoBehaviour
             float newY = Mathf.Lerp(transform.position.y, targetY, Time.deltaTime * smoothingFactor);
 
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+
+            Debug.Log(transform.position.y);
         }
     }
 

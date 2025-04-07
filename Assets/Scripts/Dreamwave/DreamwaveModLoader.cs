@@ -209,40 +209,38 @@ public class DreamwaveModLoader : MonoBehaviour
             {
                 string ev = line.Split("=")[1];
                 eventType = ev;
-
                 string[] splitEv = ev.Split('-');
 
                 if (splitEv[0] == "PF")
                 {
                     string focus = splitEv.Length > 1 ? splitEv[1] : "";
-
                     var r = Instantiate(Event, chartParent);
                     r.transform.localPosition = currentEvent.transform.localPosition;
                     r.layer = 6;
-
                     currentEventI = r.GetComponent<ScrollEvents>();
-                    if (focus == "p") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerRight;
-                    else if (focus == "e") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerLeft;
-                    else if (focus == "c") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusCentre;
+                    if (focus == "p")
+                        currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerRight;
+                    else if (focus == "e")
+                        currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerLeft;
+                    else if (focus == "c")
+                        currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusCentre;
                 }
                 else if (ev == "Z")
                 {
+                    // Create a single event for zoom events and assign its type here.
                     var r = Instantiate(Event, chartParent);
                     r.transform.localPosition = currentEvent.transform.localPosition;
                     r.layer = 6;
+                    currentEventI = r.GetComponent<ScrollEvents>();
+                    currentEventI.typeOfScrollEvent = TypeOfScrollEvent.CameraFov;
                 }
             }
-
-            if (eventType == "Z" && line.StartsWith("amount="))
+            else if (eventType == "Z" && line.StartsWith("amount="))
             {
-                var r = Instantiate(Event, chartParent);
-                r.transform.localPosition = currentEvent.transform.localPosition;
-                r.layer = 6;
-                currentEventI = r.GetComponent<ScrollEvents>();
-                currentEventI.typeOfScrollEvent = TypeOfScrollEvent.CameraFov;
+                // Update the already instantiated zoom event instead of creating a new one.
                 currentEventI.ZoomAmount = float.Parse(line.Split("=")[1]);
             }
-            
+
             if (eventType == "Z" && line.StartsWith("speed=") && currentEventI != null)
             {
                 currentEventI.ZoomSpeed = float.Parse(line.Split("=")[1]);

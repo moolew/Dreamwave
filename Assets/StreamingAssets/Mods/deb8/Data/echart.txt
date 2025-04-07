@@ -1,798 +1,2074 @@
-Enemy Chart
-
-the code below demonstrates a single note and all of its data
-
-there are 4 lanes but you start iterating from 0 so 0-3 lanes / left-down-up-right / lane 4 is for events
----
-position is the y position on the chart, higher the value the further down the note goes
----
-type is which note will be instanced / N = normal - H = hold
----
-length is checked only if the type is of H and if so you define how long the hold is
----
-event creates an event rather than a note, it takes a type like PF which is for Player Focus
-
--------------------------start turn
-
-- section 0
 # start
 lane=3
-position=2
+position=2.323
 type=N
 # end
 
 # start
 lane=2
-position=4
-type=N
-# end
-
-# start
-lane=1
-position=8
-type=N
-# end
-
-# start
-lane=0
-position=10
+position=4.645
 type=N
 # end
 
 # start
 lane=2
-position=12
+position=13.935
 type=H
-length=2
-# end
-- section 0 end
-
-- section 1
-# start
-lane=3
-position=18
-type=N
+length=2.328
 # end
 
 # start
-lane=2
-position=20
-type=N
-# end
-
-# start
-lane=3
-position=24
+lane=1
+position=9.29
 type=N
 # end
 
 # start
 lane=0
-position=26
+position=11.613
+type=N
+# end
+
+# start
+lane=3
+position=20.903
 type=N
 # end
 
 # start
 lane=2
-position=28
+position=23.226
 type=N
 # end
 
-# start
-lane=1
-position=30
-type=N
-# end
-- section 1 end
-
--section 2
 # start
 lane=3
-position=34
-type=N
-# end
-
-# start
-lane=1
-position=36
-type=N
-# end
-
-# start
-lane=1
-position=38
-type=N
-# end
-
-# start
-lane=1
-position=39
+position=27.871
 type=N
 # end
 
 # start
 lane=0
-position=40
-type=N
-# end
-
-# start
-lane=3
-position=42
+position=30.194
 type=N
 # end
 
 # start
 lane=2
-position=44
+position=32.516
+type=N
+# end
+
+# start
+lane=1
+position=34.839
+type=N
+# end
+
+# start
+lane=3
+position=39.484
+type=N
+# end
+
+# start
+lane=2
+position=41.806
+type=N
+# end
+
+# start
+lane=1
+position=44.129
+type=N
+# end
+
+# start
+lane=1
+position=45.29
+type=N
+# end
+
+# start
+lane=0
+position=46.452
+type=N
+# end
+
+# start
+lane=3
+position=48.774
+type=N
+# end
+
+# start
+lane=2
+position=51.097
 type=H
-length=2
+length=2.328
 # end
--section 2 end
 
--section 3
 # start
 lane=0
-position=47
+position=55.742
 type=N
 # end
 
 # start
 lane=1
-position=49
+position=58.065
 type=N
 # end
 
 # start
 lane=0
-position=51
+position=60.387
 type=N
 # end
 
 # start
-lane=3
-position=53
+lane=2
+position=62.71
 type=H
-length=3
+length=2.328
 # end
 
 # start
 lane=1
-position=57
+position=67.355
 type=N
 # end
 
 # start
 lane=3
-position=61
+position=72.0
 type=N
 # end
--section 3 end
 
--------------------------end turn
-
-
--------------------------start turn
-
-- section 8
 # start
 lane=3
-position=134
+position=150.968
 type=N
 # end
 
 # start
 lane=2
-position=136
-type=N
-# end
-
-# start
-lane=1
-position=140
-type=N
-# end
-
-# start
-lane=0
-position=141
+position=153.29
 type=N
 # end
 
 # start
 lane=2
-position=144
+position=162.581
 type=H
-length=2
-# end
-- section 8 end
-
-- section 9
-# start
-lane=3
-position=150
-type=N
+length=2.328
 # end
 
 # start
-lane=2
-position=152
-type=N
-# end
-
-# start
-lane=3
-position=158
+lane=1
+position=157.935
 type=N
 # end
 
 # start
 lane=0
-position=160
+position=160.258
 type=N
 # end
 
-# start
-lane=2
-position=162
-type=N
-# end
-
-# start
-lane=1
-position=164
-type=N
-# end
-- section 10 end
-
--section 11
 # start
 lane=3
-position=168
+position=169.548
 type=N
 # end
 
 # start
 lane=2
-position=170
+position=171.871
 type=N
 # end
 
 # start
-lane=1
-position=172
-type=N
-# end
-
-# start
-lane=1
-position=174
+lane=3
+position=176.516
 type=N
 # end
 
 # start
 lane=0
-position=175
-type=N
-# end
-
-# start
-lane=3
-position=177
+position=178.839
 type=N
 # end
 
 # start
 lane=2
-position=179
+position=181.161
+type=N
+# end
+
+# start
+lane=1
+position=183.484
+type=N
+# end
+
+# start
+lane=3
+position=188.129
+type=N
+# end
+
+# start
+lane=2
+position=190.452
+type=N
+# end
+
+# start
+lane=1
+position=192.774
+type=N
+# end
+
+# start
+lane=1
+position=193.935
+type=N
+# end
+
+# start
+lane=0
+position=195.097
+type=N
+# end
+
+# start
+lane=3
+position=197.419
+type=N
+# end
+
+# start
+lane=2
+position=199.742
 type=H
-length=2
+length=2.328
 # end
--section 11 end
 
--section 12
 # start
 lane=0
-position=183
+position=204.387
 type=N
 # end
 
 # start
 lane=1
-position=185
+position=206.71
 type=N
 # end
 
 # start
 lane=0
-position=187
-type=N
-# end
-
-# start
-lane=3
-position=189
-type=N
-# end
-
-# start
-lane=3
-position=193
+position=209.032
 type=N
 # end
 
 # start
 lane=2
-position=197
-type=N
-# end
-
-# start
-lane=1
-position=199
-type=N
-# end
--section 12 end
-
--section 13
-# start
-lane=3
-position=201
-type=N
-# end
-
-# start
-lane=1
-position=206
-type=N
-# end
-
-# start
-lane=3
-position=208
+position=211.355
 type=N
 # end
 
 # start
 lane=2
-position=209
+position=220.645
+type=N
+# end
+
+# start
+lane=3
+position=216.0
+type=N
+# end
+
+# start
+lane=1
+position=299.613
+type=N
+# end
+
+# start
+lane=1
+position=300.774
+type=N
+# end
+
+# start
+lane=2
+position=301.935
+type=N
+# end
+
+# start
+lane=0
+position=304.258
+type=N
+# end
+
+# start
+lane=3
+position=306.581
+type=N
+# end
+
+# start
+lane=1
+position=308.903
+type=N
+# end
+
+# start
+lane=2
+position=311.226
+type=N
+# end
+
+# start
+lane=0
+position=313.548
+type=N
+# end
+
+# start
+lane=1
+position=315.871
+type=N
+# end
+
+# start
+lane=3
+position=318.194
+type=N
+# end
+
+# start
+lane=2
+position=320.516
+type=N
+# end
+
+# start
+lane=0
+position=322.839
+type=N
+# end
+
+# start
+lane=1
+position=325.161
+type=N
+# end
+
+# start
+lane=2
+position=327.484
+type=N
+# end
+
+# start
+lane=0
+position=329.806
+type=N
+# end
+
+# start
+lane=1
+position=332.129
+type=N
+# end
+
+# start
+lane=2
+position=334.452
 type=H
-length=2
+length=2.328
 # end
--section 13 end
 
--------------------------end turn
+# start
+lane=3
+position=339.097
+type=N
+# end
 
+# start
+lane=0
+position=341.419
+type=N
+# end
 
--------------------------start turn
-
--section 14
 # start
 lane=1
-position=231
-type=N
-# end
--section 14 end
-
--section 15
-
-# start
-lane=3
-position=233
-type=N
-# end
-
-# start
-lane=3
-position=235
+position=343.742
 type=H
-length=2
+length=2.328
 # end
 
 # start
-lane=0
-position=239
+lane=3
+position=348.387
 type=N
 # end
 
 # start
 lane=2
-position=241
+position=350.71
+type=N
+# end
+
+# start
+lane=0
+position=353.032
+type=N
+# end
+
+# start
+lane=1
+position=355.355
+type=N
+# end
+
+# start
+lane=0
+position=357.677
+type=N
+# end
+
+# start
+lane=3
+position=360.0
 type=H
-length=2
+length=2.328
 # end
 
 # start
-lane=1
-position=245
+lane=0
+position=364.645
+type=N
+# end
+
+# start
+lane=2
+position=366.968
 type=N
 # end
 
 # start
 lane=1
-position=247
+position=369.29
+type=N
+# end
+
+# start
+lane=3
+position=371.613
+type=N
+# end
+
+# start
+lane=0
+position=373.935
+type=N
+# end
+
+# start
+lane=0
+position=383.226
+type=N
+# end
+
+# start
+lane=0
+position=384.387
+type=N
+# end
+
+# start
+lane=1
+position=385.548
+type=N
+# end
+
+# start
+lane=3
+position=387.871
+type=N
+# end
+
+# start
+lane=2
+position=376.258
+type=N
+# end
+
+# start
+lane=1
+position=378.581
+type=N
+# end
+
+# start
+lane=0
+position=390.194
+type=N
+# end
+
+# start
+lane=2
+position=392.516
+type=N
+# end
+
+# start
+lane=3
+position=394.839
+type=N
+# end
+
+# start
+lane=2
+position=397.161
 type=H
-length=2
+length=2.328
 # end
--section 15 end
 
--section 16
 # start
-lane=1
-position=268
+lane=0
+position=401.806
 type=N
 # end
 
 # start
 lane=1
-position=269
-type=N
-# end
-
-# start
-lane=2
-position=270
+position=404.129
 type=N
 # end
 
 # start
 lane=0
-position=272
+position=406.452
 type=N
 # end
 
 # start
 lane=3
-position=274
-type=N
-# end
-
-# start
-lane=1
-position=276
+position=408.774
 type=N
 # end
 
 # start
 lane=2
-position=278
+position=411.097
 type=N
 # end
 
-# start
-lane=0
-position=280
-type=N
-# end
--section 16 end
-
--section 17
 # start
 lane=1
-position=282
+position=413.419
 type=N
 # end
 
 # start
 lane=3
-position=284
+position=415.742
 type=N
 # end
 
 # start
 lane=2
-position=286
+position=422.71
 type=N
 # end
 
 # start
 lane=0
-position=288
+position=420.387
 type=N
 # end
 
 # start
 lane=1
-position=290
+position=425.032
+type=N
+# end
+
+# start
+lane=1
+position=426.194
+type=N
+# end
+
+# start
+lane=2
+position=429.677
+type=N
+# end
+
+# start
+lane=0
+position=432.0
 type=N
 # end
 
 # start
 lane=3
-position=292
-type=N
-# end
-
-# start
-lane=0
-position=294
-type=N
-# end
-
-# start
-lane=1
-position=296
-type=N
-# end
--section 17 end
-
--section 18
-# start
-lane=0
-position=300
+position=434.323
 type=H
-length=2
+length=2.328
+# end
+
+# start
+lane=0
+position=438.968
+type=N
 # end
 
 # start
 lane=3
-position=304
+position=441.29
+type=N
+# end
+
+# start
+lane=1
+position=443.613
+type=N
+# end
+
+# start
+lane=3
+position=427.355
+type=N
+# end
+
+# start
+lane=1
+position=596.903
+type=N
+# end
+
+# start
+lane=1
+position=598.065
 type=N
 # end
 
 # start
 lane=0
-position=306
+position=599.226
+type=N
+# end
+
+# start
+lane=3
+position=601.548
+type=N
+# end
+
+# start
+lane=2
+position=603.871
+type=N
+# end
+
+# start
+lane=3
+position=606.194
 type=N
 # end
 
 # start
 lane=1
-position=308
+position=608.516
+type=N
+# end
+
+# start
+lane=0
+position=610.839
 type=N
 # end
 
 # start
 lane=1
-position=310
+position=613.161
+type=N
+# end
+
+# start
+lane=3
+position=615.484
+type=N
+# end
+
+# start
+lane=2
+position=617.806
+type=N
+# end
+
+# start
+lane=0
+position=620.129
+type=N
+# end
+
+# start
+lane=1
+position=622.452
+type=N
+# end
+
+# start
+lane=3
+position=624.774
+type=N
+# end
+
+# start
+lane=2
+position=627.097
+type=N
+# end
+
+# start
+lane=0
+position=629.419
+type=N
+# end
+
+# start
+lane=1
+position=631.742
+type=N
+# end
+
+# start
+lane=0
+position=634.065
+type=N
+# end
+
+# start
+lane=3
+position=636.387
+type=N
+# end
+
+# start
+lane=2
+position=638.71
+type=N
+# end
+
+# start
+lane=0
+position=641.032
+type=N
+# end
+
+# start
+lane=1
+position=643.355
+type=N
+# end
+
+# start
+lane=3
+position=645.677
+type=N
+# end
+
+# start
+lane=0
+position=648.0
+type=N
+# end
+
+# start
+lane=0
+position=661.935
+type=N
+# end
+
+# start
+lane=1
+position=664.258
+type=N
+# end
+
+# start
+lane=0
+position=666.581
+type=N
+# end
+
+# start
+lane=0
+position=653.806
+type=N
+# end
+
+# start
+lane=1
+position=653.806
 type=H
-length=2
+length=2.328
 # end
 
 # start
 lane=3
-position=314
-type=N
-# end
-
-# start
-lane=2
-position=316
-type=N
-# end
--section 18 end
-
--section 19
-# start
-lane=0
-position=318
-type=N
-# end
-
-# start
-lane=1
-position=320
-type=N
-# end
-
-# start
-lane=0
-position=322
-type=N
-# end
-
-# start
-lane=3
-position=324
+position=650.323
 type=H
-length=2
+length=2.328
 # end
 
 # start
-lane=0
-position=328
+lane=2
+position=650.323
 type=N
 # end
 
 # start
 lane=2
-position=330
-type=N
-# end
-
-# start
-lane=1
-position=332
-type=N
-# end
--section 19 end
-
--section 20
-# start
-lane=3
-position=334
-type=N
-# end
-
-# start
-lane=0
-position=336
-type=N
-# end
-
-# start
-lane=2
-position=338
-type=N
-# end
-
-# start
-lane=1
-position=340
-type=N
-# end
-
-# start
-lane=0
-position=344
-type=N
-# end
-
-# start
-lane=0
-position=345
-type=N
-# end
-
-# start
-lane=1
-position=346
-type=N
-# end
-
-# start
-lane=3
-position=348
-type=N
-# end
--section 20 end
-
--section 21
-# start
-lane=0
-position=350
-type=N
-# end
-
-# start
-lane=2
-position=352
-type=N
-# end
-
-# start
-lane=3
-position=354
-type=N
-# end
-
-# start
-lane=2
-position=356
+position=657.29
 type=H
-length=2
+length=2.328
+# end
+
+# start
+lane=2
+position=668.903
+type=N
+# end
+
+# start
+lane=3
+position=671.226
+type=N
 # end
 
 # start
 lane=0
-position=360
+position=673.548
 type=N
 # end
 
 # start
 lane=1
-position=362
+position=675.871
+type=N
+# end
+
+# start
+lane=3
+position=680.516
+type=N
+# end
+
+# start
+lane=3
+position=681.677
 type=N
 # end
 
 # start
 lane=0
-position=364
-type=N
-# end
--section 21 end
-
--section 22
-# start
-lane=3
-position=366
+position=682.839
 type=N
 # end
 
 # start
 lane=2
-position=368
+position=685.161
 type=N
 # end
 
 # start
 lane=1
-position=370
+position=687.484
 type=N
 # end
 
 # start
 lane=3
-position=372
+position=689.806
 type=N
 # end
 
 # start
 lane=0
-position=374
+position=692.129
 type=N
 # end
 
-# start
-lane=2
-position=378
-type=N
-# end
-
-# start
-lane=1
-position=379
-type=N
-# end
-
-# start
-lane=1
-position=380
-type=N
-# end
--section 22 end
-
--section 23
 # start
 lane=3
-position=384
-type=N
-# end
-
-# start
-lane=2
-position=386
+position=699.097
 type=N
 # end
 
 # start
 lane=0
-position=388
+position=701.419
 type=N
 # end
 
 # start
-lane=3
-position=390
+lane=1
+position=703.742
+type=N
+# end
+
+# start
+lane=2
+position=694.452
 type=H
-length=2
-# end
-
-# start
-lane=0
-position=394
-type=N
+length=2.328
 # end
 
 # start
 lane=3
-position=396
+position=706.065
+type=N
+# end
+
+# start
+lane=0
+position=708.387
 type=N
 # end
 
 # start
 lane=1
-position=398
+position=710.71
 type=N
 # end
--section 23 end
+
+# start
+lane=3
+position=713.032
+type=N
+# end
+
+# start
+lane=3
+position=715.355
+type=N
+# end
+
+# start
+lane=3
+position=716.516
+type=N
+# end
+
+# start
+lane=2
+position=717.677
+type=N
+# end
+
+# start
+lane=0
+position=720.0
+type=N
+# end
+
+# start
+lane=0
+position=721.161
+type=N
+# end
+
+# start
+lane=1
+position=722.323
+type=N
+# end
+
+# start
+lane=3
+position=723.484
+type=N
+# end
+
+# start
+lane=3
+position=724.645
+type=N
+# end
+
+# start
+lane=1
+position=725.806
+type=N
+# end
+
+# start
+lane=2
+position=726.968
+type=N
+# end
+
+# start
+lane=3
+position=736.258
+type=N
+# end
+
+# start
+lane=3
+position=740.903
+type=N
+# end
+
+# start
+lane=0
+position=738.581
+type=N
+# end
+
+# start
+lane=1
+position=731.613
+type=H
+length=2.328
+# end
+
+# start
+lane=1
+position=728.129
+type=N
+# end
+
+# start
+lane=3
+position=891.871
+type=N
+# end
+
+# start
+lane=2
+position=894.194
+type=N
+# end
+
+# start
+lane=1
+position=898.839
+type=N
+# end
+
+# start
+lane=3
+position=903.484
+type=N
+# end
+
+# start
+lane=0
+position=904.645
+type=N
+# end
+
+# start
+lane=2
+position=908.129
+type=N
+# end
+
+# start
+lane=1
+position=905.806
+type=N
+# end
+
+# start
+lane=3
+position=909.29
+type=N
+# end
+
+# start
+lane=0
+position=910.452
+type=N
+# end
+
+# start
+lane=1
+position=912.774
+type=N
+# end
+
+# start
+lane=0
+position=915.097
+type=N
+# end
+
+# start
+lane=1
+position=922.065
+type=N
+# end
+
+# start
+lane=3
+position=924.387
+type=N
+# end
+
+# start
+lane=0
+position=926.71
+type=N
+# end
+
+# start
+lane=2
+position=917.419
+type=H
+length=2.328
+# end
+
+# start
+lane=1
+position=966.194
+type=N
+# end
+
+# start
+lane=0
+position=966.194
+type=N
+# end
+
+# start
+lane=2
+position=968.516
+type=N
+# end
+
+# start
+lane=1
+position=970.839
+type=N
+# end
+
+# start
+lane=3
+position=973.161
+type=H
+length=2.328
+# end
+
+# start
+lane=1
+position=977.806
+type=N
+# end
+
+# start
+lane=2
+position=980.129
+type=N
+# end
+
+# start
+lane=3
+position=984.774
+type=N
+# end
+
+# start
+lane=0
+position=987.097
+type=N
+# end
+
+# start
+lane=1
+position=989.419
+type=N
+# end
+
+# start
+lane=2
+position=991.742
+type=H
+length=2.328
+# end
+
+# start
+lane=0
+position=996.387
+type=N
+# end
+
+# start
+lane=3
+position=998.71
+type=N
+# end
+
+# start
+lane=1
+position=1001.032
+type=N
+# end
+
+# start
+lane=1
+position=1040.516
+type=N
+# end
+
+# start
+lane=1
+position=1045.161
+type=N
+# end
+
+# start
+lane=1
+position=1049.806
+type=N
+# end
+
+# start
+lane=3
+position=1054.452
+type=N
+# end
+
+# start
+lane=3
+position=1055.613
+type=N
+# end
+
+# start
+lane=2
+position=1056.774
+type=N
+# end
+
+# start
+lane=3
+position=1040.516
+type=N
+# end
+
+# start
+lane=1
+position=1042.839
+type=N
+# end
+
+# start
+lane=2
+position=1045.161
+type=N
+# end
+
+# start
+lane=0
+position=1046.323
+type=N
+# end
+
+# start
+lane=0
+position=1047.484
+type=N
+# end
+
+# start
+lane=1
+position=1049.806
+type=N
+# end
+
+# start
+lane=3
+position=1052.129
+type=N
+# end
+
+# start
+lane=1
+position=1054.452
+type=N
+# end
+
+# start
+lane=2
+position=1055.613
+type=N
+# end
+
+# start
+lane=2
+position=1056.774
+type=N
+# end
+
+# start
+lane=1
+position=1077.677
+type=N
+# end
+
+# start
+lane=3
+position=1080.0
+type=N
+# end
+
+# start
+lane=0
+position=1082.323
+type=N
+# end
+
+# start
+lane=2
+position=1084.645
+type=N
+# end
+
+# start
+lane=1
+position=1089.29
+type=N
+# end
+
+# start
+lane=3
+position=1093.935
+type=N
+# end
+
+# start
+lane=3
+position=1095.097
+type=N
+# end
+
+# start
+lane=1
+position=1077.677
+type=N
+# end
+
+# start
+lane=1
+position=1082.323
+type=N
+# end
+
+# start
+lane=1
+position=1086.968
+type=N
+# end
+
+# start
+lane=3
+position=1091.613
+type=N
+# end
+
+# start
+lane=3
+position=1092.774
+type=N
+# end
+
+# start
+lane=0
+position=1093.935
+type=N
+# end
+
+# start
+lane=0
+position=1133.419
+type=N
+# end
+
+# start
+lane=2
+position=1135.742
+type=N
+# end
+
+# start
+lane=0
+position=1138.065
+type=N
+# end
+
+# start
+lane=2
+position=1140.387
+type=N
+# end
+
+# start
+lane=1
+position=1142.71
+type=N
+# end
+
+# start
+lane=3
+position=1145.032
+type=N
+# end
+
+# start
+lane=3
+position=1146.194
+type=N
+# end
+
+# start
+lane=0
+position=1147.355
+type=N
+# end
+
+# start
+lane=1
+position=1149.677
+type=N
+# end
+
+# start
+lane=0
+position=1133.419
+type=N
+# end
+
+# start
+lane=1
+position=1135.742
+type=N
+# end
+
+# start
+lane=3
+position=1138.065
+type=N
+# end
+
+# start
+lane=2
+position=1142.71
+type=N
+# end
+
+# start
+lane=0
+position=1145.032
+type=N
+# end
+
+# start
+lane=1
+position=1147.355
+type=N
+# end
+
+# start
+lane=0
+position=1149.677
+type=N
+# end
+
+# start
+lane=1
+position=1140.387
+type=N
+# end
+
+# start
+lane=2
+position=1143.871
+type=N
+# end
+
+# start
+lane=2
+position=1170.581
+type=N
+# end
+
+# start
+lane=0
+position=1172.903
+type=N
+# end
+
+# start
+lane=1
+position=1177.548
+type=H
+length=2.328
+# end
+
+# start
+lane=3
+position=1182.194
+type=N
+# end
+
+# start
+lane=0
+position=1184.516
+type=N
+# end
+
+# start
+lane=2
+position=1186.839
+type=N
+# end
+
+# start
+lane=1
+position=1170.581
+type=N
+# end
+
+# start
+lane=2
+position=1172.903
+type=N
+# end
+
+# start
+lane=1
+position=1175.226
+type=N
+# end
+
+# start
+lane=3
+position=1177.548
+type=N
+# end
+
+# start
+lane=1
+position=1179.871
+type=N
+# end
+
+# start
+lane=0
+position=1182.194
+type=N
+# end
+
+# start
+lane=0
+position=1183.355
+type=N
+# end
+
+# start
+lane=2
+position=1184.516
+type=N
+# end
+
+# start
+lane=1
+position=1186.839
+type=N
+# end
+
+# start
+lane=3
+position=1176.387
+type=N
+# end
+
+# start
+lane=2
+position=1175.226
+type=N
+# end
+
+# start
+lane=3
+position=1189.161
+type=N
+# end
+
+# start
+lane=3
+position=1196.129
+type=N
+# end
+
+# start
+lane=3
+position=1203.097
+type=N
+# end
+
+# start
+lane=2
+position=1205.419
+type=H
+length=2.328
+# end
+
+# start
+lane=2
+position=1198.452
+type=H
+length=2.328
+# end
+
+# start
+lane=2
+position=1205.419
+type=N
+# end
+
+# start
+lane=2
+position=1191.484
+type=H
+length=2.328
+# end
+
+# start
+lane=3
+position=1210.065
+type=N
+# end
+
+# start
+lane=0
+position=1217.032
+type=N
+# end
+
+# start
+lane=1
+position=1219.355
+type=N
+# end
+
+# start
+lane=0
+position=1221.677
+type=N
+# end
+
+# start
+lane=1
+position=1224.0
+type=N
+# end
+
+# start
+lane=2
+position=1212.387
+type=H
+length=2.328
+# end
+
+# start
+lane=3
+position=1226.323
+type=N
+# end
+
+# start
+lane=3
+position=1233.29
+type=N
+# end
+
+# start
+lane=0
+position=1240.258
+type=N
+# end
+
+# start
+lane=1
+position=1242.581
+type=H
+length=2.328
+# end
+
+# start
+lane=2
+position=1235.613
+type=H
+length=2.328
+# end
+
+# start
+lane=2
+position=1228.645
+type=H
+length=2.328
+# end
+
+# start
+lane=2
+position=1247.226
+type=N
+# end
+
+# start
+lane=0
+position=1249.548
+type=N
+# end
+
+# start
+lane=3
+position=1251.871
+type=N
+# end
+
+# start
+lane=3
+position=1258.839
+type=H
+length=1.164
+# end
+
+# start
+lane=2
+position=1261.161
+type=H
+length=1.164
+# end
+
+# start
+lane=0
+position=1256.516
+type=H
+length=1.164
+# end
+
+# start
+lane=1
+position=1254.194
+type=H
+length=1.164
+# end
+
+# start
+lane=3
+position=1340.129
+type=N
+# end
+
+# start
+lane=2
+position=1342.452
+type=N
+# end
+
+# start
+lane=2
+position=1351.742
+type=H
+length=2.328
+# end
+
+# start
+lane=1
+position=1347.097
+type=N
+# end
+
+# start
+lane=0
+position=1349.419
+type=N
+# end
+
+# start
+lane=3
+position=1358.71
+type=N
+# end
+
+# start
+lane=2
+position=1361.032
+type=N
+# end
+
+# start
+lane=3
+position=1365.677
+type=N
+# end
+
+# start
+lane=0
+position=1368.0
+type=N
+# end
+
+# start
+lane=2
+position=1370.323
+type=N
+# end
+
+# start
+lane=1
+position=1372.645
+type=N
+# end
+
+# start
+lane=3
+position=1377.29
+type=N
+# end
+
+# start
+lane=2
+position=1379.613
+type=N
+# end
+
+# start
+lane=1
+position=1381.935
+type=N
+# end
+
+# start
+lane=1
+position=1383.097
+type=N
+# end
+
+# start
+lane=0
+position=1384.258
+type=N
+# end
+
+# start
+lane=3
+position=1386.581
+type=N
+# end
+
+# start
+lane=2
+position=1388.903
+type=H
+length=2.328
+# end
+
+# start
+lane=0
+position=1393.548
+type=N
+# end
+
+# start
+lane=1
+position=1395.871
+type=N
+# end
+
+# start
+lane=0
+position=1398.194
+type=N
+# end
+
+# start
+lane=2
+position=1400.516
+type=H
+length=2.328
+# end
+
+# start
+lane=1
+position=1405.161
+type=N
+# end
+
+# start
+lane=3
+position=1409.806
+type=N
+# end
+
+# start
+lane=3
+position=1488.774
+type=N
+# end
+
+# start
+lane=2
+position=1491.097
+type=N
+# end
+
+# start
+lane=2
+position=1500.387
+type=H
+length=2.328
+# end
+
+# start
+lane=1
+position=1495.742
+type=N
+# end
+
+# start
+lane=0
+position=1498.065
+type=N
+# end
+
+# start
+lane=3
+position=1507.355
+type=N
+# end
+
+# start
+lane=2
+position=1509.677
+type=N
+# end
+
+# start
+lane=3
+position=1514.323
+type=N
+# end
+
+# start
+lane=0
+position=1516.645
+type=N
+# end
+
+# start
+lane=2
+position=1518.968
+type=N
+# end
+
+# start
+lane=1
+position=1521.29
+type=N
+# end
+
+# start
+lane=3
+position=1525.935
+type=N
+# end
+
+# start
+lane=2
+position=1528.258
+type=N
+# end
+
+# start
+lane=1
+position=1530.581
+type=N
+# end
+
+# start
+lane=1
+position=1531.742
+type=N
+# end
+
+# start
+lane=0
+position=1532.903
+type=N
+# end
+
+# start
+lane=3
+position=1535.226
+type=N
+# end
+
+# start
+lane=2
+position=1537.548
+type=H
+length=2.328
+# end
+
+# start
+lane=0
+position=1542.194
+type=N
+# end
+
+# start
+lane=1
+position=1544.516
+type=N
+# end
+
+# start
+lane=0
+position=1546.839
+type=N
+# end
+
+# start
+lane=2
+position=1549.161
+type=N
+# end
+
+# start
+lane=2
+position=1558.452
+type=N
+# end
+
+# start
+lane=3
+position=1553.806
+type=N
+# end
