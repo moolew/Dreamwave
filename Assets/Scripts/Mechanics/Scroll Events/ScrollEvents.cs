@@ -9,7 +9,7 @@ public enum TypeOfScrollEvent
     FocusCentre,
     FocusPlayerRight,
     FocusPlayerLeft,
-    ZoomOnGirlFriend,
+    CameraFov,
     ChangeSongSpeed,
     SectionCompleteAnimation,
     Cutscene,
@@ -21,6 +21,10 @@ public class ScrollEvents : MonoBehaviour
 {
     public TypeOfScrollEvent typeOfScrollEvent;
 
+    public float ZoomAmount;
+    public float ZoomSpeed;
+    public bool BpmBump;
+
     [SerializeField] private float scrollSpeedModificationAmount;
 
     [Header("Animation")]
@@ -29,25 +33,18 @@ public class ScrollEvents : MonoBehaviour
     [Header("Cutscene")]
     [SerializeField] private string _cutscenePath;
 
-    private void FocusCentre()
+    private void FocusCentre() => Instance.focus = Focus.Centre;
+    private void FocusLeftPlayer() => Instance.focus = Focus.LeftPlayer;
+    private void FocusRightPlayer() => Instance.focus = Focus.RightPlayer;
+
+    private void CameraFov()
     {
-        GameManager.Instance.focus = Focus.Centre;
+        Instance.CameraFov = ZoomAmount;
+        Instance.CameraFovSpeed = ZoomSpeed;
+        Instance.BpmBump = BpmBump;
     }
 
-    private void FocusLeftPlayer()
-    {
-        GameManager.Instance.focus = Focus.LeftPlayer;
-    }
-
-    private void FocusRightPlayer()
-    {
-        GameManager.Instance.focus = Focus.RightPlayer;
-    }
-
-    private void ChangeSongSpeed()
-    {
-        GameManager.Instance.scrollManager.scrollSpeedMultiplier = scrollSpeedModificationAmount;
-    }
+    private void ChangeSongSpeed() => Instance.scrollManager.scrollSpeedMultiplier = scrollSpeedModificationAmount;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -58,6 +55,7 @@ public class ScrollEvents : MonoBehaviour
                 case TypeOfScrollEvent.FocusCentre: FocusCentre(); break;
                 case TypeOfScrollEvent.FocusPlayerRight: FocusRightPlayer(); break;
                 case TypeOfScrollEvent.FocusPlayerLeft: FocusLeftPlayer(); break;
+                case TypeOfScrollEvent.CameraFov: CameraFov(); break;
                 case TypeOfScrollEvent.ChangeSongSpeed: ChangeSongSpeed(); break;
                 case TypeOfScrollEvent.Animation: eventAnim.Play(); break;
                 case TypeOfScrollEvent.InstantRestart: SceneManager.LoadScene(SceneManager.GetActiveScene().name); break;

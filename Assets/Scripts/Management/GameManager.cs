@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool shouldDisplayIncomingNoteWarning = true;
     [SerializeField] public bool shouldAutoPause = true;
     [SerializeField] public bool shouldDrawNoteSplashes = true;
+    [SerializeField] public bool BpmBump = true;
 
     [Header("Keybinds")]
     [SerializeField] public KeyCode left;
@@ -85,6 +86,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector3 centreFocus;
     [SerializeField] private Vector3[] mobileFocus;
     [SerializeField] private string[] _unfocusedMessages;
+    [SerializeField] public float CameraFovBumpOnBeatValue;
+    [SerializeField] public float CameraFov;
+    [SerializeField] public float CameraFovSpeed;
 
     [Header("DiscordRPC Settings")]
     [SerializeField] public string SongName;
@@ -201,6 +205,8 @@ public class GameManager : MonoBehaviour
         ffpsText.text = "FFps - " + PlayerPrefs.GetFloat("ffps").ToString("F0");
         health = Mathf.Clamp(health, 0, 101);
         _healthSlider.value = Mathf.Lerp(_healthSlider.value, health, 10f * Time.deltaTime);
+
+        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, CameraFov, Time.deltaTime * CameraFovSpeed);
 
         if (PauseMenu.instance._isPaused) return;
         AnimateBackground();
@@ -430,7 +436,7 @@ public class GameManager : MonoBehaviour
 
     private void AnimateBackground()
     {
-        switch (onBeat)
+        /*switch (onBeat)
         {
             case true:
                 psychShader.SetFloat("_WarpScale", Mathf.Lerp(psychShader.GetFloat("_WarpScale"), -20f, psychShaderSmoothing * Time.deltaTime));
@@ -440,7 +446,7 @@ public class GameManager : MonoBehaviour
                 psychShader.SetFloat("_WarpScale", Mathf.Lerp(psychShader.GetFloat("_WarpScale"), 20f, psychShaderSmoothing * Time.deltaTime));
                 //psychShader.SetFloat("_RotationAngle", Mathf.Lerp(psychShader.GetFloat("_RotationAngle"), 10f * Mathf.Deg2Rad, psychShaderSmoothing * Time.deltaTime));
                 break;
-        }
+        }*/
     }
 
     private bool onBeat = false;
@@ -462,8 +468,31 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
+        if (BpmBump)
+        {
+            if (step == 1)
+            {
+                StopCoroutine(StepCameraBop());
+                StartCoroutine(StepCameraBop());
+            }
+            else if (step == 3)
+            {
+                StopCoroutine(StepCameraBop());
+                StartCoroutine(StepCameraBop());
+            }
+        }
+
         stepText.text = "Step - " + step.ToString();
         overallStepText.text = "Steps - " + stepCount.ToString();
+    }
+
+    private IEnumerator StepCameraBop()
+    {
+        CameraFov -= CameraFovBumpOnBeatValue * 2;
+
+        yield return new WaitForSecondsRealtime(0.05f);
+
+        CameraFov += CameraFovBumpOnBeatValue * 2;
     }
 
     private void OnApplicationFocus(bool focus)

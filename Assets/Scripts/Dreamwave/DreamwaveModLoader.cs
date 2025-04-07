@@ -34,7 +34,7 @@ public class DreamwaveModLoader : MonoBehaviour
     public GameObject RightHoldChunk;
     public GameObject RightHoldEnd;
 
-    private void Start()
+    private void Awake()
     {
         SetupChartSettings(ChartsLocation + "settings.txt");
         CreateChart(ChartsLocation + "pchart.txt", PlayerChart, 6);
@@ -112,55 +112,37 @@ public class DreamwaveModLoader : MonoBehaviour
 
                     if (prefab != null)
                     {
+                        // Instantiate the main note as a child of the chart.
                         var note = Instantiate(prefab, chartParent);
                         note.transform.localPosition = spawnPosition;
                         note.layer = layer;
                         note.tag = (layer == 6) ? "Note" : "EnemyNote";
 
+                        // if hold note
                         if (noteType == "H" && chunkPrefab != null && endPrefab != null)
                         {
-                            float chunkStep = 0.5f;
+                            float chunkStep = 0.39f;
                             float startY = spawnPosition.y;
                             float endY = spawnPosition.y - holdLength;
-
                             for (float y = startY - chunkStep; y > endY; y -= chunkStep)
                             {
-                                var chunk = Instantiate(chunkPrefab, note.transform.position, chunkPrefab.transform.rotation); // parented to hold note
-                                chunk.transform.localPosition = new Vector3(0, y - startY, 0); // local relative to note
+                                var chunk = Instantiate(chunkPrefab, chartParent);
+                                chunk.transform.localPosition = new Vector3(spawnPosition.x, y, 0);
                                 chunk.layer = layer;
+                                
+                                // is ai?
+                                var docc = chunk.GetComponent<DisableOnCollision>();
+                                if (chartParent == EnemyChart) docc._ai = true;
+                                else docc._ai = false;
                             }
-
-                            var endNote = Instantiate(endPrefab, note.transform.position, endPrefab.transform.rotation); // parented to hold note
-                            endNote.transform.localPosition = new Vector3(0, endY - startY, 0); // local relative to note
+                            var endNote = Instantiate(endPrefab, chartParent);
+                            endNote.transform.localPosition = new Vector3(spawnPosition.x, endY, 0);
                             endNote.layer = layer;
-                        }
-                    }
 
-                    if (noteType == "H" && chunkPrefab != null && endPrefab != null)
-                    {
-                        float chunkStep = 0.39f;
-                        float startY = spawnPosition.y;
-                        float endY = spawnPosition.y - holdLength;
-
-                        for (float y = startY - chunkStep; y > endY; y -= chunkStep)
-                        {
-                            var chunk = Instantiate(chunkPrefab, chartParent);
-                            chunk.transform.localPosition = new Vector3(spawnPosition.x, y, 0);
-                            chunk.layer = layer;
-                            if (chartParent == EnemyChart)
-                            {
-                                var doc = chunk.GetComponent<DisableOnCollision>();
-                                doc._ai = true;
-                            }
-                        }
-
-                        var endNote = Instantiate(endPrefab, chartParent);
-                        endNote.transform.localPosition = new Vector3(spawnPosition.x, endY, 0);
-                        endNote.layer = layer;
-                        if (chartParent == EnemyChart)
-                        {
-                            var doc = endNote.GetComponent<DisableOnCollision>();
-                            doc._ai = true;
+                            // is ai?
+                            var doce = endNote.GetComponent<DisableOnCollision>();
+                            if (chartParent == EnemyChart) doce._ai = true;
+                            else doce._ai = false;
                         }
                     }
                 }
@@ -195,6 +177,8 @@ public class DreamwaveModLoader : MonoBehaviour
     }
 
     GameObject currentEvent;
+    ScrollEvents currentEventI;
+    string eventType = "";
     public void CreateEventsChart(string location, Transform chartParent)
     {
         string[] lines = File.ReadAllLines(Application.streamingAssetsPath + location);
@@ -206,11 +190,15 @@ public class DreamwaveModLoader : MonoBehaviour
                 currentEvent = new GameObject("EventHolder");
                 currentEvent.transform.SetParent(chartParent);
                 currentEvent.transform.localPosition = Vector3.zero;
+                eventType = "";
+                currentEventI = null;
             }
             else if (line.StartsWith("# end"))
             {
                 Destroy(currentEvent);
                 currentEvent = null;
+                eventType = "";
+                currentEventI = null;
             }
             else if (line.StartsWith("position="))
             {
@@ -220,6 +208,8 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (line.StartsWith("type="))
             {
                 string ev = line.Split("=")[1];
+                eventType = ev;
+
                 string[] splitEv = ev.Split('-');
 
                 if (splitEv[0] == "PF")
@@ -230,11 +220,37 @@ public class DreamwaveModLoader : MonoBehaviour
                     r.transform.localPosition = currentEvent.transform.localPosition;
                     r.layer = 6;
 
-                    var se = r.GetComponent<ScrollEvents>();
-                    if (focus == "p") se.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerRight;
-                    else if (focus == "e") se.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerLeft;
-                    else if (focus == "c") se.typeOfScrollEvent = TypeOfScrollEvent.FocusCentre;
+                    currentEventI = r.GetComponent<ScrollEvents>();
+                    if (focus == "p") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerRight;
+                    else if (focus == "e") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerLeft;
+                    else if (focus == "c") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusCentre;
                 }
+                else if (ev == "Z")
+                {
+                    var r = Instantiate(Event, chartParent);
+                    r.transform.localPosition = currentEvent.transform.localPosition;
+                    r.layer = 6;
+                }
+            }
+
+            if (eventType == "Z" && line.StartsWith("amount="))
+            {
+                var r = Instantiate(Event, chartParent);
+                r.transform.localPosition = currentEvent.transform.localPosition;
+                r.layer = 6;
+                currentEventI = r.GetComponent<ScrollEvents>();
+                currentEventI.typeOfScrollEvent = TypeOfScrollEvent.CameraFov;
+                currentEventI.ZoomAmount = float.Parse(line.Split("=")[1]);
+            }
+            
+            if (eventType == "Z" && line.StartsWith("speed=") && currentEventI != null)
+            {
+                currentEventI.ZoomSpeed = float.Parse(line.Split("=")[1]);
+            }
+
+            if (eventType == "Z" && line.StartsWith("bpmBump=") && currentEventI != null)
+            {
+                currentEventI.BpmBump = bool.Parse(line.Split("=")[1]);
             }
         }
     }

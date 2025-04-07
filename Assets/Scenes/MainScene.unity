@@ -9257,7 +9257,6 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9308,7 +9307,7 @@ Camera:
   far clip plane: 200
   field of view: 60
   orthographic: 1
-  orthographic size: 2.98
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -9383,23 +9382,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!111 &330585548
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: a642cb9faee19b844ad39f28cc9a4d16, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: a642cb9faee19b844ad39f28cc9a4d16, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!1 &331108045
 GameObject:
   m_ObjectHideFlags: 0
@@ -18831,6 +18813,9 @@ MonoBehaviour:
   - Am I boring you?
   - What the funk'?
   - Just for you!
+  CameraFovBumpOnBeatValue: 0.2
+  CameraFov: 3
+  CameraFovSpeed: 15
   SongName: Doppelganger
   SongCreatorName: Sugar Moon
   SongImageName: dreamwave_logo
@@ -36957,6 +36942,8 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   _metronome: {fileID: 8300000, guid: 3f28f0848c6ad134c9021fe5c85a242e, type: 3}
   beatsPerMinute: 180
+  secondsPerBeat: 0
+  nextBeatTime: 0
   stepsPerBeat: 4
   currentStep: 1
 --- !u!4 &1475031431
@@ -45368,7 +45355,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1962586698}
-  - component: {fileID: 1962586699}
   m_Layer: 0
   m_Name: Camera Animator
   m_TagString: Untagged
@@ -45392,23 +45378,6 @@ Transform:
   - {fileID: 330585546}
   m_Father: {fileID: 236421965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &1962586699
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962586697}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: f0f50853d80f187468dbc55703505320, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: f0f50853d80f187468dbc55703505320, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!1 &1964574947
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,6 +32,39 @@ position=400
 type=PF-p
 # end
 
+// LIKE U PRO
+# start
+position=470
+type=Z
+amount=2.4
+speed=10
+bpmBump=false
+# end
+
+# start
+position=472
+type=Z
+amount=2
+speed=10
+bpmBump=false
+# end
+
+# start
+position=474
+type=Z
+amount=1.6
+speed=10
+bpmBump=false
+# end
+
+# start
+position=478
+type=Z
+amount=3
+speed=15
+bpmBump=true
+# end
+
 # start
 position=530
 type=PF-e
