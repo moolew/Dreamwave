@@ -15,6 +15,7 @@ public class DreamwaveVisualiser : MonoBehaviour
 
     void Start()
     {
+        audioSource = TempoManager.instance.audioSource;
         samples = new float[numSamples];
     }
 

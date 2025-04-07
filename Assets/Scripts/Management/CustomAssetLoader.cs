@@ -251,6 +251,10 @@ public class CustomAssetLoader : MonoBehaviour
                     {
                         _playerOneScript.AnimationSpeed = 1 / float.Parse(line.Split("=")[1]);
                     }
+                    else if (line.StartsWith("holdFrameRate="))
+                    {
+                        _playerOneScript.AnimationHoldSpeed = 1 / float.Parse(line.Split("=")[1]);
+                    }
                 }
 
                 // Define animation names
@@ -392,6 +396,10 @@ public class CustomAssetLoader : MonoBehaviour
                     else if (line.StartsWith("frameRate="))
                     {
                         _playerTwoAiScript.AnimationSpeed = 1 / float.Parse(line.Split("=")[1]);
+                    }
+                    else if (line.StartsWith("holdFrameRate="))
+                    {
+                        _playerTwoAiScript.AnimationHoldSpeed = 1 / float.Parse(line.Split("=")[1]);
                     }
                 }
 

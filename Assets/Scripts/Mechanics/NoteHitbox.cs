@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using NUnit.Framework;
 using UnityEngine;
+using static GameManager;
 
 public enum Side
 {
@@ -131,8 +132,13 @@ public class NoteHitbox : MonoBehaviour
         {
             if (Input.GetKey(keyForSide) && !GameManager.Instance._playerScript._isSinging)
             {
+                Instance._playerScript.ShouldHold = true;
                 NoteHit("Dreamy", delayInMs, 0, keyForSide.ToString());
             }
+        }
+        else if (collision.gameObject.CompareTag("Note"))
+        {
+            Instance._playerScript.ShouldHold = false;
         }
     }
 
@@ -142,6 +148,8 @@ public class NoteHitbox : MonoBehaviour
             collision.gameObject.CompareTag("Note Hold Parent") ||
             collision.gameObject.CompareTag("Note Hold"))
         {
+            Instance._playerScript.ShouldHold = false;
+
             //UnityEngine.Debug.Log(Input.GetKey(keyForSide) + " " + collision.gameObject.tag);
 
             if (!noteHit && !Input.GetKey(keyForSide))

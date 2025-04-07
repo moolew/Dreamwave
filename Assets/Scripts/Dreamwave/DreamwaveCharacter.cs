@@ -23,12 +23,14 @@ public class DreamwaveCharacter : DreamwaveAnimation
     public bool IsCustom = false; // decides whether you're using a base character or a custom character
 
     [Header("States")]
+    [SerializeField] public bool ShouldHold = false;
     [SerializeField] public bool _isSinging = false;
     [SerializeField] protected bool _canAnimate = true;
 
     [Header("Rendering")]
     public SpriteRenderer Renderer;
     public float AnimationSpeed = 0.1f;
+    public float AnimationHoldSpeed = 0.1f;
     public float SingAnimationHold = 0.3f;
 
     [Header("Character Animation Lists")]
@@ -155,7 +157,7 @@ public class DreamwaveCharacter : DreamwaveAnimation
     {
         _isSinging = true;
 
-        var animations = direction switch
+        List<Sprite> animations = direction switch
         {
             "Left" => LeftAnimations,
             "Right" => RightAnimations,
@@ -163,9 +165,8 @@ public class DreamwaveCharacter : DreamwaveAnimation
             "Down" => DownAnimations,
             _ => IdleAnimation
         };
-        if (animations.Count == 0) { _isSinging = false; yield break; }
 
-        var offsets = direction switch
+        List<Vector2> offsets = direction switch
         {
             "Left" => LeftOffsets,
             "Right" => RightOffsets,
@@ -174,11 +175,48 @@ public class DreamwaveCharacter : DreamwaveAnimation
             _ => IdleOffsets
         };
 
-        PlayAnimation(Renderer, animations, offsets, AnimationSpeed);
+        if (animations.Count == 0)
+        {
+            _isSinging = false;
+            yield break;
+        }
 
-        yield return new WaitForSecondsRealtime(SingAnimationHold);
+        KeyCode key = direction switch
+        {
+            "Left" => GameManager.Instance.left,
+            "Right" => GameManager.Instance.right,
+            "Up" => GameManager.Instance.up,
+            "Down" => GameManager.Instance.down,
+            _ => KeyCode.None
+        };
+
+        if (ShouldHold) // hold note or chunk
+        {
+            int frame = 0;
+            while (Input.GetKey(key))
+            {
+                Renderer.sprite = animations[frame];
+                if (offsets.Count > frame)
+                {
+                    Renderer.transform.localPosition = offsets[frame];
+                }
+                yield return new WaitForSecondsRealtime(AnimationHoldSpeed);
+                frame = (frame + 1) % animations.Count;
+            }
+        }
+        else // normal note
+        {
+            for (int i = 0; i < animations.Count; i++)
+            {
+                Renderer.sprite = animations[i];
+                if (offsets.Count > i)
+                {
+                    Renderer.transform.localPosition = offsets[i];
+                }
+                yield return new WaitForSecondsRealtime(AnimationSpeed);
+            }
+        }
 
         _isSinging = false;
-        yield break;
     }
 }

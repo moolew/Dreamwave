@@ -4,3 +4,4 @@ spriteScale=2
 shouldFlip=true
 antiAliasing=true
 frameRate=12
+holdFrameRate=16
