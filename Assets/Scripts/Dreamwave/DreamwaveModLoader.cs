@@ -49,11 +49,11 @@ public class DreamwaveModLoader : MonoBehaviour
         {
             if (line.StartsWith("startScrollAtStep="))
             {
-                Instance.SongStartStep = int.Parse(line.Split("=")[1]);
+                Instance.SongStartStep = int.Parse(line.Split('=')[1]);
             }
             else if (line.StartsWith("scrollSpeedMultiplier="))
             {
-                Instance.scrollManager.scrollSpeedMultiplier = float.Parse(line.Split("=")[1]);
+                Instance.scrollManager.scrollSpeedMultiplier = float.Parse(line.Split('=')[1]);
             }
         }
     }
@@ -62,6 +62,9 @@ public class DreamwaveModLoader : MonoBehaviour
     int lane;
     float holdLength = 0f;
     string noteType = "";
+
+    HashSet<string> usedNotes = new HashSet<string>();
+
     public void CreateChart(string location, Transform chartParent, int layer)
     {
         string[] lines = File.ReadAllLines(Application.streamingAssetsPath + location);
@@ -81,6 +84,16 @@ public class DreamwaveModLoader : MonoBehaviour
                 if (noteType == "N" || noteType == "H")
                 {
                     Vector3 spawnPosition = currentNote.transform.localPosition;
+                    string noteKey = $"{lane}_{spawnPosition.y:F3}";
+
+                    if (usedNotes.Contains(noteKey))
+                    {
+                        Debug.LogWarning($"Duplicate note detected at lane {lane}, position {spawnPosition.y:F3}, skipping.");
+                        Destroy(currentNote);
+                        continue;
+                    }
+
+                    usedNotes.Add(noteKey);
 
                     GameObject prefab = null;
                     GameObject chunkPrefab = null;
@@ -112,13 +125,11 @@ public class DreamwaveModLoader : MonoBehaviour
 
                     if (prefab != null)
                     {
-                        // Instantiate the main note as a child of the chart.
                         var note = Instantiate(prefab, chartParent);
                         note.transform.localPosition = spawnPosition;
                         note.layer = layer;
                         note.tag = (layer == 6) ? "Note" : "EnemyNote";
 
-                        // if hold note
                         if (noteType == "H" && chunkPrefab != null && endPrefab != null)
                         {
                             float chunkStep = 0.39f;
@@ -129,20 +140,16 @@ public class DreamwaveModLoader : MonoBehaviour
                                 var chunk = Instantiate(chunkPrefab, chartParent);
                                 chunk.transform.localPosition = new Vector3(spawnPosition.x, y, 0);
                                 chunk.layer = layer;
-                                
-                                // is ai?
+
                                 var docc = chunk.GetComponent<DisableOnCollision>();
-                                if (chartParent == EnemyChart) docc._ai = true;
-                                else docc._ai = false;
+                                docc._ai = (chartParent == EnemyChart);
                             }
                             var endNote = Instantiate(endPrefab, chartParent);
                             endNote.transform.localPosition = new Vector3(spawnPosition.x, endY, 0);
                             endNote.layer = layer;
 
-                            // is ai?
                             var doce = endNote.GetComponent<DisableOnCollision>();
-                            if (chartParent == EnemyChart) doce._ai = true;
-                            else doce._ai = false;
+                            doce._ai = (chartParent == EnemyChart);
                         }
                     }
                 }
@@ -152,26 +159,29 @@ public class DreamwaveModLoader : MonoBehaviour
             }
             else if (line.StartsWith("lane="))
             {
-                lane = int.Parse(line.Split("=")[1]);
-                float x = 0f;
-                if (lane == 0) x = 2.248f;
-                else if (lane == 1) x = 0.748f;
-                else if (lane == 2) x = -0.752f;
-                else if (lane == 3) x = -2.252f;
+                lane = int.Parse(line.Split('=')[1]);
+                float x = lane switch
+                {
+                    0 => 2.248f,
+                    1 => 0.748f,
+                    2 => -0.752f,
+                    3 => -2.252f,
+                    _ => 0f
+                };
                 currentNote.transform.localPosition = new Vector3(x, currentNote.transform.localPosition.y, 0);
             }
             else if (line.StartsWith("position="))
             {
-                float y = -float.Parse(line.Split("=")[1]);
+                float y = -float.Parse(line.Split('=')[1]);
                 currentNote.transform.localPosition = new Vector3(currentNote.transform.localPosition.x, y, 0);
             }
             else if (line.StartsWith("type="))
             {
-                noteType = line.Split("=")[1];
+                noteType = line.Split('=')[1];
             }
             else if (line.StartsWith("length=") && noteType == "H")
             {
-                holdLength = float.Parse(line.Split("=")[1]);
+                holdLength = float.Parse(line.Split('=')[1]);
             }
         }
     }
@@ -179,6 +189,7 @@ public class DreamwaveModLoader : MonoBehaviour
     GameObject currentEvent;
     ScrollEvents currentEventI;
     string eventType = "";
+
     public void CreateEventsChart(string location, Transform chartParent)
     {
         string[] lines = File.ReadAllLines(Application.streamingAssetsPath + location);
@@ -202,12 +213,12 @@ public class DreamwaveModLoader : MonoBehaviour
             }
             else if (line.StartsWith("position="))
             {
-                float y = -float.Parse(line.Split("=")[1]);
+                float y = -float.Parse(line.Split('=')[1]);
                 currentEvent.transform.localPosition = new Vector3(0, y, 0);
             }
             else if (line.StartsWith("type="))
             {
-                string ev = line.Split("=")[1];
+                string ev = line.Split('=')[1];
                 eventType = ev;
                 string[] splitEv = ev.Split('-');
 
@@ -218,16 +229,12 @@ public class DreamwaveModLoader : MonoBehaviour
                     r.transform.localPosition = currentEvent.transform.localPosition;
                     r.layer = 6;
                     currentEventI = r.GetComponent<ScrollEvents>();
-                    if (focus == "p")
-                        currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerRight;
-                    else if (focus == "e")
-                        currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerLeft;
-                    else if (focus == "c")
-                        currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusCentre;
+                    if (focus == "p") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerRight;
+                    else if (focus == "e") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerLeft;
+                    else if (focus == "c") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusCentre;
                 }
                 else if (ev == "Z")
                 {
-                    // Create a single event for zoom events and assign its type here.
                     var r = Instantiate(Event, chartParent);
                     r.transform.localPosition = currentEvent.transform.localPosition;
                     r.layer = 6;
@@ -237,18 +244,15 @@ public class DreamwaveModLoader : MonoBehaviour
             }
             else if (eventType == "Z" && line.StartsWith("amount="))
             {
-                // Update the already instantiated zoom event instead of creating a new one.
-                currentEventI.ZoomAmount = float.Parse(line.Split("=")[1]);
+                currentEventI.ZoomAmount = float.Parse(line.Split('=')[1]);
             }
-
-            if (eventType == "Z" && line.StartsWith("speed=") && currentEventI != null)
+            else if (eventType == "Z" && line.StartsWith("speed="))
             {
-                currentEventI.ZoomSpeed = float.Parse(line.Split("=")[1]);
+                currentEventI.ZoomSpeed = float.Parse(line.Split('=')[1]);
             }
-
-            if (eventType == "Z" && line.StartsWith("bpmBump=") && currentEventI != null)
+            else if (eventType == "Z" && line.StartsWith("bpmBump="))
             {
-                currentEventI.BpmBump = bool.Parse(line.Split("=")[1]);
+                currentEventI.BpmBump = bool.Parse(line.Split('=')[1]);
             }
         }
     }
