@@ -1,3 +1,2 @@
 startScrollAtStep=0
-scrollSpeedMultiplier=0.07
-snapThreshold=2
+scrollSpeedMultiplier=4.2

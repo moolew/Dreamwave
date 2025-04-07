@@ -55,10 +55,6 @@ public class DreamwaveModLoader : MonoBehaviour
             {
                 Instance.scrollManager.scrollSpeedMultiplier = float.Parse(line.Split("=")[1]);
             }
-            else if (line.StartsWith("snapThreshold="))
-            {
-                Instance.scrollManager.snapThreshold = float.Parse(line.Split("=")[1]);
-            }
         }
     }
 

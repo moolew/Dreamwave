@@ -16,10 +16,11 @@ public class TempoManager : MonoBehaviour
     public AnimationStep animStep;
 
     public AudioSource audioSource;
+    public AudioClip _metronome;
 
     public float beatsPerMinute = 120;
-    private double secondsPerBeat;
-    private double nextBeatTime;
+    public double secondsPerBeat;
+    public double nextBeatTime;
 
     public int stepsPerBeat = 4;
     public int currentStep = 1;
@@ -51,6 +52,9 @@ public class TempoManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
+        _metronomeS = new GameObject().AddComponent<AudioSource>();
+        _metronomeS.volume = 0.7f;
+
         if (audioSource == null)
         {
             Debug.LogError("No AudioSource attached to the TempoManager.");
@@ -65,6 +69,7 @@ public class TempoManager : MonoBehaviour
         nextBeatTime = AudioSettings.dspTime + secondsPerBeat;
     }
 
+    AudioSource _metronomeS;
     private void Update()
     {
         // Check if it's time for the next beat based on both audio and system time
@@ -99,6 +104,8 @@ public class TempoManager : MonoBehaviour
                     OnStep?.Invoke(currentStep);
                     break;
             }
+
+            _metronomeS.PlayOneShot(_metronome);
         }
     }
 

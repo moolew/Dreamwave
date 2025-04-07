@@ -20901,7 +20901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeedMultiplier: 0.08
-  snapThreshold: 2
+  smoothingFactor: 5
   tempoManager: {fileID: 1475031430}
   CanScroll: 1
 --- !u!1 &1076052200
@@ -36955,6 +36955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animStep: 2
   audioSource: {fileID: 0}
+  _metronome: {fileID: 8300000, guid: 3f28f0848c6ad134c9021fe5c85a242e, type: 3}
   beatsPerMinute: 180
   stepsPerBeat: 4
   currentStep: 1
