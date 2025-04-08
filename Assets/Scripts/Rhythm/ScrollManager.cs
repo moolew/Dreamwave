@@ -36,7 +36,7 @@ public class ScrollManager : MonoBehaviour
 
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
 
-            Debug.Log(transform.position.y);
+            //Debug.Log(transform.position.y);
         }
     }
 

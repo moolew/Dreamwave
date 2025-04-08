@@ -1,3 +1,16 @@
+Player Chart
+
+the code below demonstrates a single note and all of its data
+
+there are 4 lanes but you start iterating from 0 so 0-3 lanes / left-down-up-right / lane 4 is for events
+---
+position is the y position on the chart, higher the value the further down the note goes
+---
+type is which note will be instanced / N = normal - H = hold
+---
+length is checked only if the type is of H and if so you define how long the hold is
+---
+
 # start
 lane=2
 position=76.645

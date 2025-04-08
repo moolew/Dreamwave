@@ -34,7 +34,7 @@ public class DreamwaveModLoader : MonoBehaviour
     public GameObject RightHoldChunk;
     public GameObject RightHoldEnd;
 
-    private void Awake()
+    private void Start()
     {
         SetupChartSettings(ChartsLocation + "settings.txt");
         CreateChart(ChartsLocation + "pchart.txt", PlayerChart, 6);

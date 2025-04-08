@@ -43,13 +43,13 @@ public class MainMenuLogic : MonoBehaviour
             switch (_currentActiveMenu)
             {
                 case CurrentActiveMenu.Selection:
-                    _cooldownTime = 1f;
-                    menuAnim.CrossFade("Outro", 0.2f, 0);
+                    _cooldownTime = 0.7f;
+                    menuAnim.CrossFade("Outro", 0.1f, 0);
                     _currentActiveMenu = CurrentActiveMenu.Title;
                     break;
                 case CurrentActiveMenu.SongSelection:
                     _cooldownTime = 0.5f;
-                    menuAnim.CrossFade("Back To Selection", 0.2f, 0);
+                    menuAnim.CrossFade("Back To Selection", 0.1f, 0);
                     _currentActiveMenu = CurrentActiveMenu.Selection;
                     break;
             }
@@ -62,8 +62,8 @@ public class MainMenuLogic : MonoBehaviour
             switch (_currentActiveMenu)
             {
                 case CurrentActiveMenu.Title:
-                    _cooldownTime = 1f;
-                    menuAnim.CrossFade("Intro", 0.2f, 0);
+                    _cooldownTime = 0.7f;
+                    menuAnim.CrossFade("Intro", 0.1f, 0);
                     _currentActiveMenu = CurrentActiveMenu.Selection;
                     break;
             }
@@ -81,7 +81,7 @@ public class MainMenuLogic : MonoBehaviour
 
     public void ViewGitHub()
     {
-        Application.OpenURL("https://github.com/ssoq/UFNF");
+        Application.OpenURL("https://github.com/Iouander/Dreamwave");
     }
 
     public void SongSelection()
@@ -104,7 +104,7 @@ public class MainMenuLogic : MonoBehaviour
 
     public void LoadSong(string songName)
     {
-        SceneManager.LoadSceneAsync(songName);
+        SceneManager.LoadScene(songName); // cannot use async because of how charts are loaded and such
     }
 
     public void ExitGame()

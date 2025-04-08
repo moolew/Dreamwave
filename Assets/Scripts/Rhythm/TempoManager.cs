@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum AnimationStep
 {
@@ -52,8 +53,11 @@ public class TempoManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        _metronomeS = new GameObject().AddComponent<AudioSource>();
-        _metronomeS.volume = 0.7f;
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            _metronomeS = new GameObject().AddComponent<AudioSource>();
+            _metronomeS.clip = _metronome;
+        }
 
         if (audioSource == null)
         {
@@ -105,7 +109,7 @@ public class TempoManager : MonoBehaviour
                     break;
             }
 
-            _metronomeS.PlayOneShot(_metronome);
+            if (SceneManager.GetActiveScene().name == "MainScene") _metronomeS.PlayOneShot(_metronome);
         }
     }
 
