@@ -1,8 +1,0 @@
-the code below demonstrates a single note and all of its data
-
-# start
-position=0.00, 0.00, 0.00
-side=left
-damage_on_hit=0
-damage_on_miss=0
-# end

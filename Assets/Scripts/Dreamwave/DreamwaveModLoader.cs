@@ -4,10 +4,10 @@ using System.IO;
 using UnityEngine;
 using static TempoManager;
 using static GameManager;
+using static DreamwaveGlobal;
 
 public class DreamwaveModLoader : MonoBehaviour
 {
-    public string ChartsLocation;
     public Transform EventsChart;
     public Transform PlayerChart;
     public Transform EnemyChart;
@@ -36,15 +36,20 @@ public class DreamwaveModLoader : MonoBehaviour
 
     private void Start()
     {
-        SetupChartSettings(ChartsLocation + "settings.txt");
-        CreateChart(ChartsLocation + "pchart.txt", PlayerChart, 6);
-        CreateChart(ChartsLocation + "echart.txt", EnemyChart, 7);
-        CreateEventsChart(ChartsLocation + "cchart.txt", EventsChart);
+        ModSong mod = LoadedModSong;
+
+        SetupChartSettings(mod.chartSettings);
+        CreateChart(mod.playerChart, PlayerChart, 6);
+        CreateChart(mod.enemyChart, EnemyChart, 7);
+        CreateEventsChart(mod.eventChart, EventsChart);
     }
 
     public void SetupChartSettings(string location)
     {
-        string[] lines = File.ReadAllLines(Application.streamingAssetsPath + location);
+        string fullPath = Path.Combine(Application.streamingAssetsPath, location);
+        Debug.Log("Loading chart settings from: " + fullPath);
+        string[] lines = File.ReadAllLines(fullPath);
+
         foreach (string line in lines)
         {
             if (line.StartsWith("startScrollAtStep="))
@@ -54,6 +59,10 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (line.StartsWith("scrollSpeedMultiplier="))
             {
                 Instance.scrollManager.scrollSpeedMultiplier = float.Parse(line.Split('=')[1]);
+            }
+            else if (line.StartsWith("songPitch="))
+            {
+                instance.audioSource.pitch = float.Parse(line.Split('=')[1]);
             }
         }
     }
@@ -67,7 +76,9 @@ public class DreamwaveModLoader : MonoBehaviour
 
     public void CreateChart(string location, Transform chartParent, int layer)
     {
-        string[] lines = File.ReadAllLines(Application.streamingAssetsPath + location);
+        string fullPath = Path.Combine(Application.streamingAssetsPath, location);
+        Debug.Log("Loading chart from: " + fullPath);
+        string[] lines = File.ReadAllLines(fullPath);
 
         foreach (string line in lines)
         {
@@ -192,7 +203,9 @@ public class DreamwaveModLoader : MonoBehaviour
 
     public void CreateEventsChart(string location, Transform chartParent)
     {
-        string[] lines = File.ReadAllLines(Application.streamingAssetsPath + location);
+        string fullPath = Path.Combine(Application.streamingAssetsPath, location);
+        Debug.Log("Loading events chart from: " + fullPath);
+        string[] lines = File.ReadAllLines(fullPath);
 
         foreach (string line in lines)
         {

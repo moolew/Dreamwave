@@ -1,0 +1,737 @@
+Player Chart
+
+the code below demonstrates a single note and all of its data
+
+there are 4 lanes but you start iterating from 0 so 0-3 lanes / left-down-up-right / lane 4 is for events
+---
+position is the y position on the chart, higher the value the further down the note goes
+---
+type is which note will be instanced / N = normal - H = hold
+---
+length is checked only if the type is of H and if so you define how long the hold is
+---
+event creates an event rather than a note, it takes a type like PF which is for Player Focus
+
+
+-------------------------start turn
+
+- section 4
+# start
+lane=3
+position=68
+type=N
+# end
+
+# start
+lane=2
+position=70
+type=N
+# end
+
+# start
+lane=1
+position=73
+type=N
+# end
+
+# start
+lane=0
+position=75
+type=N
+# end
+
+# start
+lane=2
+position=77
+type=H
+length=2
+# end
+- section 4 end
+
+- section 5
+# start
+lane=3
+position=83
+type=N
+# end
+
+# start
+lane=2
+position=85
+type=N
+# end
+
+# start
+lane=3
+position=90
+type=N
+# end
+
+# start
+lane=0
+position=92
+type=N
+# end
+
+# start
+lane=3
+position=94
+type=N
+# end
+
+# start
+lane=1
+position=96
+type=N
+# end
+- section 5 end
+
+-section 6
+# start
+lane=2
+position=100
+type=N
+# end
+
+# start
+lane=1
+position=103
+type=N
+# end
+
+# start
+lane=3
+position=105
+type=N
+# end
+
+# start
+lane=3
+position=106
+type=N
+# end
+
+# start
+lane=0
+position=107
+type=N
+# end
+
+# start
+lane=1
+position=109
+type=N
+# end
+
+# start
+lane=0
+position=112
+type=H
+length=2
+# end
+-section 6 end
+
+-section 7
+# start
+lane=2
+position=116
+type=N
+# end
+
+# start
+lane=0
+position=118
+type=N
+# end
+
+# start
+lane=3
+position=121
+type=N
+# end
+
+# start
+lane=3
+position=124
+type=N
+# end
+
+# start
+lane=3
+position=125
+type=N
+# end
+
+# start
+lane=2
+position=126
+type=N
+# end
+
+# start
+lane=3
+position=129
+type=N
+# end
+-section 7 end
+
+-------------------------end turn
+
+
+-------------------------start turn
+
+-section 13
+# start
+lane=2
+position=202
+type=N
+# end
+
+# start
+lane=1
+position=204
+type=N
+# end
+
+# start
+lane=1
+position=208
+type=N
+# end
+
+# start
+lane=0
+position=210
+type=N
+# end
+
+# start
+lane=1
+position=212
+type=H
+length=2
+# end
+-section 13 end
+
+-section 14
+# start
+lane=2
+position=218
+type=N
+# end
+
+# start
+lane=1
+position=220
+type=N
+# end
+
+# start
+lane=3
+position=224
+type=N
+# end
+
+# start
+lane=0
+position=226
+type=N
+# end
+
+# start
+lane=3
+position=228
+type=N
+# end
+
+# start
+lane=0
+position=230
+type=N
+# end
+-section 14 end
+
+-section 15
+# start
+lane=3
+position=234
+type=N
+# end
+
+# start
+lane=2
+position=236
+type=N
+# end
+
+# start
+lane=3
+position=239
+type=N
+# end
+
+# start
+lane=3
+position=240
+type=N
+# end
+
+# start
+lane=0
+position=241
+type=N
+# end
+
+# start
+lane=1
+position=243
+type=N
+# end
+
+# start
+lane=0
+position=246
+type=H
+length=2
+# end
+-section 15 end
+
+-section 16
+# start
+lane=2
+position=250
+type=N
+# end
+
+# start
+lane=0
+position=252
+type=N
+# end
+
+# start
+lane=1
+position=254
+type=N
+# end
+
+# start
+lane=3
+position=256
+type=N
+# end
+
+# start
+lane=2
+position=258
+type=N
+# end
+
+# start
+lane=0
+position=260
+type=N
+# end
+
+# start
+lane=3
+position=262
+type=N
+# end
+
+# start
+lane=1
+position=264
+type=N
+# end
+-section 16 end
+
+-------------------------end turn
+
+
+-------------------------start turn
+
+-section 24
+# start
+lane=1
+position=403
+type=N
+# end
+
+# start
+lane=1
+position=404
+type=N
+# end
+
+# start
+lane=2
+position=405
+type=N
+# end
+
+# start
+lane=0
+position=407
+type=N
+# end
+
+# start
+lane=3
+position=409
+type=N
+# end
+
+# start
+lane=1
+position=411
+type=N
+# end
+
+# start
+lane=2
+position=413
+type=N
+# end
+
+# start
+lane=0
+position=415
+type=N
+# end
+-section 24 end
+
+-section 25
+# start
+lane=1
+position=417
+type=N
+# end
+
+# start
+lane=3
+position=419
+type=N
+# end
+
+# start
+lane=2
+position=421
+type=N
+# end
+
+# start
+lane=0
+position=422
+type=N
+# end
+
+# start
+lane=1
+position=424
+type=N
+# end
+
+# start
+lane=2
+position=426
+type=N
+# end
+
+# start
+lane=0
+position=428
+type=N
+# end
+
+# start
+lane=1
+position=430
+type=N
+# end
+
+# start
+lane=2
+position=432
+type=N
+# end
+-section 25 end
+
+-section 26
+# start
+lane=3
+position=434
+type=H
+length=3
+# end
+
+# start
+lane=1
+position=440
+type=N
+# end
+
+# start
+lane=2
+position=442
+type=N
+# end
+
+# start
+lane=0
+position=444
+type=H
+length=2
+# end
+
+# start
+lane=1
+position=448
+type=N
+# end
+
+# start
+lane=3
+position=450
+type=N
+# end
+-section 26 end
+
+-section 27
+# start
+lane=0
+position=452
+type=N
+# end
+
+# start
+lane=2
+position=454
+type=N
+# end
+
+# start
+lane=1
+position=456
+type=N
+# end
+
+# start
+lane=3
+position=458
+type=H
+length=2
+# end
+
+# start
+lane=2
+position=462
+type=N
+# end
+
+# start
+lane=0
+position=464
+type=N
+# end
+
+# start
+lane=1
+position=466
+type=N
+# end
+-section 27 end
+
+-section 28
+# start
+lane=3
+position=468
+type=N
+# end
+
+// LIKE U PRO
+# start
+lane=0
+position=470
+type=N
+# end
+
+# start
+lane=2
+position=472
+type=N
+# end
+
+# start
+lane=0
+position=474
+type=N
+# end
+
+# start
+lane=1
+position=479
+type=N
+# end
+
+# start
+lane=1
+position=480
+type=N
+# end
+
+# start
+lane=2
+position=481
+type=N
+# end
+
+# start
+lane=1
+position=483
+type=N
+# end
+-section 28 end
+
+-section 29
+# start
+lane=0
+position=485
+type=N
+# end
+
+# start
+lane=2
+position=486
+type=N
+# end
+
+# start
+lane=3
+position=489
+type=N
+# end
+
+# start
+lane=2
+position=491
+type=H
+length=2
+# end
+
+# start
+lane=0
+position=495
+type=N
+# end
+
+# start
+lane=1
+position=497
+type=N
+# end
+
+# start
+lane=0
+position=499
+type=N
+# end
+-section 29 end
+
+-section 30
+# start
+lane=3
+position=501
+type=N
+# end
+
+# start
+lane=2
+position=503
+type=N
+# end
+
+# start
+lane=3
+position=505
+type=N
+# end
+
+# start
+lane=1
+position=506
+type=N
+# end
+
+# start
+lane=1
+position=508
+type=N
+# end
+
+# start
+lane=2
+position=512
+type=N
+# end
+
+# start
+lane=0
+position=514
+type=N
+# end
+
+# start
+lane=0
+position=516
+type=N
+# end
+-section 30 end
+
+-section 31
+# start
+lane=1
+position=518
+type=N
+# end
+
+# start
+lane=2
+position=520
+type=N
+# end
+
+# start
+lane=0
+position=522
+type=N
+# end
+
+# start
+lane=3
+position=524
+type=H
+length=3
+# end
+
+# start
+lane=1
+position=528
+type=N
+# end
+
+# start
+lane=3
+position=530
+type=N
+# end
+
+# start
+lane=2
+position=532
+type=N
+# end
+
+-section 31 end
+
+-------------------------end turn

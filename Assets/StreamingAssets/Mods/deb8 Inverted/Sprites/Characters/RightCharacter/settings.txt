@@ -1,0 +1,6 @@
+spriteWidth=2160
+spriteHeight=2160
+spriteScale=1.7
+shouldFlip=true
+antiAliasing=true
+frameRate=12

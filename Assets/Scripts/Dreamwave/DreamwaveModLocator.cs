@@ -3,11 +3,15 @@ using TMPro;
 using UnityEngine;
 using TagLib;
 using UnityEngine.UI;
+using static DreamwaveGlobal;
+using UnityEngine.EventSystems;
 
 public class DreamwaveModLocator : MonoBehaviour
 {
     [SerializeField] private Transform _songsListParent;
     [SerializeField] private GameObject _song;
+
+    private int modsCount = -1;
 
     private void Awake()
     {
@@ -18,7 +22,6 @@ public class DreamwaveModLocator : MonoBehaviour
     {
         string modsDir = Path.Combine(Application.streamingAssetsPath, "Mods");
 
-        // does the user have their moddies folder!??!?!?
         if (!Directory.Exists(modsDir)) return;
 
         string[] subFolders = Directory.GetDirectories(modsDir);
@@ -37,15 +40,20 @@ public class DreamwaveModLocator : MonoBehaviour
 
     private void CreateModLoaderUi(string[] data, string modPath)
     {
+        Debug.Log($"Mod path: {modPath}");
+
         GameObject localSong = Instantiate(_song, _songsListParent);
         localSong.SetActive(true);
 
-        string song = "", difficulty = "", time = "", score = "", accuracy = "", ranking = "", bannerLocation = "banner.png";
+        string song = "", creator = "", difficulty = "", time = "", score = "", accuracy = "", ranking = "", bannerLocation = "banner.png";
 
         TextMeshProUGUI songName = localSong.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI creatorName = localSong.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI songInformation = localSong.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         Image banner = localSong.transform.GetChild(4).GetComponent<Image>();
+
+        modsCount++;
+        Debug.Log($"Mod index: {modsCount}");
 
         foreach (string line in data)
         {
@@ -64,7 +72,8 @@ public class DreamwaveModLocator : MonoBehaviour
                     songName.text = value;
                     break;
                 case "creator":
-                    creatorName.text = value;
+                    creator = value;
+                    creatorName.text = "By " + value;
                     break;
                 case "difficulty":
                     difficulty = value;
@@ -84,8 +93,9 @@ public class DreamwaveModLocator : MonoBehaviour
             }
         }
 
-        #region MP3 LOADING WE GONNA CHECK DAT SONG LENGTH BABYYYYYY
-        string mp3Path = Path.Combine(modPath, "Music", "Inst.mp3").Replace("/", "\\");
+        #region Load that sick mp3 of yours
+
+        string mp3Path = Path.Combine(modPath, "Music", "Inst.mp3");
         if (System.IO.File.Exists(mp3Path))
         {
             var tagFile = TagLib.File.Create(mp3Path);
@@ -97,14 +107,45 @@ public class DreamwaveModLocator : MonoBehaviour
             Debug.LogWarning($"MP3 not found at: {mp3Path}");
             time = "??:??";
         }
+
         #endregion
 
-        // Banner loading
+        // banner loading
         string bannerPath = Path.Combine(modPath, "Dreamwave", bannerLocation);
         banner.sprite = LoadStreamedSprite(bannerPath);
 
-        // Final UI text
         songInformation.text = $"{difficulty} ~ {time} / {ranking} ~ {score} {accuracy}%";
+
+        // create that moddie
+        string relativeModPath = Path.GetRelativePath(Application.streamingAssetsPath, modPath);
+        ModSong thisMod = new ModSong
+        {
+            name = song,
+            creator = creator,
+            backgroundSprite = Path.Combine(relativeModPath, "Sprites", "Backgrounds", "bg.png"),
+            playerSprites = Path.Combine(relativeModPath, "Sprites", "Characters", "RightCharacter"),
+            enemySprites = Path.Combine(relativeModPath, "Sprites", "Characters", "LeftCharacter"),
+
+            chartSettings = Path.Combine(relativeModPath, "Data", "settings.txt"),
+            playerChart = Path.Combine(relativeModPath, "Data", "pchart.txt"),
+            enemyChart = Path.Combine(relativeModPath, "Data", "echart.txt"),
+            eventChart = Path.Combine(relativeModPath, "Data", "cchart.txt"),
+
+            music = Path.Combine(relativeModPath, "Music", "Inst.mp3")
+        };
+
+        Debug.Log($"{thisMod.name} {thisMod.creator} {thisMod.playerSprites} {thisMod.enemySprites} {thisMod.chartSettings} {thisMod.playerChart} {thisMod.enemyChart} {thisMod.eventChart} {thisMod.music}");
+
+        ModSongs.Add(thisMod);
+
+        Button btn = localSong.AddComponent<Button>();
+        btn.transition = Selectable.Transition.None;
+
+        int modIndex = modsCount;
+        btn.onClick.AddListener(() => GameObject.Find("Canvas").GetComponent<MainMenuLogic>().SetMod(modIndex));
+        btn.onClick.AddListener(() => GameObject.Find("Canvas").GetComponent<MainMenuLogic>().LoadSong("MainScene"));
+
+        Debug.Log("Registered mod: " + thisMod.chartSettings);
     }
 
     private Sprite LoadStreamedSprite(string filePath)

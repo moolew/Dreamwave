@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static DreamwaveGlobal;
 
 public enum CurrentActiveMenu
 {
@@ -100,6 +101,11 @@ public class MainMenuLogic : MonoBehaviour
         _cooldownTime = 0.5f;
         _currentActiveMenu = CurrentActiveMenu.Selection;
         menuAnim.CrossFade("Back To Selection", 0.2f, 0);
+    }
+
+    public void SetMod(int i)
+    {
+        LoadedModSong = ModSongs[i];
     }
 
     public void LoadSong(string songName)

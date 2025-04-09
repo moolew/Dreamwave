@@ -971,7 +971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Rating: FC'
+  m_text: 'Rating: MFC'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc1992457b5dc764587847ddf57c503e, type: 2}
   m_sharedMaterial: {fileID: -2245736175916561741, guid: dc1992457b5dc764587847ddf57c503e,
@@ -10833,7 +10833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Accuracy: 100.00%'
+  m_text: 'Accuracy: 100%'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc1992457b5dc764587847ddf57c503e, type: 2}
   m_sharedMaterial: {fileID: -2245736175916561741, guid: dc1992457b5dc764587847ddf57c503e,
@@ -18960,7 +18960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2092cbda5a4d3c4438d8f71e38873e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChartsLocation: \Mods\deb8\Data\
   EventsChart: {fileID: 1580746756}
   PlayerChart: {fileID: 852260799}
   EnemyChart: {fileID: 1981523466}
@@ -37002,7 +37001,7 @@ AudioSource:
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.6
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -40774,8 +40773,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751173949}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48133,7 +48132,7 @@ Transform:
   m_GameObject: {fileID: 919132147870972593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2.9, y: 1.908, z: 1.65}
+  m_LocalPosition: {x: 2.9, y: 1.86, z: 1.65}
   m_LocalScale: {x: 0.3247545, y: 0.3247545, z: 0.3247545}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48149,7 +48148,7 @@ Transform:
   m_GameObject: {fileID: 919132148209965614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.59, y: 1.09, z: 1.65}
+  m_LocalPosition: {x: -2.59, y: 1, z: 1.65}
   m_LocalScale: {x: 0.32475448, y: 0.32475448, z: 0.32475448}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -57,13 +57,13 @@ public class DreamwaveAICharacter : DreamwaveCharacter
         {
             switch (step)
             {
-                case 2:
+                case 1:
                     if (!_isSinging)
                     {
                         PlayAnimation(Renderer, IdleAnimation, IdleOffsets, AnimationSpeed);
                     }
                     break;
-                case 4:
+                case 3:
                     if (!_isSinging)
                     {
                         PlayAnimation(Renderer, IdleAnimation, IdleOffsets, AnimationSpeed);

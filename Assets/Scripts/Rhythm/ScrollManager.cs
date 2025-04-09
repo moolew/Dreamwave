@@ -24,6 +24,11 @@ public class ScrollManager : MonoBehaviour
         PauseMenu.Pause -= OnPause;
     }
 
+    private void Start()
+    {
+        scrollSpeedMultiplier /= tempoManager.audioSource.pitch;
+    }
+
     private void Update()
     {
         if (tempoManager != null && GameManager.Instance.start && CanScroll && GameManager.Instance.canSongStart)

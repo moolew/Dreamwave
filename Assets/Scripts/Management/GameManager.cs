@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum Focus
@@ -212,6 +213,12 @@ public class GameManager : MonoBehaviour
         AnimateBackground();
         PositionNoteUi();
         ShouldDisplayHealthSlider();
+
+        if (TempoManager.instance.audioSource.clip != null &&
+        TempoManager.instance.audioSource.time >= TempoManager.instance.audioSource.clip.length - 0.1f)
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 
     private void LateUpdate() => PreviousHealthValue();
