@@ -101,8 +101,6 @@ public class CustomAssetLoader : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(LoadMP3());
-
         ModSong mod = LoadedModSong;
 
         Instance.SongName = mod.name;
@@ -115,6 +113,8 @@ public class CustomAssetLoader : MonoBehaviour
 
         Instance.SongName = mod.name;
         Instance.SongCreatorName = mod.creator;
+
+        StartCoroutine(LoadMP3());
     }
 
     private void Start()

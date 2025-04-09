@@ -66,7 +66,7 @@ public class DreamwaveAICharacter : DreamwaveCharacter
                 case 3:
                     if (!_isSinging)
                     {
-                        PlayAnimation(Renderer, IdleAnimation, IdleOffsets, AnimationSpeed);
+                        if (TempoManager.instance.beatsPerMinute <= 200) PlayAnimation(Renderer, IdleAnimation, IdleOffsets, AnimationSpeed);
                     }
                     break;
             }

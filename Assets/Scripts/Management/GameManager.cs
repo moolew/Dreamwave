@@ -158,7 +158,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         psychShader.SetFloat("_Scale", -2.8f);
-        bpmText.text = "Bpm - " + TempoManager.instance.beatsPerMinute.ToString();
 #if !UNITY_EDITOR
         DiscordController.instance.largeImage = SongImageName;
 #endif
@@ -204,6 +203,7 @@ public class GameManager : MonoBehaviour
     {
         fpsText.text = "Fps - " + (1.0f / Time.unscaledDeltaTime).ToString("F0");
         ffpsText.text = "FFps - " + PlayerPrefs.GetFloat("ffps").ToString("F0");
+        bpmText.text = "Bpm - " + TempoManager.instance.beatsPerMinute.ToString();
         health = Mathf.Clamp(health, 0, 101);
         _healthSlider.value = Mathf.Lerp(_healthSlider.value, health, 10f * Time.deltaTime);
 
@@ -482,7 +482,7 @@ public class GameManager : MonoBehaviour
                 StopCoroutine(StepCameraBop());
                 StartCoroutine(StepCameraBop());
             }
-            else if (step == 3)
+            else if (step == 3 && TempoManager.instance.beatsPerMinute <= 200)
             {
                 StopCoroutine(StepCameraBop());
                 StartCoroutine(StepCameraBop());

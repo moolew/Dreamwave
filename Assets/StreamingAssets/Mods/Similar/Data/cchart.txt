@@ -1,0 +1,8 @@
+Event Chart
+
+event creates an event rather than a note, it takes a type like PF which is for Player Focus followed by -p which would focus the player or -e for the enemy
+
+# start
+position=0
+type=PF-c
+# end
