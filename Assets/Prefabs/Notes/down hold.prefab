@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1585952712262266223}
   m_Layer: 6
   m_Name: down hold
-  m_TagString: Note Hold Parent
+  m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

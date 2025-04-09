@@ -118,17 +118,14 @@ public class NoteHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Note") ||
-            collision.gameObject.CompareTag("Note Hold Parent") ||
-            collision.gameObject.CompareTag("Note Hold"))
+        if (collision.gameObject.CompareTag("Note"))
         {
             notesWithinHitBox.Add(collision.gameObject);
             stopwatch.Restart();
             noteHit = false;  // Reset note hit flag
         }
 
-        if (collision.gameObject.CompareTag("Note Hold Parent") ||
-            collision.gameObject.CompareTag("Note Hold"))
+        if (collision.gameObject.CompareTag("Note Hold"))
         {
             if (Input.GetKey(keyForSide) && !GameManager.Instance._playerScript._isSinging)
             {
@@ -139,13 +136,11 @@ public class NoteHitbox : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Note") ||
-            collision.gameObject.CompareTag("Note Hold Parent") ||
-            collision.gameObject.CompareTag("Note Hold"))
+        if (collision.gameObject.CompareTag("Note"))
         {
             //UnityEngine.Debug.Log(Input.GetKey(keyForSide) + " " + collision.gameObject.tag);
 
-            if (!noteHit && !Input.GetKey(keyForSide))
+            if (!noteHit)
             {
                 NoteHit("Missed", delayInMs, 2, keyForSide.ToString() + "miss");
             }
@@ -153,21 +148,14 @@ public class NoteHitbox : MonoBehaviour
             notesWithinHitBox.Remove(collision.gameObject);
             HandleNoteVisibility(collision.gameObject);
         }
+        else if (collision.gameObject.CompareTag("Note Hold"))
+        {
+            if (!Input.GetKey(keyForSide)) NoteHit("Missed", delayInMs, 2, keyForSide.ToString() + "miss");
+        }
     }
 
     private void HandleNoteVisibility(GameObject noteObject)
     {
-        if (noteObject.CompareTag("Note"))
-        {
-            noteObject.SetActive(false);
-        }
-        else if (noteObject.CompareTag("Note Hold Parent"))
-        {
-            noteObject.GetComponent<SpriteRenderer>().enabled = false;
-        }
-        else if (noteObject.CompareTag("Note Hold"))
-        {
-            noteObject.SetActive(false);
-        }
+        noteObject.SetActive(false);
     }
 }
