@@ -8,6 +8,7 @@ public class DisableAfterAnimation : MonoBehaviour
 
     void Update()
     {
-        if (!anim.isPlaying) gameObject.SetActive(false);
+        //if (!anim.isPlaying) gameObject.SetActive(false);
+        if (!anim.isPlaying) Destroy(gameObject);
     }
 }

@@ -261,6 +261,7 @@ public class GameManager : MonoBehaviour
                 missed.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
                 missed.transform.SetParent(canvas.transform);
                 missed.transform.localScale = new Vector3(0.1338828f, 0.1338828f, 0.1338828f);
+                missed.SetActive(true);
                 break;
             case "Shit":
                 hitScore = scores[4];
@@ -272,6 +273,7 @@ public class GameManager : MonoBehaviour
                 shit.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
                 shit.transform.SetParent(canvas.transform);
                 shit.transform.localScale = new Vector3(0.1338828f, 0.1338828f, 0.1338828f);
+                shit.SetActive(true);
                 break;
             case "Bad":
                 hitScore = scores[3];
@@ -283,6 +285,7 @@ public class GameManager : MonoBehaviour
                 bad.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
                 bad.transform.SetParent(canvas.transform);
                 bad.transform.localScale = new Vector3(0.1338828f, 0.1338828f, 0.1338828f);
+                bad.SetActive(true);
                 break;
             case "Cool":
                 hitScore = scores[2];
@@ -295,6 +298,7 @@ public class GameManager : MonoBehaviour
                 cool.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
                 cool.transform.SetParent(canvas.transform);
                 cool.transform.localScale = new Vector3(0.1338828f, 0.1338828f, 0.1338828f);
+                cool.SetActive(true);
                 break;
             case "Sick":
                 hitScore = scores[1];
@@ -307,6 +311,7 @@ public class GameManager : MonoBehaviour
                 sick.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
                 sick.transform.SetParent(canvas.transform);
                 sick.transform.localScale = new Vector3(0.1338828f, 0.1338828f, 0.1338828f);
+                sick.SetActive(true);
                 break;
             case "Dreamy":
                 hitScore = scores[0];
@@ -319,6 +324,7 @@ public class GameManager : MonoBehaviour
                 dreamy.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
                 dreamy.transform.SetParent(canvas.transform);
                 dreamy.transform.localScale = new Vector3(0.1338828f, 0.1338828f, 0.1338828f);
+                dreamy.SetActive(true);
                 break;
         }
 
