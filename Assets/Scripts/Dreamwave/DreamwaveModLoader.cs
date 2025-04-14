@@ -36,7 +36,7 @@ public class DreamwaveModLoader : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetFloat("scrollSpeed", 1.4f);
+        PlayerPrefs.SetFloat("scrollSpeed", 1.2f);
 
         ModSong mod = LoadedModSong;
 
