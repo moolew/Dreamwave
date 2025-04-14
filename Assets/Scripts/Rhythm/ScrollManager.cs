@@ -5,7 +5,9 @@ using UnityEngine;
 public class ScrollManager : MonoBehaviour
 {
     public float scrollSpeedMultiplier = 1.0f;
+    private float _scrollSpeed;
     public float smoothingFactor = 5.0f; // Adjust this value for more or less smoothing.
+    
     public TempoManager tempoManager;
     public bool CanScroll = true;
 
@@ -27,6 +29,7 @@ public class ScrollManager : MonoBehaviour
     private void Start()
     {
         scrollSpeedMultiplier /= tempoManager.audioSource.pitch;
+        _scrollSpeed = PlayerPrefs.GetFloat("scrollSpeed");
     }
 
     private void Update()
@@ -35,7 +38,7 @@ public class ScrollManager : MonoBehaviour
         {
             float audioTime = tempoManager.audioSource.time;
 
-            float targetY = (audioTime * tempoManager.beatsPerMinute / 60f) * scrollSpeedMultiplier;
+            float targetY = (audioTime * tempoManager.beatsPerMinute / 60f) * scrollSpeedMultiplier * _scrollSpeed;
 
             float newY = Mathf.Lerp(transform.position.y, targetY, Time.deltaTime * smoothingFactor);
 

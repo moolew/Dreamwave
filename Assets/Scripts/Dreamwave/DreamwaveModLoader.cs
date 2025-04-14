@@ -36,6 +36,8 @@ public class DreamwaveModLoader : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetFloat("scrollSpeed", 2);
+
         ModSong mod = LoadedModSong;
 
         SetupChartSettings(mod.chartSettings);
@@ -185,6 +187,8 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (line.StartsWith("position="))
             {
                 float y = -float.Parse(line.Split('=')[1]);
+                y *= PlayerPrefs.GetFloat("scrollSpeed");
+
                 currentNote.transform.localPosition = new Vector3(currentNote.transform.localPosition.x, y, 0);
             }
             else if (line.StartsWith("type="))
@@ -229,6 +233,8 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (line.StartsWith("position="))
             {
                 float y = -float.Parse(line.Split('=')[1]);
+                y *= PlayerPrefs.GetFloat("scrollSpeed");
+
                 currentEvent.transform.localPosition = new Vector3(0, y, 0);
             }
             else if (line.StartsWith("type="))
