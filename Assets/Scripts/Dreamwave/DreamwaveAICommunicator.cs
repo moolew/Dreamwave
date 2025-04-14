@@ -104,19 +104,14 @@ public class DreamwaveAICommunicator : MonoBehaviour
             _spriteRenderer.sprite = _noteSpritesHeld[i];
 
             yield return new WaitForSecondsRealtime(noteAnimSpeed);
-
-            if (i == _noteSpritesHeld.Count - 1) break;
         }
 
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.05f);
 
-        for (int i = 0; i < _noteSpritesReleased.Count; i++)
+        for (int i = _noteSpritesReleased.Count - 1; i >= 0; i--)
         {
             _spriteRenderer.sprite = _noteSpritesReleased[i];
-
             yield return new WaitForSecondsRealtime(noteAnimSpeed);
-
-            if (i == _noteSpritesReleased.Count - 1) break;
         }
 
         yield break;

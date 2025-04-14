@@ -11812,7 +11812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _whichSide: 3
-  noteAnimSpeed: 0.05
+  noteAnimSpeed: 0.01666667
   _character: {fileID: 1751173952}
   _noteController: {fileID: 1524813484}
   _noteParticle: {fileID: 1409486087}
@@ -12051,7 +12051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _whichSide: 1
-  noteAnimSpeed: 0.05
+  noteAnimSpeed: 0.01666667
   _character: {fileID: 1751173952}
   _noteController: {fileID: 1524813484}
   _noteParticle: {fileID: 2010483836}
@@ -12979,7 +12979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _whichSide: 2
-  noteAnimSpeed: 0.05
+  noteAnimSpeed: 0.01666667
   _character: {fileID: 1751173952}
   _noteController: {fileID: 1524813484}
   _noteParticle: {fileID: 1637422327}
@@ -18965,6 +18965,8 @@ MonoBehaviour:
   _noteParticleAnimation: []
   PlayerCustomNoteFileLocation: 
   AiCustomNoteFileLocation: 
+  PlayerCustomStreamedNoteFileLocation: 
+  AiPlayerCustomStreamedNoteFileLocation: 
   PlayerCustomChunkNoteFileLocation: 
   AiCustomNoteChunkNoteFileLocation: 
   PlayerCustomHoldNoteEndFileLocation: 
@@ -20747,7 +20749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _whichSide: 0
-  noteAnimSpeed: 0.05
+  noteAnimSpeed: 0.01666667
   _character: {fileID: 1751173952}
   _noteController: {fileID: 1524813484}
   _noteParticle: {fileID: 1322890721}
