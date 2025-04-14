@@ -297,7 +297,7 @@ public class CustomAssetLoader : MonoBehaviour
 
                 foreach (DreamwaveAICommunicator aic in _aiNoteControllers)
                 {
-                    aic._spriteRenderer.sprite = aic._noteSpritesReleased[aic._noteSpritesReleased.Count - 1];
+                    aic._spriteRenderer.sprite = aic._noteSpritesReleased[0];
                 }
 
                 for (int i = 0; i < _playerNoteSpriteRenderers.Count; i++)
