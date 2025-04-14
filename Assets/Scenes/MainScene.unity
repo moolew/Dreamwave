@@ -7432,11 +7432,11 @@ MonoBehaviour:
   delayInMs: 0
   ratingThresholds:
   - 0
+  - 0.3
   - 0.6
-  - 1.1
+  - 0.9
+  - 1.25
   - 1.6
-  - 2.1
-  - 2.6
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 3778646841318257463}
@@ -7474,7 +7474,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.44}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7484,7 +7484,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 5}
+  m_Size: {x: 1, y: 7}
   m_EdgeRadius: 0
 --- !u!50 &229887438
 Rigidbody2D:
@@ -12341,11 +12341,11 @@ MonoBehaviour:
   delayInMs: 0
   ratingThresholds:
   - 0
+  - 0.3
   - 0.6
-  - 1.1
+  - 0.9
+  - 1.25
   - 1.6
-  - 2.1
-  - 2.6
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 1821306573}
@@ -12383,7 +12383,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.44}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12393,7 +12393,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 5.15}
+  m_Size: {x: 1, y: 7.13}
   m_EdgeRadius: 0
 --- !u!50 &468820209
 Rigidbody2D:
@@ -17506,11 +17506,11 @@ MonoBehaviour:
   delayInMs: 0
   ratingThresholds:
   - 0
+  - 0.3
   - 0.6
-  - 1.1
+  - 0.9
+  - 1.25
   - 1.6
-  - 2.1
-  - 2.6
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 1444186459}
@@ -17548,7 +17548,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.44}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -17558,7 +17558,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 5.15}
+  m_Size: {x: 1, y: 7.13}
   m_EdgeRadius: 0
 --- !u!50 &868015680
 Rigidbody2D:
@@ -20145,7 +20145,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.44}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -20155,7 +20155,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 5}
+  m_Size: {x: 1, y: 7}
   m_EdgeRadius: 0
 --- !u!50 &1024807879
 Rigidbody2D:
@@ -20202,11 +20202,11 @@ MonoBehaviour:
   delayInMs: 0
   ratingThresholds:
   - 0
+  - 0.3
   - 0.6
-  - 1.1
+  - 0.9
+  - 1.25
   - 1.6
-  - 2.1
-  - 2.6
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 300072332}
