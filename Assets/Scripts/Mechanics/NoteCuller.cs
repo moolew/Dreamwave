@@ -9,6 +9,7 @@ public class NoteCuller : MonoBehaviour
         if (collision.gameObject.CompareTag("Note")) { collision.gameObject.GetComponent<SpriteRenderer>().enabled = true; }
         if (collision.gameObject.CompareTag("Note Hold Parent")) { collision.gameObject.GetComponent<SpriteRenderer>().enabled = true; }
         if (collision.gameObject.CompareTag("Note Hold")) { collision.gameObject.GetComponent<SpriteRenderer>().enabled = true; }
+        if (collision.gameObject.CompareTag("Note Hold End")) { collision.gameObject.GetComponent<SpriteRenderer>().enabled = true; }
         if (collision.gameObject.CompareTag("EnemyNote")) { collision.gameObject.GetComponent<SpriteRenderer>().enabled = true; }
     }
 
@@ -17,6 +18,7 @@ public class NoteCuller : MonoBehaviour
         if (collision.gameObject.CompareTag("Note")) { collision.gameObject.SetActive(false); }
         if (collision.gameObject.CompareTag("Note Hold Parent")) { collision.gameObject.GetComponent<SpriteRenderer>().enabled = false; }
         if (collision.gameObject.CompareTag("Note Hold")) { collision.gameObject.GetComponent<SpriteRenderer>().enabled = false; }
+        if (collision.gameObject.CompareTag("Note Hold End")) { collision.gameObject.GetComponent<SpriteRenderer>().enabled = false; }
         if (collision.gameObject.CompareTag("EnemyNote")) { collision.gameObject.SetActive(false); }
     }
 }

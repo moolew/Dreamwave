@@ -4,7 +4,6 @@ using UnityEngine;
 using TagLib;
 using UnityEngine.UI;
 using static DreamwaveGlobal;
-using UnityEngine.EventSystems;
 
 public class DreamwaveModLocator : MonoBehaviour
 {
@@ -125,6 +124,16 @@ public class DreamwaveModLocator : MonoBehaviour
             backgroundSprite = Path.Combine(relativeModPath, "Sprites", "Backgrounds", "bg.png"),
             playerSprites = Path.Combine(relativeModPath, "Sprites", "Characters", "RightCharacter"),
             enemySprites = Path.Combine(relativeModPath, "Sprites", "Characters", "LeftCharacter"),
+
+            playerNoteControllerSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Controller Notes", "Right Player"),
+            playerStreamedNoteSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Streamed Notes", "Right Player"),
+            playerStreamedNoteHoldChunkSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Hold Notes", "Right Player", "Chunks"),
+            playerStreamedNoteHoldEndSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Hold Notes", "Right Player", "End"),
+
+            enemyNoteControllerSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Controller Notes", "Left Player"),
+            enemyStreamedNoteSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Streamed Notes", "Left Player"),
+            enemyStreamedNoteHoldChunkSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Hold Notes", "Left Player", "Chunks"),
+            enemyStreamedNoteHoldEndSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Hold Notes", "Left Player", "End"),
 
             chartSettings = Path.Combine(relativeModPath, "Data", "settings.txt"),
             playerChart = Path.Combine(relativeModPath, "Data", "pchart.txt"),

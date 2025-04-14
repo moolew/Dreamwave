@@ -18963,13 +18963,35 @@ MonoBehaviour:
   _particleSpriteHeight: 1080
   _dreamwaveParticles: []
   _noteParticleAnimation: []
-  CustomNoteFileLocation: Sprites\UI\Game\Notes\Dreamwave Base Note Skin
-  CustomNoteHeldFileLocation: Sprites\UI\Game\Notes\Dreamwave Base Note Skin
+  PlayerCustomNoteFileLocation: 
+  AiCustomNoteFileLocation: 
+  PlayerCustomChunkNoteFileLocation: 
+  AiCustomNoteChunkNoteFileLocation: 
+  PlayerCustomHoldNoteEndFileLocation: 
+  AiCustomNoteHoldNoteEndFileLocation: 
+  PlayerCustomNoteHeldFileLocation: 
+  AiCustomNoteHeldFileLocation: 
   _NoteWidth: 470
   _NoteHeight: 540
   _noteColors: []
-  _noteSpriteRenderers: []
+  _playerNoteSpriteRenderers:
+  - {fileID: 537813417}
+  - {fileID: 208501021}
+  - {fileID: 1893410007}
+  - {fileID: 1909558390}
+  _enemyNoteSpriteRenderers: []
+  _playerStreamedNoteSpriteRenderers: []
+  _enemyStreamedNoteSpriteRenderers: []
+  _playerHoldNoteChunkRenderers: []
+  _enemyHoldNoteChunkRenderers: []
+  _playerHoldNoteEndRenderers: []
+  _enemyHoldNoteEndRenderers: []
   _noteController: {fileID: 1524813484}
+  _aiNoteControllers:
+  - {fileID: 1061415001}
+  - {fileID: 515493938}
+  - {fileID: 437957568}
+  - {fileID: 423526025}
   CustomPlayerOneFileName: \Mods\deb8\Sprites\Characters\Natsuki
   _playerOneSpriteWidth: 1080
   _playerOneSpriteHeight: 1080

@@ -6,12 +6,15 @@ using UnityEngine.Networking;
 using static GameManager;
 using static TempoManager;
 using static DreamwaveGlobal;
+using System.Linq;
 
 /// <summary>
 /// Custom asset loader.
 /// 
 /// This script searches through the game's mod index for
 /// a text document that contains the state of custom assets.
+/// 
+/// this code hurts my brain
 /// </summary>
 public enum TypeAsset
 {
@@ -41,13 +44,35 @@ public class CustomAssetLoader : MonoBehaviour
     #region Note Section
     [Space(10)]
     [Header("Note Renderers")]
-    public string CustomNoteFileLocation;
-    public string CustomNoteHeldFileLocation;
+    public string PlayerCustomNoteFileLocation;
+    public string AiCustomNoteFileLocation;
+
+    public string PlayerCustomStreamedNoteFileLocation;
+    public string AiPlayerCustomStreamedNoteFileLocation;
+    public string PlayerCustomChunkNoteFileLocation;
+    public string AiCustomNoteChunkNoteFileLocation;
+    public string PlayerCustomHoldNoteEndFileLocation;
+    public string AiCustomNoteHoldNoteEndFileLocation;
+
+    public string PlayerCustomNoteHeldFileLocation;
+    public string AiCustomNoteHeldFileLocation;
     public int _NoteWidth = 470;
     public int _NoteHeight = 540;
     public Color[] _noteColors;
-    [SerializeField] private List<SpriteRenderer> _noteSpriteRenderers;
+    [SerializeField] private List<SpriteRenderer> _playerNoteSpriteRenderers;
+    [SerializeField] private List<SpriteRenderer> _enemyNoteSpriteRenderers;
+
+    [SerializeField] private List<SpriteRenderer> _playerStreamedNoteSpriteRenderers;
+    [SerializeField] private List<SpriteRenderer> _enemyStreamedNoteSpriteRenderers;
+
+    [SerializeField] private List<SpriteRenderer> _playerHoldNoteChunkRenderers;
+    [SerializeField] private List<SpriteRenderer> _enemyHoldNoteChunkRenderers;
+
+    [SerializeField] private List<SpriteRenderer> _playerHoldNoteEndRenderers;
+    [SerializeField] private List<SpriteRenderer> _enemyHoldNoteEndRenderers;
+
     [SerializeField] private NoteController _noteController;
+    [SerializeField] private List<DreamwaveAICommunicator> _aiNoteControllers;
     #endregion
 
     #region Player One Section
@@ -101,14 +126,38 @@ public class CustomAssetLoader : MonoBehaviour
 
     private void Awake()
     {
+        // loaded mod instance
         ModSong mod = LoadedModSong;
 
+        // credits
         Instance.SongName = mod.name;
         Instance.SongCreatorName = mod.creator;
 
+        // characters
         CustomPlayerOneFileName = mod.playerSprites;
         CustomAiPlayerTwoFileName = mod.enemySprites;
         _backgroundFileName = mod.backgroundSprite;
+         
+        // controller notes
+        PlayerCustomNoteFileLocation = mod.playerNoteControllerSprites;
+        AiCustomNoteFileLocation = mod.enemyNoteControllerSprites;
+
+        // streamed notes
+        PlayerCustomStreamedNoteFileLocation = mod.playerStreamedNoteSprites;
+        AiPlayerCustomStreamedNoteFileLocation = mod.enemyStreamedNoteSprites;
+
+        // hold chunks
+        PlayerCustomChunkNoteFileLocation = mod.playerStreamedNoteHoldChunkSprites;
+        AiCustomNoteChunkNoteFileLocation = mod.enemyStreamedNoteHoldChunkSprites;
+
+        // hold chunks
+        PlayerCustomHoldNoteEndFileLocation = mod.playerStreamedNoteHoldEndSprites;
+        AiCustomNoteHoldNoteEndFileLocation = mod.enemyStreamedNoteHoldEndSprites;
+
+        // dunno what the fuck this was for
+        AiCustomNoteHeldFileLocation = mod.enemyNoteControllerSprites;
+
+        // music
         mp3FileName = mod.music;
 
         Instance.SongName = mod.name;
@@ -124,34 +173,60 @@ public class CustomAssetLoader : MonoBehaviour
 
     private void GatherNeededObjects()
     {
-        #region Notes
-        GameObject[] _notes = GameObject.FindGameObjectsWithTag("Note");
-        GameObject[] _enemyNotes = GameObject.FindGameObjectsWithTag("EnemyNote");
-        GameObject[] _holdNoteParents = GameObject.FindGameObjectsWithTag("Note Hold Parent");
-        GameObject[] _noteControllers = GameObject.FindGameObjectsWithTag("Note Object");
-        for (int i = 0; i < _notes.Length; i++)
+        StartCoroutine(GetNotes());
+    }
+
+    // wait for the notes to be created
+    private IEnumerator GetNotes()
+    {
+        yield return new WaitForSecondsRealtime(0.01f);
+
+        GameObject[] _streamedNotes = GameObject.FindGameObjectsWithTag("Note");
+        GameObject[] _streamedEnemyNotes = GameObject.FindGameObjectsWithTag("EnemyNote");
+        GameObject[] holdNoteChunks = GameObject.FindGameObjectsWithTag("Note Hold");
+        GameObject[] holdNoteEnds = GameObject.FindGameObjectsWithTag("Note Hold End");
+
+        for (int i = 0; i < _streamedNotes.Length; i++)
         {
-            SpriteRenderer spriteRenderer = _notes[i].GetComponent<SpriteRenderer>();
-            _noteSpriteRenderers.Add(spriteRenderer);
+            SpriteRenderer spriteRenderer = _streamedNotes[i].GetComponent<SpriteRenderer>();
+            _playerStreamedNoteSpriteRenderers.Add(spriteRenderer);
         }
-        for (int i = 0; i < _enemyNotes.Length; i++)
+        for (int i = 0; i < _streamedEnemyNotes.Length; i++)
         {
-            SpriteRenderer enemySpriteRenderer = _enemyNotes[i].GetComponent<SpriteRenderer>();
-            _noteSpriteRenderers.Add(enemySpriteRenderer);
+            SpriteRenderer enemySpriteRenderer = _streamedEnemyNotes[i].GetComponent<SpriteRenderer>();
+            _enemyStreamedNoteSpriteRenderers.Add(enemySpriteRenderer);
         }
-        for (int i = 0; i < _holdNoteParents.Length; i++)
+
+        for (int i = 0; i < holdNoteChunks.Length; i++)
         {
-            SpriteRenderer holdNoteParenSpriteRenderer = _holdNoteParents[i].GetComponent<SpriteRenderer>();
-            _noteSpriteRenderers.Add(holdNoteParenSpriteRenderer);
+            if (holdNoteChunks[i].transform.parent.name == "Enemy Notes") continue;
+            SpriteRenderer holdNoteParenSpriteRenderer = holdNoteChunks[i].GetComponent<SpriteRenderer>();
+            _playerHoldNoteChunkRenderers.Add(holdNoteParenSpriteRenderer);
         }
-        for (int i = 0; i < _noteControllers.Length; i++)
+        for (int i = 0; i < holdNoteChunks.Length; i++)
         {
-            SpriteRenderer controllerSpriteRenderer = _noteControllers[i].GetComponent<SpriteRenderer>();
-            _noteSpriteRenderers.Add(controllerSpriteRenderer);
+            if (holdNoteChunks[i].transform.parent.name == "Notes") continue;
+            SpriteRenderer holdNoteParenSpriteRenderer = holdNoteChunks[i].GetComponent<SpriteRenderer>();
+            _enemyHoldNoteChunkRenderers.Add(holdNoteParenSpriteRenderer);
         }
-        #endregion
+
+        for (int i = 0; i < holdNoteEnds.Length; i++)
+        {
+            if (holdNoteEnds[i].transform.parent.name == "Enemy Notes") continue;
+            SpriteRenderer holdNoteParenSpriteRenderer = holdNoteEnds[i].GetComponent<SpriteRenderer>();
+            _playerHoldNoteEndRenderers.Add(holdNoteParenSpriteRenderer);
+        }
+        for (int i = 0; i < holdNoteEnds.Length; i++)
+        {
+            if (holdNoteEnds[i].transform.parent.name == "Notes") continue;
+            SpriteRenderer holdNoteParenSpriteRenderer = holdNoteEnds[i].GetComponent<SpriteRenderer>();
+            _enemyHoldNoteEndRenderers.Add(holdNoteParenSpriteRenderer);
+        }
+
+        yield return new WaitForSecondsRealtime(0.01f);
 
         LoadCustomAssets();
+        Debug.Log($"Notes Created: {_streamedNotes.Length} {_streamedEnemyNotes.Length} {holdNoteChunks.Length} {holdNoteEnds.Length}");
     }
 
     private void LoadCustomAssets()
@@ -181,18 +256,81 @@ public class CustomAssetLoader : MonoBehaviour
         switch (_typeNoteAsset)
         {
             case TypeAsset.Custom:
+                // clear default animations for player
                 _noteController.noteSpritesDown.Clear();
                 _noteController.noteSpritesRelease.Clear();
 
-                string filePathHeld = NormalisePath(Path.Combine(Application.streamingAssetsPath, CustomNoteHeldFileLocation, "Held Sprites"));
-                string filePathReleased = NormalisePath(Path.Combine(Application.streamingAssetsPath, CustomNoteFileLocation, "Release Sprites"));
+                // clear default animations for ai
+                foreach (DreamwaveAICommunicator aic in _aiNoteControllers)
+                {
+                    aic._noteSpritesHeld.Clear();
+                    aic._noteSpritesReleased.Clear();
+                }
+
+                string filePathHeld = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomNoteFileLocation, "Held Sprites"));
+                string filePathHeldE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteFileLocation, "Held Sprites"));
+                
+                string filePathReleased = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomNoteFileLocation, "Release Sprites"));
+                string filePathReleasedE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteFileLocation, "Held Sprites"));
+
+                string filePathNoteStreamed = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomStreamedNoteFileLocation));
+                string filePathNoteStreamedE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiPlayerCustomStreamedNoteFileLocation));
+
+                string filePathNoteHold = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomChunkNoteFileLocation));
+                string filePathNoteHoldE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteChunkNoteFileLocation));
+
+                string filePathNoteEnd = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomHoldNoteEndFileLocation));
+                string filePathNoteEndE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteHoldNoteEndFileLocation));
+
+                #region controller notes
 
                 _noteController.noteSpritesDown.AddRange(LoadSpritesFromPath(filePathHeld, _NoteWidth, _NoteHeight, 0.5f, 0.5f, true));
                 _noteController.noteSpritesRelease.AddRange(LoadSpritesFromPath(filePathReleased, _NoteWidth, _NoteHeight, 0.5f, 0.5f, true));
 
-                for (int i = 0; i < _noteSpriteRenderers.Count; i++)
+                foreach (DreamwaveAICommunicator aic in _aiNoteControllers)
                 {
-                    _noteSpriteRenderers[i].sprite = _noteController.noteSpritesRelease[_noteController.noteSpritesRelease.Count - 1];
+                    aic._noteSpritesHeld.AddRange(LoadSpritesFromPath(filePathHeldE, _NoteWidth, _NoteHeight, 0.5f, 0.5f, true));
+                    aic._noteSpritesReleased.AddRange(LoadSpritesFromPath(filePathReleasedE, _NoteWidth, _NoteHeight, 0.5f, 0.5f, true));
+                }
+
+                #endregion
+
+                foreach (DreamwaveAICommunicator aic in _aiNoteControllers)
+                {
+                    aic._spriteRenderer.sprite = aic._noteSpritesReleased[aic._noteSpritesReleased.Count - 1];
+                }
+
+                for (int i = 0; i < _playerNoteSpriteRenderers.Count; i++)
+                {
+                    _playerNoteSpriteRenderers[i].sprite = _noteController.noteSpritesRelease[_noteController.noteSpritesRelease.Count - 1];
+                }
+
+                foreach (SpriteRenderer sr in _playerStreamedNoteSpriteRenderers)
+                {
+                    sr.sprite = LoadStreamedSprite(filePathNoteStreamed, "0.png", 1080, 1080);
+                }
+
+                foreach (SpriteRenderer sr in _enemyStreamedNoteSpriteRenderers)
+                {
+                    sr.sprite = LoadStreamedSprite(filePathNoteStreamedE, "0.png", 1080, 1080);
+                }
+
+                for (int i = 0; i < _playerHoldNoteChunkRenderers.Count; i++)
+                {
+                    _playerHoldNoteChunkRenderers[i].sprite = LoadStreamedSprite(filePathNoteHold, "0.png", 1080, 1080);
+                }
+                for (int i = 0; i < _enemyHoldNoteChunkRenderers.Count; i++)
+                {
+                    _enemyHoldNoteChunkRenderers[i].sprite = LoadStreamedSprite(filePathNoteHoldE, "0.png", 1080, 1080);
+                }
+
+                for (int i = 0; i < _playerHoldNoteEndRenderers.Count; i++)
+                {
+                    _playerHoldNoteEndRenderers[i].sprite = LoadStreamedSprite(filePathNoteEnd, "0.png", 1080, 1080);
+                }
+                for (int i = 0; i < _enemyHoldNoteEndRenderers.Count; i++)
+                {
+                    _enemyHoldNoteEndRenderers[i].sprite = LoadStreamedSprite(filePathNoteEndE, "0.png", 1080, 1080);
                 }
                 break;
         }

@@ -26,6 +26,16 @@ public class ModSong
     public string playerSprites;
     public string enemySprites;
 
+    public string playerNoteControllerSprites;
+    public string playerStreamedNoteSprites;
+    public string playerStreamedNoteHoldChunkSprites;
+    public string playerStreamedNoteHoldEndSprites;
+
+    public string enemyNoteControllerSprites;
+    public string enemyStreamedNoteSprites;
+    public string enemyStreamedNoteHoldChunkSprites;
+    public string enemyStreamedNoteHoldEndSprites;
+
     public string chartSettings;
     public string playerChart;
     public string enemyChart;

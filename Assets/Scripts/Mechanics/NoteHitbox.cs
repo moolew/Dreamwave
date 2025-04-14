@@ -125,7 +125,7 @@ public class NoteHitbox : MonoBehaviour
             noteHit = false;  // Reset note hit flag
         }
 
-        if (collision.gameObject.CompareTag("Note Hold"))
+        if (collision.gameObject.CompareTag("Note Hold") || collision.gameObject.CompareTag("Note Hold End"))
         {
             if (Input.GetKey(keyForSide) && !GameManager.Instance._playerScript._isSinging)
             {
@@ -138,8 +138,6 @@ public class NoteHitbox : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Note"))
         {
-            //UnityEngine.Debug.Log(Input.GetKey(keyForSide) + " " + collision.gameObject.tag);
-
             if (!noteHit)
             {
                 NoteHit("Missed", delayInMs, 2, keyForSide.ToString() + "miss");
@@ -148,7 +146,7 @@ public class NoteHitbox : MonoBehaviour
             notesWithinHitBox.Remove(collision.gameObject);
             HandleNoteVisibility(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Note Hold"))
+        else if (collision.gameObject.CompareTag("Note Hold")) // not gonna check for the ends because i love you
         {
             if (!Input.GetKey(keyForSide)) NoteHit("Missed", delayInMs, 2, keyForSide.ToString() + "miss");
         }

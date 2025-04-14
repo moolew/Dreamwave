@@ -95,7 +95,8 @@ public class DreamwaveModLoader : MonoBehaviour
                 if (noteType == "N" || noteType == "H")
                 {
                     Vector3 spawnPosition = currentNote.transform.localPosition;
-                    string noteKey = $"{lane}_{spawnPosition.y:F3}";
+                    string noteKey = $"{chartParent.GetInstanceID()}_{lane}_{spawnPosition.y:F3}"
+;
 
                     if (usedNotes.Contains(noteKey))
                     {
@@ -197,6 +198,7 @@ public class DreamwaveModLoader : MonoBehaviour
         }
     }
 
+    // EventsChart remains unchanged
     GameObject currentEvent;
     ScrollEvents currentEventI;
     string eventType = "";

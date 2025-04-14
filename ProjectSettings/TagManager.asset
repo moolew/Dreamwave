@@ -23,6 +23,7 @@ TagManager:
   - DreamwaveCharacter
   - Note Hold Parent
   - Note Hold Culler
+  - Note Hold End
   layers:
   - Default
   - TransparentFX

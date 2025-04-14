@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 504202061280566324}
   m_Layer: 6
   m_Name: left hold end
-  m_TagString: Note Hold
+  m_TagString: Note Hold End
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6278363766215393681
 Transform:
