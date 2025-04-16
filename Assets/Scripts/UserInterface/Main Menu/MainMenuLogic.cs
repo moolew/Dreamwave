@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static DreamwaveGlobal;
+using static DreamwaveSceneLoad;
 
 public enum CurrentActiveMenu
 {
@@ -110,7 +111,7 @@ public class MainMenuLogic : MonoBehaviour
 
     public void LoadSong(string songName)
     {
-        SceneManager.LoadScene(songName); // cannot use async because of how charts are loaded and such
+        StartCoroutine(IDreamwaveSceneLoad.LoadRoutine(songName));
     }
 
     public void ExitGame()

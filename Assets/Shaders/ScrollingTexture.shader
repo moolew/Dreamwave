@@ -1,4 +1,4 @@
-Shader "Custom/ScrollingTexture"
+﻿Shader "Custom/ScrollingTextureAlphaUI_CanvasGroup"
 {
     Properties
     {
@@ -8,11 +8,16 @@ Shader "Custom/ScrollingTexture"
         _ScaleX ("Scale X", Float) = 1.0
         _ScaleY ("Scale Y", Float) = 1.0
         _RealTime ("Real Time", Float) = 0.0
+        _Alpha ("Alpha", Range(0,1)) = 1.0
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
         LOD 100
+
+        Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off
+        Cull Off
 
         Pass
         {
@@ -25,12 +30,14 @@ Shader "Custom/ScrollingTexture"
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                float4 color : COLOR; // 👈 This gives us CanvasGroup/RawImage color
             };
 
             struct v2f
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                float4 color : COLOR; // Pass it to frag
             };
 
             sampler2D _MainTex;
@@ -40,26 +47,26 @@ Shader "Custom/ScrollingTexture"
             float _ScaleX;
             float _ScaleY;
             float _RealTime;
+            float _Alpha;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
-                // Apply separate scaling
                 float2 scaledUV = v.uv * float2(_ScaleX, _ScaleY);
-
-                // Scroll texture coordinates over time
                 float2 scrolledUV = scaledUV + float2(_RealTime * _ScrollSpeedX, _RealTime * _ScrollSpeedY);
                 o.uv = TRANSFORM_TEX(scrolledUV, _MainTex);
 
+                o.color = v.color; // Pass vertex color (includes CanvasGroup alpha!)
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                // Sample the texture at the scrolled and scaled UV coordinates
                 fixed4 col = tex2D(_MainTex, i.uv);
+                col.a *= _Alpha;
+                col *= i.color; // Multiply by vertex color (which includes CanvasGroup alpha)
                 return col;
             }
             ENDCG

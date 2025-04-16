@@ -12,6 +12,7 @@ public enum AnimationStep
 
 public class TempoManager : MonoBehaviour
 {
+    [SerializeField] private bool _dontInstance;
     public static TempoManager instance;
 
     public AnimationStep animStep;
@@ -32,7 +33,7 @@ public class TempoManager : MonoBehaviour
     public delegate void StepEventHandler(int currentStep);
     public static event StepEventHandler OnStep;
 
-    private void Awake() { instance = this; audioSource = GetComponent<AudioSource>(); }
+    private void Awake() { if (!_dontInstance) { instance = this; } audioSource = GetComponent<AudioSource>(); }
 
     private void OnEnable()
     {

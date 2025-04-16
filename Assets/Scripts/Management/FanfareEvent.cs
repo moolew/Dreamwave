@@ -50,10 +50,10 @@ public class FanfareEvent : MonoBehaviour
 
     public void OnLoaded(Scene scene, LoadSceneMode mode)
     {
-        StartCoroutine("WaitForCooldown");
+        //StartCoroutine("WaitForCooldown");
     }
 
-    private IEnumerator WaitForCooldown()
+    public IEnumerator WaitForCooldown()
     {
         yield return new WaitForSecondsRealtime(0.5f);
 

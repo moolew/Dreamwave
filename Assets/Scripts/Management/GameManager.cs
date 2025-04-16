@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Scripts")]
     [SerializeField] public ScrollManager scrollManager;
-    [SerializeField] private FanfareEvent _fanfareEventScript;
+    [SerializeField] public FanfareEvent _fanfareEventScript;
     [SerializeField] public DreamwaveVideoStreamer DreamwaveVideoStreamer;
     [SerializeField] public DreamwaveCharacter _playerScript;
     [SerializeField] public DreamwaveAICharacter _aiScript;
