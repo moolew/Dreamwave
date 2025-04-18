@@ -177,6 +177,8 @@ public class CustomAssetLoader : MonoBehaviour
     }
 
     // wait for the notes to be created
+    public bool _loadingNotes = true;
+    public bool _loadingAssets = true;
     private IEnumerator GetNotes()
     {
         yield return new WaitForSecondsRealtime(0.01f);
@@ -225,6 +227,7 @@ public class CustomAssetLoader : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.01f);
 
+        _loadingNotes = false;
         LoadCustomAssets();
         Debug.Log($"Notes Created: {_streamedNotes.Length} {_streamedEnemyNotes.Length} {holdNoteChunks.Length} {holdNoteEnds.Length}");
     }
@@ -529,6 +532,7 @@ public class CustomAssetLoader : MonoBehaviour
                 break;
         }
 
+        _loadingAssets = false;
         _background.sprite = LoadStreamedSprite(Application.streamingAssetsPath, _backgroundFileName, (1920 / 2), (1080 / 2));
     }
 

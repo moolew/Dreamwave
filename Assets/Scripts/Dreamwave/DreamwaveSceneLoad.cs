@@ -13,8 +13,15 @@ public class DreamwaveSceneLoad : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (IDreamwaveSceneLoad != null && IDreamwaveSceneLoad != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         IDreamwaveSceneLoad = this;
+        DontDestroyOnLoad(gameObject);
+
         _loadAnim = GetComponent<Animator>();
         _loadSource.ignoreListenerPause = true;
     }
@@ -25,28 +32,16 @@ public class DreamwaveSceneLoad : MonoBehaviour
         else _loadAnim.CrossFade("Unload", 0.05f);
     }
 
-    private bool _sceneLoaded;
+    public bool Loaded = false;
     private string _loadingFrom;
     public IEnumerator LoadRoutine(string scene)
     {
-        _sceneLoaded = false;
+        Loaded = false;
         Load(true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(2f);
 
-        SceneManager.LoadScene(scene);
-
-        yield return null;
-
-        yield return new WaitUntil(() => _sceneLoaded);
-
-        yield return new WaitForSeconds(1f);
-
-        Load(false);
-        yield return new WaitForSeconds(0.35f);
-
-        GameManager.Instance._fanfareEventScript.StartCoroutine("WaitForCooldown");
-
-        yield return new WaitForSeconds(1f);
+        Debug.Log("Loading scene: " + scene);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }

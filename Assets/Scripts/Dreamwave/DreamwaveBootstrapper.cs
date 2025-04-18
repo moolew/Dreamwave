@@ -112,7 +112,7 @@ public class DreamwaveBootstrapper : MonoBehaviour
                 SceneManager.LoadSceneAsync("CustomMenu");
                 break;
             case TypeOfEngineBuild.Dreamwave:
-                SceneManager.LoadSceneAsync("Menu");
+                StartCoroutine(DreamwaveSceneLoad.IDreamwaveSceneLoad.LoadRoutine("Menu"));
                 break;
         }
     }

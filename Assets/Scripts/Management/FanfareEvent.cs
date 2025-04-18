@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static DreamwaveSceneLoad;
 
 public class FanfareEvent : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class FanfareEvent : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _songCreatorText;
     [SerializeField] private TextMeshProUGUI _songDurationText;
     public bool InFanfare = false;
+    public bool CanStart = false;
 
     private void Awake()
     {
@@ -50,14 +52,16 @@ public class FanfareEvent : MonoBehaviour
 
     public void OnLoaded(Scene scene, LoadSceneMode mode)
     {
-        //StartCoroutine("WaitForCooldown");
+        StartCoroutine("WaitForCooldown");
     }
 
     public IEnumerator WaitForCooldown()
     {
+        CanStart = true;
         yield return new WaitForSecondsRealtime(0.5f);
 
         _fanfareAnim.SetTrigger("loaded");
+        IDreamwaveSceneLoad.Load(false);
 
         while (_gameUI.alpha != 1)
         {

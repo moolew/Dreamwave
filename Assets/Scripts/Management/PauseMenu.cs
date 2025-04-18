@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Animator _pauseAnim;
 
     [Header("Audio")]
-    [SerializeField] private AudioSource _pauseAudioSource;
+    [SerializeField] public AudioSource _pauseAudioSource;
 
     public delegate void PauseCallback(bool pausedState);
     public static event PauseCallback Pause;
@@ -140,7 +140,8 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         AudioListener.pause = false;
-        SceneManager.LoadSceneAsync("Menu");
+        _pauseAudioSource.mute = true;
+        StartCoroutine(DreamwaveSceneLoad.IDreamwaveSceneLoad.LoadRoutine("Menu"));
     }
 
     #endregion

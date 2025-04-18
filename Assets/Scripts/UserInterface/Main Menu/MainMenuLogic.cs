@@ -23,11 +23,32 @@ public class MainMenuLogic : MonoBehaviour
     [SerializeField] private bool _canChangeMenu = true;
 
     [Header("State Settings")]
-    [SerializeField] private float _cooldownTime; 
+    [SerializeField] private float _cooldownTime;
 
     private void Awake()
     {
         StartCoroutine("DisableMenuSelection");
+    }
+
+    private void Start()
+    {
+        TempoManager.instance.audioSource.mute = true;
+        StartCoroutine(Load());
+    }
+
+    private IEnumerator Load()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+
+        StartCoroutine(EnableMusic());
+        IDreamwaveSceneLoad.Load(false);
+    }
+
+    private IEnumerator EnableMusic()
+    {
+        yield return new WaitForSecondsRealtime(0.15f);
+
+        TempoManager.instance.audioSource.mute = false;
     }
 
     private void Update()
@@ -111,6 +132,8 @@ public class MainMenuLogic : MonoBehaviour
 
     public void LoadSong(string songName)
     {
+        TempoManager.instance.audioSource.Stop();
+
         StartCoroutine(IDreamwaveSceneLoad.LoadRoutine(songName));
     }
 
