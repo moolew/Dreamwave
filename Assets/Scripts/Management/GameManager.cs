@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour
         if (TempoManager.instance.audioSource.clip != null &&
         TempoManager.instance.audioSource.time >= TempoManager.instance.audioSource.clip.length - 0.1f)
         {
-            SceneManager.LoadScene("Menu");
+            StartCoroutine(DreamwaveSceneLoad.IDreamwaveSceneLoad.LoadRoutine("Menu"));
         }
     }
 
