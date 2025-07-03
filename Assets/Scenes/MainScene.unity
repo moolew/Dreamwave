@@ -7523,6 +7523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236421965}
   - component: {fileID: 236421966}
+  - component: {fileID: 236421967}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -7563,6 +7564,22 @@ MonoBehaviour:
   leftPlayer: {fileID: 1751173950}
   rightPlayer: {fileID: 1895532697}
   _zAxis: -2.98
+--- !u!114 &236421967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236421964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2fbb8350f99fe458d562d83b595e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _repeatedZoom: {fileID: 2100000, guid: e8ac9e4d07f3f80468ab595bf03b4809, type: 2}
+  _zoomedSmoothTime: 5
+  _zoomedValue: 1
+  _zoom: 1
 --- !u!1 &236982075
 GameObject:
   m_ObjectHideFlags: 0
@@ -9327,7 +9344,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 51
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 5b134ae7b18681540b01e45eb71beaa2, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -14286,6 +14303,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599534231}
   m_CullTransparentMesh: 1
+--- !u!1 &599876948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599876949}
+  - component: {fileID: 599876951}
+  - component: {fileID: 599876950}
+  m_Layer: 5
+  m_Name: Main Display
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &599876949
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599876948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 912031128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &599876950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599876948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: e8ac9e4d07f3f80468ab595bf03b4809, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: 5b134ae7b18681540b01e45eb71beaa2, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &599876951
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599876948}
+  m_CullTransparentMesh: 1
 --- !u!1 &626173533
 GameObject:
   m_ObjectHideFlags: 0
@@ -18212,6 +18301,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 599876949}
   - {fileID: 1666488934}
   - {fileID: 1230061130}
   - {fileID: 824209890}
@@ -18546,6 +18636,7 @@ MonoBehaviour:
   _songCreatorText: {fileID: 2146712614}
   _songDurationText: {fileID: 135671594}
   InFanfare: 0
+  CanStart: 0
 --- !u!1 &926881137
 GameObject:
   m_ObjectHideFlags: 0
@@ -19025,6 +19116,8 @@ MonoBehaviour:
   _background: {fileID: 926881139}
   _backgroundFileName: C:\Users\Vaylen\Documents\GitHub\Dreamwave\Assets\StreamingAssets\Mods\deb8\Sprites\Backgrounds\blanco.png
   mp3FileName: C:\Users\Vaylen\Documents\GitHub\Dreamwave\Assets\StreamingAssets\Mods\deb8\Music\Inst.mp3
+  _loadingNotes: 1
+  _loadingAssets: 1
 --- !u!114 &942200543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37032,6 +37125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a14a2849540584a821495ed2bb6430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dontInstance: 0
   animStep: 2
   audioSource: {fileID: 0}
   _metronome: {fileID: 8300000, guid: 3f28f0848c6ad134c9021fe5c85a242e, type: 3}
@@ -44853,7 +44947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -23.000244, y: -25}
+  m_AnchoredPosition: {x: -23, y: -25}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1927842897

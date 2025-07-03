@@ -36,7 +36,7 @@ public class DreamwaveModLoader : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetFloat("scrollSpeed", 1.2f);
+        PlayerPrefs.SetFloat("scrollSpeed", 1.5f);
 
         ModSong mod = LoadedModSong;
 
@@ -262,6 +262,14 @@ public class DreamwaveModLoader : MonoBehaviour
                     currentEventI = r.GetComponent<ScrollEvents>();
                     currentEventI.typeOfScrollEvent = TypeOfScrollEvent.CameraFov;
                 }
+                else if (ev == "R")
+                {
+                    var r = Instantiate(Event, chartParent);
+                    r.transform.position = currentEvent.transform.position;
+                    r.layer = 6;
+                    currentEventI = r.GetComponent<ScrollEvents>();
+                    currentEventI.typeOfScrollEvent = TypeOfScrollEvent.RepeatedTile;
+                }
             }
             else if (eventType == "Z" && line.StartsWith("amount="))
             {
@@ -274,6 +282,14 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (eventType == "Z" && line.StartsWith("bpmBump="))
             {
                 currentEventI.BpmBump = bool.Parse(line.Split('=')[1]);
+            }
+            else if (eventType == "R" && line.StartsWith("repeatRate="))
+            {
+                currentEventI.RepeatRate = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType == "R" && line.StartsWith("repeatTime="))
+            {
+                currentEventI.RepeatTime = float.Parse(line.Split('=')[1]);
             }
         }
     }

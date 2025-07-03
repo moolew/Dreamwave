@@ -14,7 +14,8 @@ public enum TypeOfScrollEvent
     SectionCompleteAnimation,
     Cutscene,
     Animation,
-    InstantRestart
+    InstantRestart,
+    RepeatedTile,
 }
 
 public class ScrollEvents : MonoBehaviour
@@ -24,6 +25,9 @@ public class ScrollEvents : MonoBehaviour
     public float ZoomAmount;
     public float ZoomSpeed;
     public bool BpmBump;
+
+    public float RepeatRate;
+    public float RepeatTime;
 
     [SerializeField] private float scrollSpeedModificationAmount;
 
@@ -44,6 +48,12 @@ public class ScrollEvents : MonoBehaviour
         Instance.BpmBump = BpmBump;
     }
 
+    private void CameraZoomRepeat(float repeatValue, float smoothing)
+    {
+        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zoomedValue = repeatValue;
+        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zoomedSmoothTime = smoothing;
+    }
+
     private void ChangeSongSpeed() => Instance.scrollManager.scrollSpeedMultiplier = scrollSpeedModificationAmount;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,6 +70,7 @@ public class ScrollEvents : MonoBehaviour
                 case TypeOfScrollEvent.Animation: eventAnim.Play(); break;
                 case TypeOfScrollEvent.InstantRestart: SceneManager.LoadScene(SceneManager.GetActiveScene().name); break;
                 case TypeOfScrollEvent.Cutscene: Instance.DreamwaveVideoStreamer.InitLoad(_cutscenePath); break;
+                case TypeOfScrollEvent.RepeatedTile: CameraZoomRepeat(RepeatRate, RepeatTime); break;
             }
         }
     }

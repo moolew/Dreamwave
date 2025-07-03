@@ -91,6 +91,7 @@ public class DreamwaveBootstrapper : MonoBehaviour
             PlayerPrefs.SetInt("incomingNoteWarning", 1);
             PlayerPrefs.SetInt("autoPause", 0);
             PlayerPrefs.SetInt("noteSplashes", 1);
+            PlayerPrefs.SetFloat("scrollSpeed", 3);
 
             PlayerPrefs.SetString("firstTime", "False");
         }
