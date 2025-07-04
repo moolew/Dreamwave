@@ -10,6 +10,13 @@ repeatTime=100
 # end
 
 # start
+position=0
+type=RC
+rotateAmount=360
+rotateTime=100
+# end
+
+# start
 position=0.1
 type=R
 repeatRate=30
@@ -26,6 +33,408 @@ repeatTime=5
 # start
 position=120
 type=RC
-rotateAmount=360
-rotateTime=5
+rotateAmount=0
+rotateTime=3
+# end
+
+# start
+position=292
+type=R
+repeatRate=5
+repeatTime=1
+# end
+
+# start
+position=305
+type=R
+repeatRate=1
+repeatTime=1
+# end
+
+# start
+position=334
+type=MOV
+axis=X
+moveAmount=3
+moveTime=10
+# end
+
+# start
+position=334
+type=RC
+rotateAmount=-10
+rotateTime=10
+# end
+
+# start
+position=336
+type=RC
+rotateAmount=0
+rotateTime=3
+# end
+
+# start
+position=350
+type=MOV
+axis=X
+moveAmount=-2
+moveTime=10
+# end
+
+# start
+position=350
+type=RC
+rotateAmount=10
+rotateTime=10
+# end
+
+# start
+position=352
+type=RC
+rotateAmount=0
+rotateTime=3
+# end
+
+# start
+position=382
+type=R
+repeatRate=10
+repeatTime=0.2
+# end
+
+# start
+position=382
+type=RC
+rotateAmount=-10
+rotateTime=0.5
+# end
+
+# start
+position=382
+type=MOV
+axis=X
+moveAmount=100
+moveTime=0.03
+# end
+
+
+# start
+position=448
+type=R
+repeatRate=20
+repeatTime=0.2
+# end
+
+# start
+position=448
+type=RC
+rotateAmount=10
+rotateTime=0.5
+# end
+
+# start
+position=448
+type=MOV
+axis=X
+moveAmount=-100
+moveTime=0.03
+# end
+
+
+# start
+position=510
+type=R
+repeatRate=1
+repeatTime=3
+# end
+
+# start
+position=510
+type=RC
+rotateAmount=10
+rotateTime=10
+# end
+
+# start
+position=510
+type=MOV
+axis=X
+moveAmount=0
+moveTime=10
+# end
+
+# start
+position=512
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=546
+type=MOV
+axis=Y
+moveAmount=12
+moveTime=15
+# end
+
+# start
+position=546
+type=R
+repeatRate=2
+repeatTime=15
+# end
+
+# start
+position=547
+type=R
+repeatRate=1
+repeatTime=15
+# end
+
+
+# start
+position=612
+type=MOV
+axis=Y
+moveAmount=0
+moveTime=15
+# end
+
+# start
+position=612
+type=R
+repeatRate=2
+repeatTime=15
+# end
+
+# start
+position=613
+type=R
+repeatRate=1
+repeatTime=15
+# end
+
+
+# start
+position=654
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=655
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+# start
+position=656
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=657
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+# start
+position=664
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=665
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+# start
+position=668
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=669
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=672
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=673
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=686
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=687
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=688
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=689
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=696
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=697
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=700
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=701
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=704
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=705
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=718
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=719
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+# start
+position=720
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=721
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=728
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=729
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+
+# start
+position=732
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=733
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+
+# start
+position=736
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=737
+type=RC
+rotateAmount=0
+rotateTime=2
 # end

@@ -207,6 +207,8 @@ public class DreamwaveModLoader : MonoBehaviour
     ScrollEvents currentEventI;
     string eventType = "";
 
+    string axis;
+
     public void CreateEventsChart(string location, Transform chartParent)
     {
         string fullPath = Path.Combine(Application.streamingAssetsPath, location);
@@ -270,6 +272,27 @@ public class DreamwaveModLoader : MonoBehaviour
                     currentEventI = r.GetComponent<ScrollEvents>();
                     currentEventI.typeOfScrollEvent = TypeOfScrollEvent.RepeatedTile;
                 }
+                else if (ev == "RC")
+                {
+                    var rc = Instantiate(Event, chartParent);
+                    rc.transform.position = currentEvent.transform.position;
+                    rc.layer = 6;
+                    currentEventI = rc.GetComponent<ScrollEvents>();
+                    currentEventI.typeOfScrollEvent = TypeOfScrollEvent.RotateTile;
+                }
+                else if (ev == "MOV")
+                {
+                    var rc = Instantiate(Event, chartParent);
+                    rc.transform.position = currentEvent.transform.position;
+                    rc.layer = 6;
+                    currentEventI = rc.GetComponent<ScrollEvents>();
+                    currentEventI.typeOfScrollEvent = TypeOfScrollEvent.MoveTiles;
+
+                    if (axis == "x")
+                        currentEventI.Axis = "X";
+                    else if (axis == "y")
+                        currentEventI.Axis = "Y";
+                }
             }
             else if (eventType == "Z" && line.StartsWith("amount="))
             {
@@ -293,11 +316,30 @@ public class DreamwaveModLoader : MonoBehaviour
             }
             else if (eventType == "RC" && line.StartsWith("rotateAmount="))
             {
-                currentEventI.RepeatRate = float.Parse(line.Split('=')[1]);
+                currentEventI.RotateAmount = float.Parse(line.Split('=')[1]);
             }
             else if (eventType == "RC" && line.StartsWith("rotateTime="))
             {
-                currentEventI.RepeatTime = float.Parse(line.Split('=')[1]);
+                currentEventI.RotateTime = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType == "MOV" && line.StartsWith("axis="))
+            {
+                currentEventI.Axis = line.Split('=')[1];
+
+                if (currentEventI.Axis.ToUpper() == "X")
+                    axis = "x";
+                else if (currentEventI.Axis.ToUpper() == "X")
+                    axis = "y";
+                else
+                    axis = "y";
+            }
+            else if (eventType == "MOV" && line.StartsWith("moveAmount="))
+            {
+                currentEventI.MoveAmount = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType == "MOV" && line.StartsWith("moveTime="))
+            {
+                currentEventI.MoveTime = float.Parse(line.Split('=')[1]);
             }
         }
     }

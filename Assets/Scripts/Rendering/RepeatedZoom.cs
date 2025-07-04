@@ -31,8 +31,8 @@ public class RepeatedZoom : MonoBehaviour
         _y = Mathf.Lerp(_y, _smoothedY, Time.deltaTime * _yTime);
         _z = Mathf.Lerp(_z, _smoothedZ, Time.deltaTime * _zTime);
 
-        _repeatedZoom.SetFloat("_ScrollX", _x);
-        _repeatedZoom.SetFloat("_ScrollY", _y);
+        _repeatedZoom.SetFloat("_OffsetX", _x);
+        _repeatedZoom.SetFloat("_OffsetY", _y);
         _repeatedZoom.SetFloat("_Rotation", _z);
     }
 }

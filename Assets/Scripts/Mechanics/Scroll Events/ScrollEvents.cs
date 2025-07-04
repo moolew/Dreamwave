@@ -17,6 +17,7 @@ public enum TypeOfScrollEvent
     InstantRestart,
     RepeatedTile,
     RotateTile,
+    MoveTiles,
 }
 
 public class ScrollEvents : MonoBehaviour
@@ -33,6 +34,9 @@ public class ScrollEvents : MonoBehaviour
     public string Axis;
     public float RotateAmount;
     public float RotateTime;
+
+    public float MoveAmount;
+    public float MoveTime;
 
     [SerializeField] private float scrollSpeedModificationAmount;
 
@@ -59,10 +63,24 @@ public class ScrollEvents : MonoBehaviour
         Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zoomedSmoothTime = smoothing;
     }
 
-    private void CameraRotateTile(string axis, float rotateAmount, float smoothing)
+    private void CameraRotateTile(float rotateAmount, float smoothing)
     {
-        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._ = repeatValue;
-        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zoomedSmoothTime = smoothing;
+        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._smoothedZ = rotateAmount;
+        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zTime = smoothing;
+    }
+
+    private void CameraMoveTile(string axis, float moveAmount, float smoothing)
+    {
+        if (axis == "X")
+        {
+            Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._smoothedX = moveAmount;
+            Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._xTime = smoothing;
+        }
+        else if (axis == "Y")
+        {
+            Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._smoothedY = moveAmount;
+            Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._yTime = smoothing;
+        }
     }
 
     private void ChangeSongSpeed() => Instance.scrollManager.scrollSpeedMultiplier = scrollSpeedModificationAmount;
@@ -82,7 +100,8 @@ public class ScrollEvents : MonoBehaviour
                 case TypeOfScrollEvent.InstantRestart: SceneManager.LoadScene(SceneManager.GetActiveScene().name); break;
                 case TypeOfScrollEvent.Cutscene: Instance.DreamwaveVideoStreamer.InitLoad(_cutscenePath); break;
                 case TypeOfScrollEvent.RepeatedTile: CameraZoomRepeat(RepeatRate, RepeatTime); break;
-                case TypeOfScrollEvent.RotateTile: CameraRotateTile(Axis, RotateAmount, RotateTime); break;
+                case TypeOfScrollEvent.RotateTile: CameraRotateTile(RotateAmount, RotateTime); break;
+                case TypeOfScrollEvent.MoveTiles: CameraMoveTile(Axis, MoveAmount, MoveTime); break;
             }
         }
     }

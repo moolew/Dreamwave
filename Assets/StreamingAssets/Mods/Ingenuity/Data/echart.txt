@@ -4,3 +4,11 @@ position=120
 type=H
 length=10
 # end
+
+# start
+lane=2
+position=292
+type=H
+length=10
+# end
+
