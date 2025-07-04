@@ -482,6 +482,16 @@ public class CustomAssetLoader : MonoBehaviour
                         float scale = float.Parse(line.Split("=")[1]);
                         _playerTwoAiScript.transform.localScale = new Vector3(scale, scale, scale);
                     }
+                    else if (line.StartsWith("spritePositionX="))
+                    {
+                        _playerTwoAiScript.gameObject.transform.parent.transform.position = new Vector3(float.Parse(line.Split("=")[1]),
+                            _playerTwoAiScript.gameObject.transform.parent.transform.position.y, 0);
+                    }
+                    else if (line.StartsWith("spritePositionY="))
+                    {
+                        _playerTwoAiScript.gameObject.transform.parent.transform.position = new Vector3(_playerTwoAiScript.gameObject.transform.parent.transform.position.x,
+                            float.Parse(line.Split("=")[1]), 0);
+                    }
                     else if (line.StartsWith("shouldFlip="))
                         _shouldFlipPlayerTwoCustom = bool.Parse(line.Split("=")[1]);
                     else if (line.StartsWith("antiAliasing="))

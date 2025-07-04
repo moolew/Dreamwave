@@ -7580,6 +7580,15 @@ MonoBehaviour:
   _zoomedSmoothTime: 5
   _zoomedValue: 1
   _zoom: 1
+  _x: 0
+  _smoothedX: 0
+  _xTime: 0
+  _y: 0
+  _smoothedY: 0
+  _yTime: 0
+  _z: 0
+  _smoothedZ: 0
+  _zTime: 0
 --- !u!1 &236982075
 GameObject:
   m_ObjectHideFlags: 0
@@ -15170,13 +15179,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660245056}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9962616, z: -0, w: 0.086388126}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -0.99, z: 2.01}
   m_LocalScale: {x: 0.51247627, y: 0.51247627, z: 0.51247627}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 551670842}
-  m_LocalEulerAnglesHint: {x: 0, y: -189.912, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &660245058
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15253,7 +15262,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7eca12499db309e4995ae1769e86bd65, type: 3}
   - {fileID: 21300000, guid: 391a927ee561f654ea2bedf9e5f03b9d, type: 3}
   numSamples: 512
-  sensitivity: 500
+  sensitivity: 2.5
   audioSource: {fileID: 1475031433}
   loudness: 0
 --- !u!1 &673290003
@@ -17133,7 +17142,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -36306,7 +36315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1410931877
 Transform:
   m_ObjectHideFlags: 0
@@ -36316,8 +36325,8 @@ Transform:
   m_GameObject: {fileID: 1410931876}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.908, z: 3.7000003}
-  m_LocalScale: {x: 0.32475448, y: 0.32475448, z: 0.32475448}
+  m_LocalPosition: {x: 0, y: 0.83, z: 3.6823}
+  m_LocalScale: {x: 0.29604942, y: 0.29604942, z: 0.29604942}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1576712471}
