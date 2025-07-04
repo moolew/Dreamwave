@@ -291,6 +291,14 @@ public class DreamwaveModLoader : MonoBehaviour
             {
                 currentEventI.RepeatTime = float.Parse(line.Split('=')[1]);
             }
+            else if (eventType == "RC" && line.StartsWith("rotateAmount="))
+            {
+                currentEventI.RepeatRate = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType == "RC" && line.StartsWith("rotateTime="))
+            {
+                currentEventI.RepeatTime = float.Parse(line.Split('=')[1]);
+            }
         }
     }
 }

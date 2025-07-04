@@ -2,9 +2,9 @@
 
 // song name is used to save/load scores so ensure you dont use the same name multiple times
 
-songName=deb8 Remix
-creator=BoxOfGolds
-difficulty=Hard
+songName=Ingenuity
+creator=Ferx
+difficulty=Normal
 
 bannerLocation=banner.png
 

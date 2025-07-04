@@ -16,6 +16,7 @@ public enum TypeOfScrollEvent
     Animation,
     InstantRestart,
     RepeatedTile,
+    RotateTile,
 }
 
 public class ScrollEvents : MonoBehaviour
@@ -28,6 +29,10 @@ public class ScrollEvents : MonoBehaviour
 
     public float RepeatRate;
     public float RepeatTime;
+
+    public string Axis;
+    public float RotateAmount;
+    public float RotateTime;
 
     [SerializeField] private float scrollSpeedModificationAmount;
 
@@ -54,6 +59,12 @@ public class ScrollEvents : MonoBehaviour
         Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zoomedSmoothTime = smoothing;
     }
 
+    private void CameraRotateTile(string axis, float rotateAmount, float smoothing)
+    {
+        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._ = repeatValue;
+        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zoomedSmoothTime = smoothing;
+    }
+
     private void ChangeSongSpeed() => Instance.scrollManager.scrollSpeedMultiplier = scrollSpeedModificationAmount;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -71,6 +82,7 @@ public class ScrollEvents : MonoBehaviour
                 case TypeOfScrollEvent.InstantRestart: SceneManager.LoadScene(SceneManager.GetActiveScene().name); break;
                 case TypeOfScrollEvent.Cutscene: Instance.DreamwaveVideoStreamer.InitLoad(_cutscenePath); break;
                 case TypeOfScrollEvent.RepeatedTile: CameraZoomRepeat(RepeatRate, RepeatTime); break;
+                case TypeOfScrollEvent.RotateTile: CameraRotateTile(Axis, RotateAmount, RotateTime); break;
             }
         }
     }
