@@ -5,10 +5,23 @@ type=H
 length=10
 # end
 
+
 # start
-lane=2
+lane=0
+position=291
+type=N
+# end
+
+# start
+lane=1
 position=292
+type=N
+# end
+
+# start
+lane=0
+position=293
 type=H
-length=10
+length=25
 # end
 
