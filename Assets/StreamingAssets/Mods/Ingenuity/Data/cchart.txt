@@ -99,14 +99,14 @@ rotateTime=3
 position=382
 type=R
 repeatRate=10
-repeatTime=0.2
+repeatTime=0.4
 # end
 
 # start
 position=382
 type=RC
 rotateAmount=-10
-rotateTime=0.5
+rotateTime=3
 # end
 
 # start
@@ -122,14 +122,14 @@ moveTime=0.03
 position=448
 type=R
 repeatRate=20
-repeatTime=0.2
+repeatTime=0.5
 # end
 
 # start
 position=448
 type=RC
 rotateAmount=10
-rotateTime=0.5
+rotateTime=4
 # end
 
 # start
@@ -137,7 +137,7 @@ position=448
 type=MOV
 axis=X
 moveAmount=-100
-moveTime=0.03
+moveTime=0.04
 # end
 
 
@@ -151,7 +151,7 @@ repeatTime=3
 # start
 position=510
 type=RC
-rotateAmount=10
+rotateAmount=-10
 rotateTime=10
 # end
 
@@ -437,4 +437,100 @@ position=737
 type=RC
 rotateAmount=0
 rotateTime=2
+# end
+
+
+# start
+position=752
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=753
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=754
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=755
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+
+# start
+position=762
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=763
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+- mabe fix
+# start
+position=767
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=768
+type=RC
+rotateAmount=0
+rotateTime=2
+# end
+
+# start
+position=768.5
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+# start
+position=769
+type=RC
+rotateAmount=-5
+rotateTime=30
+# end
+
+# start
+position=770
+type=RC
+rotateAmount=5
+rotateTime=30
+# end
+
+
+# start
+position=771
+type=RC
+rotateAmount=-1440
+rotateTime=0.3
+# end
+
+# start
+position=772
+type=R
+repeatRate=8
+repeatTime=0.2
 # end
