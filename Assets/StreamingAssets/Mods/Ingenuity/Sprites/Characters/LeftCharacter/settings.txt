@@ -5,4 +5,4 @@ spritePositionX=-3
 spritePositionY=1.8
 shouldFlip=true
 antiAliasing=true
-frameRate=12
+frameRate=6

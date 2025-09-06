@@ -196,6 +196,7 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (line.StartsWith("length=") && noteType == "H")
             {
                 holdLength = float.Parse(line.Split('=')[1]);
+                holdLength *= PlayerPrefs.GetFloat("scrollSpeed"); // Scale hold length
             }
         }
     }
