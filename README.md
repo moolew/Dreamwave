@@ -4,7 +4,7 @@
  
 Dreamwave - A heavily moddable Friday Night Funkin' engine developed within Unity
 
-![image]([https://github.com/Iouander/Dreamwave/.png](https://github.com/Iouander/Dreamwave/blob/main/gameplay.gif))
+![gif]([https://github.com/Iouander/Dreamwave/.png](https://github.com/Iouander/Dreamwave/blob/main/gameplay.gif))
 
 in-depth 'how-to' soon, but install MoonSharp, Discord SDK & TagLib for project to work as intended
 
