@@ -168,7 +168,7 @@ public class CustomAssetLoader : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetFloat("scrollSpeed", 1.5f);
+        PlayerPrefs.SetFloat("scrollSpeed", 1.3f);
 
         GatherNeededObjects();
     }
