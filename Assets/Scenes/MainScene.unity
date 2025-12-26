@@ -8306,11 +8306,11 @@ MonoBehaviour:
   delayInMs: 0
   ratingThresholds:
   - 0
-  - 0.4
-  - 0.7
-  - 1
-  - 1.35
-  - 1.6
+  - 0.3
+  - 0.6
+  - 0.9
+  - 1.2
+  - 1.4
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 3778646841318257463}
@@ -13515,11 +13515,11 @@ MonoBehaviour:
   delayInMs: 0
   ratingThresholds:
   - 0
-  - 0.4
-  - 0.7
-  - 1
-  - 1.35
-  - 1.6
+  - 0.3
+  - 0.6
+  - 0.9
+  - 1.2
+  - 1.4
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 1821306573}
@@ -19843,11 +19843,11 @@ MonoBehaviour:
   delayInMs: 0
   ratingThresholds:
   - 0
-  - 0.4
-  - 0.7
-  - 1
-  - 1.35
-  - 1.6
+  - 0.3
+  - 0.6
+  - 0.9
+  - 1.2
+  - 1.4
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 1444186459}
@@ -23163,11 +23163,11 @@ MonoBehaviour:
   delayInMs: 0
   ratingThresholds:
   - 0
-  - 0.4
-  - 0.7
-  - 1
-  - 1.35
-  - 1.6
+  - 0.3
+  - 0.6
+  - 0.9
+  - 1.2
+  - 1.4
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 300072332}
