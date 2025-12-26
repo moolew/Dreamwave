@@ -340,7 +340,7 @@ public class GameManager : MonoBehaviour
         // Update UI
         comboText.text = "Combo: " + combo.ToString();
         missesText.text = "Misses: " + misses.ToString();
-        accuracyText.text = "Accuracy: " + accuracy.ToString("F0") + "%";
+        accuracyText.text = "Accuracy: " + accuracy.ToString("F2") + "%";
         scoreText.text = "Score: " + score.ToString();
 
         CalculatePlayerRating();
