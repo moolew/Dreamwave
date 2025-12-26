@@ -410,6 +410,11 @@ public class GameManager : MonoBehaviour
     private void PositionNoteUi()
     {
         //noteUi.transform.localPosition = mobileFocus[0];
+        if (PlayerPrefs.GetString("chartPos") == "middleScroll")
+        {
+            noteUi.transform.localPosition = Vector3.Lerp(noteUi.transform.localPosition, centreFocus, noteUiSmoothing * Time.deltaTime);
+            return;
+        }
 
         switch (Application.platform)
         {
