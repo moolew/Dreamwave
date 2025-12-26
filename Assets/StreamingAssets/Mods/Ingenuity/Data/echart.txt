@@ -2,7 +2,7 @@
 lane=2
 position=120
 type=H
-length=10
+length=7
 # end
 
 

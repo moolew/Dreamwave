@@ -41,11 +41,26 @@ public class DreamwaveUserSetup : MonoBehaviour
         {
             GameManager.Instance.noteUiSidePlayer.transform.rotation = Quaternion.Euler(180f, 0f, 0);
             GameManager.Instance.noteUiSideOpponent.transform.rotation = Quaternion.Euler(180f, 0f, 0);
+            GameManager.Instance.noteUiSidePlayer.SetActive(true);
+            GameManager.Instance.noteUiSideOpponent.SetActive(true);
+            GameManager.Instance.noteUiSidePlayerMiddle.SetActive(false);
+            GameManager.Instance.noteUiSideOpponentMiddle.SetActive(false);
         }
         else if(PlayerPrefs.GetString("chartPos") == "upScroll")
         {
             GameManager.Instance.noteUiSidePlayer.transform.rotation = Quaternion.Euler(0f, 0, 0);
             GameManager.Instance.noteUiSideOpponent.transform.rotation = Quaternion.Euler(0f, 0, 0);
+            GameManager.Instance.noteUiSidePlayer.SetActive(true);
+            GameManager.Instance.noteUiSideOpponent.SetActive(true);
+            GameManager.Instance.noteUiSidePlayerMiddle.SetActive(false);
+            GameManager.Instance.noteUiSideOpponentMiddle.SetActive(false);
+        }
+        else if (PlayerPrefs.GetString("chartPos") == "middleScroll")
+        {
+            GameManager.Instance.noteUiSidePlayer.SetActive(false);
+            GameManager.Instance.noteUiSideOpponent.SetActive(false);
+            GameManager.Instance.noteUiSidePlayerMiddle.SetActive(true);
+            GameManager.Instance.noteUiSideOpponentMiddle.SetActive(true);
         }
     }
 
