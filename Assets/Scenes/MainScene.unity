@@ -8310,7 +8310,7 @@ MonoBehaviour:
   - 0.7
   - 1
   - 1.35
-  - 1.7
+  - 1.6
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 3778646841318257463}
@@ -13519,7 +13519,7 @@ MonoBehaviour:
   - 0.7
   - 1
   - 1.35
-  - 1.7
+  - 1.6
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 1821306573}
@@ -19847,7 +19847,7 @@ MonoBehaviour:
   - 0.7
   - 1
   - 1.35
-  - 1.7
+  - 1.6
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 1444186459}
@@ -23167,7 +23167,7 @@ MonoBehaviour:
   - 0.7
   - 1
   - 1.35
-  - 1.7
+  - 1.6
   keyForSide: 0
   buttonForSide: 
   NoteHitParticle: {fileID: 300072332}
