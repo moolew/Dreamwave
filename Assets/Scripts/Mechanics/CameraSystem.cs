@@ -43,37 +43,25 @@ public class CameraSystem : MonoBehaviour
         Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, zoom, 15f * Time.deltaTime);
     }
 
-    private void SwitchFocus() // originally had seperate positions based on platform but this has been changed - make code efficient later down the line
+    private void SwitchFocus()
     {
-        if (Application.platform == RuntimePlatform.Android)
+        Vector3 left = leftPlayer.position - Camera.main.transform.position;
+        Vector3 right = rightPlayer.position - Camera.main.transform.position;
+
+        Vector3 centre = (leftPlayer.position + rightPlayer.position) * 0.5f;
+        centre.z = _zAxis;
+
+        switch (GameManager.Instance.focus)
         {
-            switch (GameManager.Instance.focus)
-            {
-                case Focus.LeftPlayer:
-                    transform.position = Vector3.LerpUnclamped(transform.position, new(leftPlayer.position.x, leftPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
-                    break;
-                case Focus.RightPlayer:
-                    transform.position = Vector3.LerpUnclamped(transform.position, new(rightPlayer.position.x, rightPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
-                    break;
-                case Focus.Centre:
-                    transform.position = Vector3.LerpUnclamped(transform.position, new(leftPlayer.position.x, leftPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
-                    break;
-            }
-        }
-        else
-        {
-            switch (GameManager.Instance.focus)
-            {
-                case Focus.LeftPlayer:
-                    transform.position = Vector3.LerpUnclamped(transform.position, new(leftPlayer.position.x, leftPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
-                    break;
-                case Focus.RightPlayer:
-                    transform.position = Vector3.LerpUnclamped(transform.position, new(rightPlayer.position.x, rightPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
-                    break;
-                case Focus.Centre:
-                    transform.position = Vector3.LerpUnclamped(transform.position, centrePos, smoothing * Time.deltaTime);
-                    break;
-            }
+            case Focus.LeftPlayer:
+                transform.position = Vector3.LerpUnclamped(transform.position, new(leftPlayer.position.x / 2, leftPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
+                break;
+            case Focus.RightPlayer:
+                transform.position = Vector3.LerpUnclamped(transform.position, new(rightPlayer.position.x / 2, rightPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
+                break;
+            case Focus.Centre:
+                transform.position = Vector3.LerpUnclamped(transform.position, centre, smoothing * Time.deltaTime);
+                break;
         }
     }
 

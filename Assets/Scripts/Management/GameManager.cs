@@ -100,6 +100,8 @@ public class GameManager : MonoBehaviour
 
     [Header("GameObjects")]
     [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject _leftPlayer;
+    [SerializeField] private GameObject _rightPlayer;
     [SerializeField] private GameObject _gameUnfocusedUi;
     [SerializeField] private GameObject noteUi;
     [SerializeField] public GameObject noteUiSidePlayer;

@@ -64,6 +64,10 @@ public class DreamwaveModLoader : MonoBehaviour
             {
                 instance.audioSource.pitch = float.Parse(line.Split('=')[1]);
             }
+            else if (line.StartsWith("cameraYOffset="))
+            {
+                GameObject.Find("Main Camera").transform.localPosition = new Vector3(0, float.Parse(line.Split('=')[1]), 0);
+            }
         }
     }
 
