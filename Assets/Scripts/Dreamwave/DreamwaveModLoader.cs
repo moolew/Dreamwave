@@ -252,7 +252,7 @@ public class DreamwaveModLoader : MonoBehaviour
                 eventType = ev;
                 string[] splitEv = ev.Split('-');
 
-                if (splitEv[0] == "PF")
+                if (splitEv[0] == "PF") // PLAYER FOCUS
                 {
                     string focus = splitEv.Length > 1 ? splitEv[1] : "";
                     var r = Instantiate(Event, chartParent);
@@ -263,7 +263,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     else if (focus == "e") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusPlayerLeft;
                     else if (focus == "c") currentEventI.typeOfScrollEvent = TypeOfScrollEvent.FocusCentre;
                 }
-                else if (ev == "Z")
+                else if (ev == "Z") // FOV ZOOM
                 {
                     var r = Instantiate(Event, chartParent);
                     r.transform.localPosition = currentEvent.transform.localPosition;
@@ -271,7 +271,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     currentEventI = r.GetComponent<ScrollEvents>();
                     currentEventI.typeOfScrollEvent = TypeOfScrollEvent.CameraFov;
                 }
-                else if (ev == "R")
+                else if (ev == "R") // REPEATED TILE ZOOM
                 {
                     var r = Instantiate(Event, chartParent);
                     r.transform.position = currentEvent.transform.position;
@@ -279,7 +279,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     currentEventI = r.GetComponent<ScrollEvents>();
                     currentEventI.typeOfScrollEvent = TypeOfScrollEvent.RepeatedTile;
                 }
-                else if (ev == "RC")
+                else if (ev == "RC") // ROTATE REPEATED TILE
                 {
                     var rc = Instantiate(Event, chartParent);
                     rc.transform.position = currentEvent.transform.position;
@@ -287,7 +287,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     currentEventI = rc.GetComponent<ScrollEvents>();
                     currentEventI.typeOfScrollEvent = TypeOfScrollEvent.RotateTile;
                 }
-                else if (ev == "MOV")
+                else if (ev == "MOV") // MOVE REPEATED TILES
                 {
                     var rc = Instantiate(Event, chartParent);
                     rc.transform.position = currentEvent.transform.position;
@@ -299,6 +299,18 @@ public class DreamwaveModLoader : MonoBehaviour
                         currentEventI.Axis = "X";
                     else if (axis == "y")
                         currentEventI.Axis = "Y";
+                }
+                else if (splitEv[0] == "PP") // POST PROCESS EFFECT
+                {
+                    var ppe = Instantiate(Event, chartParent);
+                    ppe.transform.position = currentEvent.transform.position;
+                    ppe.layer = 6;
+                    currentEventI = ppe.GetComponent<ScrollEvents>();
+                    currentEventI.typeOfScrollEvent = TypeOfScrollEvent.PostProcessEffect;
+                    if (splitEv.Length > 1)
+                    {
+                        currentEventI.PostProcessEffectName = splitEv[1];
+                    }
                 }
             }
             else if (eventType == "Z" && line.StartsWith("amount="))
@@ -347,6 +359,18 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (eventType == "MOV" && line.StartsWith("moveTime="))
             {
                 currentEventI.MoveTime = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("PP") && line.StartsWith("effectName="))
+            {
+                currentEventI.PostProcessEffectName = string.Format(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("PP") && line.StartsWith("effectValue="))
+            {
+                currentEventI.PostProcessEffectValue = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("PP") && line.StartsWith("effectSpeed="))
+            {
+                currentEventI.PostProcessEffectSpeed = float.Parse(line.Split('=')[1]);
             }
         }
     }

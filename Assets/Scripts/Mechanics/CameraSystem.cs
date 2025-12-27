@@ -54,10 +54,10 @@ public class CameraSystem : MonoBehaviour
         switch (GameManager.Instance.focus)
         {
             case Focus.LeftPlayer:
-                transform.position = Vector3.LerpUnclamped(transform.position, new(leftPlayer.position.x / 2, leftPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
+                transform.position = Vector3.LerpUnclamped(transform.position, new(leftPlayer.position.x / 3, leftPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
                 break;
             case Focus.RightPlayer:
-                transform.position = Vector3.LerpUnclamped(transform.position, new(rightPlayer.position.x / 2, rightPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
+                transform.position = Vector3.LerpUnclamped(transform.position, new(rightPlayer.position.x / 3, rightPlayer.position.y, _zAxis), smoothing * Time.deltaTime);
                 break;
             case Focus.Centre:
                 transform.position = Vector3.LerpUnclamped(transform.position, centre, smoothing * Time.deltaTime);

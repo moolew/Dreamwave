@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static GameManager;
+using static PostProcessingManager;
 
 public enum TypeOfScrollEvent 
 {
@@ -18,6 +19,7 @@ public enum TypeOfScrollEvent
     RepeatedTile,
     RotateTile,
     MoveTiles,
+    PostProcessEffect
 }
 
 public class ScrollEvents : MonoBehaviour
@@ -37,6 +39,10 @@ public class ScrollEvents : MonoBehaviour
 
     public float MoveAmount;
     public float MoveTime;
+
+    public string PostProcessEffectName;
+    public float PostProcessEffectValue;
+    public float PostProcessEffectSpeed;
 
     [SerializeField] private float scrollSpeedModificationAmount;
 
@@ -83,6 +89,11 @@ public class ScrollEvents : MonoBehaviour
         }
     }
 
+    private void PostProcessEffect(string effect, float value, float speed)
+    {
+        PP_Instance.SetEffect(effect, value, speed);
+    }
+
     private void ChangeSongSpeed() => Instance.scrollManager.scrollSpeedMultiplier = scrollSpeedModificationAmount;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -102,6 +113,7 @@ public class ScrollEvents : MonoBehaviour
                 case TypeOfScrollEvent.RepeatedTile: CameraZoomRepeat(RepeatRate, RepeatTime); break;
                 case TypeOfScrollEvent.RotateTile: CameraRotateTile(RotateAmount, RotateTime); break;
                 case TypeOfScrollEvent.MoveTiles: CameraMoveTile(Axis, MoveAmount, MoveTime); break;
+                case TypeOfScrollEvent.PostProcessEffect: PostProcessEffect(PostProcessEffectName, PostProcessEffectValue, PostProcessEffectSpeed); break;
             }
         }
     }
