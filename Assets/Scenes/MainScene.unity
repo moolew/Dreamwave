@@ -19769,7 +19769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 845325157}
   m_Layer: 0
-  m_Name: Offset
+  m_Name: CameraOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21513,6 +21513,7 @@ MonoBehaviour:
   _leftPlayer: {fileID: 919132148209965614}
   _rightPlayer: {fileID: 919132147870972593}
   _gameUnfocusedUi: {fileID: 1322970868}
+  CameraOffset: {fileID: 845325156}
   noteUi: {fileID: 908379446}
   noteUiSidePlayer: {fileID: 885608306}
   noteUiSidePlayerMiddle: {fileID: 783749378}

@@ -90,6 +90,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float CameraFovBumpOnBeatValue;
     [SerializeField] public float CameraFov;
     [SerializeField] public float CameraFovSpeed;
+    [SerializeField] public float CameraXOffsetValue;
+    [SerializeField] public float CameraYOffsetValue;
 
     [Header("DiscordRPC Settings")]
     [SerializeField] public string SongName;
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _leftPlayer;
     [SerializeField] private GameObject _rightPlayer;
     [SerializeField] private GameObject _gameUnfocusedUi;
+    [SerializeField] public GameObject CameraOffset;
     [SerializeField] private GameObject noteUi;
     [SerializeField] public GameObject noteUiSidePlayer;
     [SerializeField] public GameObject noteUiSidePlayerMiddle;
@@ -215,6 +218,8 @@ public class GameManager : MonoBehaviour
         AnimateBackground();
         PositionNoteUi();
         ShouldDisplayHealthSlider();
+
+        CameraOffset.transform.localPosition = new Vector3(CameraXOffsetValue, CameraYOffsetValue, 0);
 
         if (TempoManager.instance.audioSource.clip != null &&
         TempoManager.instance.audioSource.time >= TempoManager.instance.audioSource.clip.length - 0.1f)
