@@ -599,3 +599,11 @@ type=R
 repeatRate=8
 repeatTime=0.2
 # end
+
+# start
+position=772
+type=PP
+effectName=saturation
+effectValue=-100
+effectSpeed=1
+# end
