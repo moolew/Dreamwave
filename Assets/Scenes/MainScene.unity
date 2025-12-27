@@ -21504,6 +21504,8 @@ MonoBehaviour:
   CameraFovBumpOnBeatValue: 0.2
   CameraFov: 3
   CameraFovSpeed: 15
+  CameraXOffsetValue: 0
+  CameraYOffsetValue: 0
   SongName: Doppelganger
   SongCreatorName: Sugar Moon
   SongImageName: dreamwave_logo

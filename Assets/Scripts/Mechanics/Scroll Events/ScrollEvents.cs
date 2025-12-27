@@ -59,27 +59,27 @@ public class ScrollEvents : MonoBehaviour
 
     private void CameraZoomRepeat(float repeatValue, float smoothing)
     {
-        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zoomedValue = repeatValue;
-        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zoomedSmoothTime = smoothing;
+        Camera.main.transform.parent.parent.parent.GetComponent<RepeatedZoom>()._zoomedValue = repeatValue;
+        Camera.main.transform.parent.parent.parent.GetComponent<RepeatedZoom>()._zoomedSmoothTime = smoothing;
     }
 
     private void CameraRotateTile(float rotateAmount, float smoothing)
     {
-        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._smoothedZ = rotateAmount;
-        Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._zTime = smoothing;
+        Camera.main.transform.parent.parent.parent.GetComponent<RepeatedZoom>()._smoothedZ = rotateAmount;
+        Camera.main.transform.parent.parent.parent.GetComponent<RepeatedZoom>()._zTime = smoothing;
     }
 
     private void CameraMoveTile(string axis, float moveAmount, float smoothing)
     {
         if (axis == "X")
         {
-            Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._smoothedX = moveAmount;
-            Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._xTime = smoothing;
+            Camera.main.transform.parent.parent.parent.GetComponent<RepeatedZoom>()._smoothedX = moveAmount;
+            Camera.main.transform.parent.parent.parent.GetComponent<RepeatedZoom>()._xTime = smoothing;
         }
         else if (axis == "Y")
         {
-            Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._smoothedY = moveAmount;
-            Camera.main.transform.parent.parent.GetComponent<RepeatedZoom>()._yTime = smoothing;
+            Camera.main.transform.parent.parent.parent.GetComponent<RepeatedZoom>()._smoothedY = moveAmount;
+            Camera.main.transform.parent.parent.parent.GetComponent<RepeatedZoom>()._yTime = smoothing;
         }
     }
 
