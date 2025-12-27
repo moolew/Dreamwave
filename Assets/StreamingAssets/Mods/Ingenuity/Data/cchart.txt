@@ -78,10 +78,26 @@ repeatTime=1
 # end
 
 # start
+position=292
+type=PP
+effectName=saturation
+effectValue=-100
+effectSpeed=2
+# end
+
+# start
 position=305
 type=R
 repeatRate=1
 repeatTime=1
+# end
+
+# start
+position=305
+type=PP
+effectName=saturation
+effectValue=0
+effectSpeed=2
 # end
 
 # start
