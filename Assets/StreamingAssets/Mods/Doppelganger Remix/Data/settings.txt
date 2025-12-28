@@ -1,3 +1,0 @@
-startScrollAtStep=0
-scrollSpeedMultiplier=1.654
-songPitch=1.0

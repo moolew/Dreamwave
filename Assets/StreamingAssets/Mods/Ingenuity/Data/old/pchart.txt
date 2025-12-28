@@ -1,5 +1,0 @@
-# start
-lane=2
-position=900
-type=N
-# end

@@ -1,8 +1,0 @@
-spriteWidth=2160
-spriteHeight=2160
-spriteScale=2
-spritePositionX=2.9
-spritePositionY=1.4
-shouldFlip=false
-antiAliasing=true
-frameRate=20

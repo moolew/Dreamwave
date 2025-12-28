@@ -1,5 +1,0 @@
-startScrollAtStep=0
-scrollSpeedMultiplier=1
-songPitch=1
-cameraXOffset=0
-cameraYOffset=0.5
