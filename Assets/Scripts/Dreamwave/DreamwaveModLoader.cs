@@ -383,7 +383,19 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (eventType.StartsWith("AFI") && line.StartsWith("player="))
             {
                 currentEventI.whichPlayerToAfterImage = line.Split('=')[1];
-            }                
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("flipX="))
+            {
+                currentEventI.flipXAfterImage = bool.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("flipY="))
+            {
+                currentEventI.flipYAfterImage = bool.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("duration="))
+            {
+                currentEventI.afterImageDuration = float.Parse(line.Split('=')[1]);
+            }
             else if (eventType.StartsWith("AFI") && line.StartsWith("display="))
             {
                 currentEventI.displayAfterImage = bool.Parse(line.Split('=')[1]);
@@ -403,18 +415,6 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (eventType.StartsWith("AFI") && line.StartsWith("a="))
             {
                 currentEventI.afterImageColourA = float.Parse(line.Split('=')[1]);
-            }
-            else if (eventType.StartsWith("AFI") && line.StartsWith("duration="))
-            {
-                currentEventI.afterImageDuration = float.Parse(line.Split('=')[1]);
-            }
-            else if (eventType.StartsWith("AFI") && line.StartsWith("flipX="))
-            {
-                currentEventI.flipXAfterImage = bool.Parse(line.Split('=')[1]);
-            }
-            else if (eventType.StartsWith("AFI") && line.StartsWith("flipY="))
-            {
-                currentEventI.flipXAfterImage = bool.Parse(line.Split('=')[1]);
             }
         }
     }
