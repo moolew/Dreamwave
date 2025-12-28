@@ -121,25 +121,25 @@ public class DreamwaveCharacter : DreamwaveAnimation
                 {
                     StopAllCoroutines();
                     StartCoroutine(SingAnimation("Left"));
-                    StartCoroutine(AfterImageEffect(direction));
+                    StartCoroutine(AfterImageEffect("Left"));
                 }
                 else if (direction == GameManager.Instance.down.ToString())
                 {
                     StopAllCoroutines();
                     StartCoroutine(SingAnimation("Down"));
-                    StartCoroutine(AfterImageEffect(direction));
+                    StartCoroutine(AfterImageEffect("Down"));
                 }
                 else if (direction == GameManager.Instance.up.ToString())
                 {
                     StopAllCoroutines();
                     StartCoroutine(SingAnimation("Up"));
-                    StartCoroutine(AfterImageEffect(direction));
+                    StartCoroutine(AfterImageEffect("Up"));
                 }
                 else if (direction == GameManager.Instance.right.ToString())
                 {
                     StopAllCoroutines();
                     StartCoroutine(SingAnimation("Right"));
-                    StartCoroutine(AfterImageEffect(direction));
+                    StartCoroutine(AfterImageEffect("Right"));
                 }
                 break;
         }
@@ -200,6 +200,14 @@ public class DreamwaveCharacter : DreamwaveAnimation
         if (!afterImage) yield break;
         GameObject afterImageObj = new("AfterImage");
         SpriteRenderer sr = afterImageObj.AddComponent<SpriteRenderer>();
+
+        var direction = dir.ToLower();
+        if (direction == "left") sr.sprite = LeftAnimations[1];
+        else if (direction == "right") sr.sprite = RightAnimations[1];
+        else if (direction == "up") sr.sprite = UpAnimations[1];
+        else if (direction == "down") sr.sprite = DownAnimations[1];
+        else sr.sprite = IdleAnimation[1];
+
         var ai = afterImageObj.AddComponent<AfterImage>();
         ai.spriteRenderer = sr;
         ai.direction = dir.ToLower();
@@ -215,4 +223,5 @@ public class DreamwaveCharacter : DreamwaveAnimation
         afterImageObj.transform.localScale = Renderer.transform.lossyScale;
         yield return null;
     }
+    
 }
