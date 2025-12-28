@@ -10,6 +10,19 @@ repeatTime=100
 # end
 
 # start
+position=0
+type=AFI
+player=right
+display=true
+duration=0.2
+r=0
+g=0
+b=1
+a=0.3
+distance=0.3
+# end
+
+# start
 position=120
 type=PP
 effectName=bloom

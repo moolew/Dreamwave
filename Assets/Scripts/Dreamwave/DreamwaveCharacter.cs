@@ -32,6 +32,14 @@ public class DreamwaveCharacter : DreamwaveAnimation
     public float AnimationHoldSpeed = 0.1f;
     public float SingAnimationHold = 0.3f;
 
+    [Header("After Image Effect")]
+    public bool afterImage = false;
+    public float afterImageSpeed = 0.1f;
+    public float afterImageDuration = 0.1f;
+    public bool flipXAfterImage = false;
+    public bool flipYAfterImage = false;
+    public Color afterImageColour = Color.white;
+
     [Header("Character Animation Lists")]
     public List<Sprite> LeftAnimations = new(); public List<Vector2> LeftOffsets = new();
     public List<Sprite> DownAnimations = new(); public List<Vector2> DownOffsets = new();
@@ -113,21 +121,25 @@ public class DreamwaveCharacter : DreamwaveAnimation
                 {
                     StopAllCoroutines();
                     StartCoroutine(SingAnimation("Left"));
+                    StartCoroutine(AfterImageEffect(direction));
                 }
                 else if (direction == GameManager.Instance.down.ToString())
                 {
                     StopAllCoroutines();
                     StartCoroutine(SingAnimation("Down"));
+                    StartCoroutine(AfterImageEffect(direction));
                 }
                 else if (direction == GameManager.Instance.up.ToString())
                 {
                     StopAllCoroutines();
                     StartCoroutine(SingAnimation("Up"));
+                    StartCoroutine(AfterImageEffect(direction));
                 }
                 else if (direction == GameManager.Instance.right.ToString())
                 {
                     StopAllCoroutines();
                     StartCoroutine(SingAnimation("Right"));
+                    StartCoroutine(AfterImageEffect(direction));
                 }
                 break;
         }
@@ -181,5 +193,24 @@ public class DreamwaveCharacter : DreamwaveAnimation
 
         _isSinging = false;
         yield break;
+    }
+    
+    private IEnumerator AfterImageEffect(string dir)
+    {
+        if (!afterImage) yield break;
+        GameObject afterImageObj = new("AfterImage");
+        SpriteRenderer sr = afterImageObj.AddComponent<SpriteRenderer>();
+        var ai = afterImageObj.AddComponent<AfterImage>();
+        ai.spriteRenderer = sr;
+        ai.direction = dir.ToLower();
+        ai.time = afterImageDuration;
+        ai.timer = afterImageDuration;
+        ai.speed = afterImageSpeed;
+        sr.sprite = Renderer.sprite;
+        sr.color = afterImageColour;
+        sr.sortingOrder = Renderer.sortingOrder;
+        afterImageObj.transform.position = new Vector3(Renderer.transform.position.x, Renderer.transform.position.y, Renderer.transform.position.z);
+        afterImageObj.transform.localScale = Renderer.transform.lossyScale;
+        yield return null;
     }
 }

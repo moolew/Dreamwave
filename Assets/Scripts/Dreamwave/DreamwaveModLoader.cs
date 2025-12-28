@@ -312,6 +312,14 @@ public class DreamwaveModLoader : MonoBehaviour
                         currentEventI.PostProcessEffectName = splitEv[1];
                     }
                 }
+                else if (ev == "AFI")
+                {
+                    var afi = Instantiate(Event, chartParent);
+                    afi.transform.position = currentEvent.transform.position;
+                    afi.layer = 6;
+                    currentEventI = afi.GetComponent<ScrollEvents>();
+                    currentEventI.typeOfScrollEvent = TypeOfScrollEvent.AfterImageEffect;
+                }
             }
             else if (eventType == "Z" && line.StartsWith("amount="))
             {
@@ -371,6 +379,42 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (eventType.StartsWith("PP") && line.StartsWith("effectSpeed="))
             {
                 currentEventI.PostProcessEffectSpeed = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("player="))
+            {
+                currentEventI.whichPlayerToAfterImage = line.Split('=')[1];
+            }                
+            else if (eventType.StartsWith("AFI") && line.StartsWith("display="))
+            {
+                currentEventI.displayAfterImage = bool.Parse(line.Split('=')[1]);
+            }    
+            else if (eventType.StartsWith("AFI") && line.StartsWith("r="))
+            {
+                currentEventI.afterImageColourR = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("g="))
+            {
+                currentEventI.afterImageColourG = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("b="))
+            {
+                currentEventI.afterImageColourB = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("a="))
+            {
+                currentEventI.afterImageColourA = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("duration="))
+            {
+                currentEventI.afterImageDuration = float.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("flipX="))
+            {
+                currentEventI.flipXAfterImage = bool.Parse(line.Split('=')[1]);
+            }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("flipY="))
+            {
+                currentEventI.flipXAfterImage = bool.Parse(line.Split('=')[1]);
             }
         }
     }

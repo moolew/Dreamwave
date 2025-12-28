@@ -3,6 +3,21 @@ Event Chart
 event creates an event rather than a note, it takes a type like PF which is for Player Focus followed by -p which would focus the player or -e for the enemy
 
 # start
+position=0
+type=AFI
+player=right
+flipX=true
+flipY=false
+display=true
+duration=0.6
+speed=1
+r=248
+g=200
+b=220
+a=0.7
+# end
+
+# start
 position=2
 type=PF-e
 # end

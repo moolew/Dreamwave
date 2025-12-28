@@ -19,7 +19,8 @@ public enum TypeOfScrollEvent
     RepeatedTile,
     RotateTile,
     MoveTiles,
-    PostProcessEffect
+    PostProcessEffect,
+    AfterImageEffect
 }
 
 public class ScrollEvents : MonoBehaviour
@@ -43,6 +44,16 @@ public class ScrollEvents : MonoBehaviour
     public string PostProcessEffectName;
     public float PostProcessEffectValue;
     public float PostProcessEffectSpeed;
+
+    public string whichPlayerToAfterImage;
+    public bool displayAfterImage;
+    public float afterImageColourR;
+    public float afterImageColourG;
+    public float afterImageColourB;
+    public float afterImageColourA;
+    public float afterImageDuration;
+    public bool flipXAfterImage;
+    public bool flipYAfterImage;
 
     [SerializeField] private float scrollSpeedModificationAmount;
 
@@ -94,6 +105,30 @@ public class ScrollEvents : MonoBehaviour
         PP_Instance.SetEffect(effect, value, speed);
     }
 
+    private void AfterImageEffect(string player, bool display, bool flipX, bool flipY, float duration, float R, float G, float B, float A)
+    {
+        if (whichPlayerToAfterImage == "left")
+        {
+            var s = Instance._aiScript.GetComponent<DreamwaveAICharacter>();
+            s.afterImage = display;
+            s.afterImageDuration = duration;
+            var rc = new Color(R, G, B, A);
+            s.afterImageColour = rc;
+            s.flipXAfterImage = flipX;
+            s.flipYAfterImage = flipY;
+        }
+        else if (whichPlayerToAfterImage == "right")
+        {
+            var s = Instance._playerScript.GetComponent<DreamwaveCharacter>();
+            s.afterImage = display;
+            s.afterImageDuration = duration;
+            var rc = new Color(R, G, B, A);
+            s.afterImageColour = rc;
+            s.flipXAfterImage = flipX;
+            s.flipYAfterImage = flipY;
+        }
+    }
+
     private void ChangeSongSpeed() => Instance.scrollManager.scrollSpeedMultiplier = scrollSpeedModificationAmount;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -114,6 +149,7 @@ public class ScrollEvents : MonoBehaviour
                 case TypeOfScrollEvent.RotateTile: CameraRotateTile(RotateAmount, RotateTime); break;
                 case TypeOfScrollEvent.MoveTiles: CameraMoveTile(Axis, MoveAmount, MoveTime); break;
                 case TypeOfScrollEvent.PostProcessEffect: PostProcessEffect(PostProcessEffectName, PostProcessEffectValue, PostProcessEffectSpeed); break;
+                case TypeOfScrollEvent.AfterImageEffect: AfterImageEffect(whichPlayerToAfterImage, displayAfterImage, flipXAfterImage, flipYAfterImage, afterImageDuration, afterImageColourR, afterImageColourG, afterImageColourB, afterImageColourA); break;
             }
         }
     }
