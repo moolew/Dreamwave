@@ -202,10 +202,10 @@ public class DreamwaveCharacter : DreamwaveAnimation
         SpriteRenderer sr = afterImageObj.AddComponent<SpriteRenderer>();
 
         var direction = dir.ToLower();
-        if (direction == "left") sr.sprite = LeftAnimations[1];
-        else if (direction == "right") sr.sprite = RightAnimations[1];
-        else if (direction == "up") sr.sprite = UpAnimations[1];
-        else if (direction == "down") sr.sprite = DownAnimations[1];
+        if (direction == "left") sr.sprite = LeftAnimations[0];
+        else if (direction == "right") sr.sprite = RightAnimations[0];
+        else if (direction == "up") sr.sprite = UpAnimations[0];
+        else if (direction == "down") sr.sprite = DownAnimations[0];
         else sr.sprite = IdleAnimation[1];
 
         var ai = afterImageObj.AddComponent<AfterImage>();
