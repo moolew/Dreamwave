@@ -208,6 +208,8 @@ public class DreamwaveCharacter : DreamwaveAnimation
         ai.speed = afterImageSpeed;
         sr.sprite = Renderer.sprite;
         sr.color = afterImageColour;
+        sr.flipX = flipXAfterImage;
+        sr.flipY = flipYAfterImage;
         sr.sortingOrder = Renderer.sortingOrder;
         afterImageObj.transform.position = new Vector3(Renderer.transform.position.x, Renderer.transform.position.y, Renderer.transform.position.z);
         afterImageObj.transform.localScale = Renderer.transform.lossyScale;
