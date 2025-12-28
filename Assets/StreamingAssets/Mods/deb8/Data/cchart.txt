@@ -8,6 +8,7 @@ type=AFI
 player=right
 flipX=true
 flipY=false
+zIndex=1
 display=true
 speed=5
 duration=0.2

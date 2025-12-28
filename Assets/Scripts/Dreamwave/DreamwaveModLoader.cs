@@ -420,6 +420,10 @@ public class DreamwaveModLoader : MonoBehaviour
             {
                 currentEventI.afterImageColourA = float.Parse(line.Split('=')[1]);
             }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("zIndex="))
+            {
+                currentEventI.afterImageZIndex = int.Parse(line.Split('=')[1]);
+            }
         }
     }
 }

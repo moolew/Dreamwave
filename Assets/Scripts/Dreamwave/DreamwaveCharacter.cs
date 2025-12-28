@@ -36,6 +36,7 @@ public class DreamwaveCharacter : DreamwaveAnimation
     public bool afterImage = false;
     public float afterImageSpeed = 0.1f;
     public float afterImageDuration = 0.1f;
+    public int afterImageZIndex = 1;
     public bool flipXAfterImage = false;
     public bool flipYAfterImage = false;
     public Color afterImageColour = Color.white;
@@ -218,7 +219,7 @@ public class DreamwaveCharacter : DreamwaveAnimation
         sr.color = afterImageColour;
         sr.flipX = flipXAfterImage;
         sr.flipY = flipYAfterImage;
-        sr.sortingOrder = Renderer.sortingOrder;
+        sr.sortingOrder = Renderer.sortingOrder + afterImageZIndex;
         afterImageObj.transform.position = new Vector3(Renderer.transform.position.x, Renderer.transform.position.y, Renderer.transform.position.z);
         afterImageObj.transform.localScale = Renderer.transform.lossyScale;
         yield return null;

@@ -53,6 +53,7 @@ public class ScrollEvents : MonoBehaviour
     public float afterImageColourB;
     public float afterImageColourA;
     public float afterImageDuration;
+    public int afterImageZIndex;
     public bool flipXAfterImage;
     public bool flipYAfterImage;
 
@@ -106,7 +107,7 @@ public class ScrollEvents : MonoBehaviour
         PP_Instance.SetEffect(effect, value, speed);
     }
 
-    private void AfterImageEffect(string player, bool display, bool flipX, bool flipY, float duration, float speed, float R, float G, float B, float A)
+    private void AfterImageEffect(string player, bool display, bool flipX, bool flipY, int zIndex,float duration, float speed, float R, float G, float B, float A)
     {
         player = (player ?? "").Trim().ToLower();
 
@@ -129,6 +130,7 @@ public class ScrollEvents : MonoBehaviour
             s.afterImageColour = col;
             s.afterImageSpeed = speed;
             s.afterImageDuration = duration;
+            s.afterImageZIndex = zIndex;
             if (flipX) s.flipXAfterImage = true;
             if (flipY) s.flipYAfterImage = true;
         }
@@ -140,6 +142,7 @@ public class ScrollEvents : MonoBehaviour
             s.afterImageColour = col;
             s.afterImageSpeed = speed;
             s.afterImageDuration = duration;
+            s.afterImageZIndex = zIndex;
             if (flipX) s.flipXAfterImage = true;
             if (flipY) s.flipYAfterImage = true;
         }
@@ -165,7 +168,7 @@ public class ScrollEvents : MonoBehaviour
                 case TypeOfScrollEvent.RotateTile: CameraRotateTile(RotateAmount, RotateTime); break;
                 case TypeOfScrollEvent.MoveTiles: CameraMoveTile(Axis, MoveAmount, MoveTime); break;
                 case TypeOfScrollEvent.PostProcessEffect: PostProcessEffect(PostProcessEffectName, PostProcessEffectValue, PostProcessEffectSpeed); break;
-                case TypeOfScrollEvent.AfterImageEffect: AfterImageEffect(whichPlayerToAfterImage, displayAfterImage, flipXAfterImage, flipYAfterImage, afterImageDuration, afterImageSpeed, afterImageColourR, afterImageColourG, afterImageColourB, afterImageColourA); break;
+                case TypeOfScrollEvent.AfterImageEffect: AfterImageEffect(whichPlayerToAfterImage, displayAfterImage, flipXAfterImage, flipYAfterImage, afterImageZIndex, afterImageDuration, afterImageSpeed, afterImageColourR, afterImageColourG, afterImageColourB, afterImageColourA); break;
             }
         }
     }
