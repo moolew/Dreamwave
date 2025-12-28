@@ -47,6 +47,7 @@ public class ScrollEvents : MonoBehaviour
 
     public string whichPlayerToAfterImage;
     public bool displayAfterImage;
+    public float afterImageSpeed;
     public float afterImageColourR;
     public float afterImageColourG;
     public float afterImageColourB;
@@ -105,27 +106,40 @@ public class ScrollEvents : MonoBehaviour
         PP_Instance.SetEffect(effect, value, speed);
     }
 
-    private void AfterImageEffect(string player, bool display, bool flipX, bool flipY, float duration, float R, float G, float B, float A)
+    private void AfterImageEffect(string player, bool display, bool flipX, bool flipY, float duration, float speed, float R, float G, float B, float A)
     {
-        if (whichPlayerToAfterImage == "left")
+        player = (player ?? "").Trim().ToLower();
+
+        // support both formats so mods don't break
+        bool isLeft = (player == "left" || player == "leftplayer");
+        bool isRight = (player == "right" || player == "rightplayer");
+
+        float nr = (R > 1f) ? (R / 255f) : R;
+        float ng = (G > 1f) ? (G / 255f) : G;
+        float nb = (B > 1f) ? (B / 255f) : B;
+        float na = Mathf.Clamp01(A);
+
+        var col = new Color(Mathf.Clamp01(nr), Mathf.Clamp01(ng), Mathf.Clamp01(nb), na);
+
+        if (isLeft)
         {
             var s = Instance._aiScript.GetComponent<DreamwaveAICharacter>();
             s.afterImage = display;
-            s.afterImageDuration = duration;
-            var rc = new Color(R, G, B, A);
-            s.afterImageColour = rc;
-            s.flipXAfterImage = flipX;
-            s.flipYAfterImage = flipY;
+            s.afterImageSpeed = duration;
+            s.afterImageColour = col;
+            s.afterImageSpeed = speed;
+            if (flipX) s.flipXAfterImage = true;
+            if (flipY) s.flipYAfterImage = true;
         }
-        else if (whichPlayerToAfterImage == "right")
+        else if (isRight)
         {
             var s = Instance._playerScript.GetComponent<DreamwaveCharacter>();
             s.afterImage = display;
-            s.afterImageDuration = duration;
-            var rc = new Color(R, G, B, A);
-            s.afterImageColour = rc;
-            s.flipXAfterImage = flipX;
-            s.flipYAfterImage = flipY;
+            s.afterImageSpeed = duration;
+            s.afterImageColour = col;
+            s.afterImageSpeed = speed;
+            if (flipX) s.flipXAfterImage = true;
+            if (flipY) s.flipYAfterImage = true;
         }
     }
 
@@ -149,7 +163,7 @@ public class ScrollEvents : MonoBehaviour
                 case TypeOfScrollEvent.RotateTile: CameraRotateTile(RotateAmount, RotateTime); break;
                 case TypeOfScrollEvent.MoveTiles: CameraMoveTile(Axis, MoveAmount, MoveTime); break;
                 case TypeOfScrollEvent.PostProcessEffect: PostProcessEffect(PostProcessEffectName, PostProcessEffectValue, PostProcessEffectSpeed); break;
-                case TypeOfScrollEvent.AfterImageEffect: AfterImageEffect(whichPlayerToAfterImage, displayAfterImage, flipXAfterImage, flipYAfterImage, afterImageDuration, afterImageColourR, afterImageColourG, afterImageColourB, afterImageColourA); break;
+                case TypeOfScrollEvent.AfterImageEffect: AfterImageEffect(whichPlayerToAfterImage, displayAfterImage, flipXAfterImage, flipYAfterImage, afterImageDuration, afterImageSpeed, afterImageColourR, afterImageColourG, afterImageColourB, afterImageColourA); break;
             }
         }
     }

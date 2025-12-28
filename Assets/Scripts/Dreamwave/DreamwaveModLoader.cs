@@ -392,6 +392,10 @@ public class DreamwaveModLoader : MonoBehaviour
             {
                 currentEventI.flipYAfterImage = bool.Parse(line.Split('=')[1]);
             }
+            else if (eventType.StartsWith("AFI") && line.StartsWith("speed="))
+            {
+                currentEventI.afterImageSpeed = float.Parse(line.Split('=')[1]);
+            }
             else if (eventType.StartsWith("AFI") && line.StartsWith("duration="))
             {
                 currentEventI.afterImageDuration = float.Parse(line.Split('=')[1]);
