@@ -4,6 +4,21 @@ event creates an event rather than a note, it takes a type like PF which is for 
 
 # start
 position=0
+type=AFI
+player=right
+flipX=true
+flipY=false
+display=true
+duration=3
+speed=100
+red=253
+green=61
+blue=144
+alpha=0.7
+# end
+
+# start
+position=0
 type=R
 repeatRate=1
 repeatTime=100

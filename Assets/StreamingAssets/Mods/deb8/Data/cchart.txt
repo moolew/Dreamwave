@@ -11,10 +11,10 @@ flipY=false
 display=true
 duration=0.6
 speed=30
-r=248
-g=200
-b=220
-a=0.7
+red=253
+green=61
+blue=144
+alpha=0.7
 # end
 
 # start

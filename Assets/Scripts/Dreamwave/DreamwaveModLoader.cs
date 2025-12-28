@@ -400,19 +400,19 @@ public class DreamwaveModLoader : MonoBehaviour
             {
                 currentEventI.displayAfterImage = bool.Parse(line.Split('=')[1]);
             }    
-            else if (eventType.StartsWith("AFI") && line.StartsWith("r="))
+            else if (eventType.StartsWith("AFI") && line.StartsWith("red="))
             {
                 currentEventI.afterImageColourR = float.Parse(line.Split('=')[1]);
             }
-            else if (eventType.StartsWith("AFI") && line.StartsWith("g="))
+            else if (eventType.StartsWith("AFI") && line.StartsWith("green="))
             {
                 currentEventI.afterImageColourG = float.Parse(line.Split('=')[1]);
             }
-            else if (eventType.StartsWith("AFI") && line.StartsWith("b="))
+            else if (eventType.StartsWith("AFI") && line.StartsWith("blue="))
             {
                 currentEventI.afterImageColourB = float.Parse(line.Split('=')[1]);
             }
-            else if (eventType.StartsWith("AFI") && line.StartsWith("a="))
+            else if (eventType.StartsWith("AFI") && line.StartsWith("alpha="))
             {
                 currentEventI.afterImageColourA = float.Parse(line.Split('=')[1]);
             }

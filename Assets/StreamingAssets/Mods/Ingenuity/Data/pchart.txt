@@ -1,3 +1,23 @@
+
+# start
+lane=2
+position=150
+type=N
+# end
+
+# start
+lane=1
+position=152
+type=N
+# end
+
+# start
+lane=3
+position=154
+type=N
+# end
+
+
 # start
 lane=2
 position=900
