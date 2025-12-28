@@ -260,7 +260,7 @@ public class GameManager : MonoBehaviour
         switch (newScore)
         {
             case "Missed":
-                hitScore = scores[5];
+                hitScore = -scores[5];
                 misses++;
                 combo = 0;
                 shits++;
@@ -314,7 +314,7 @@ public class GameManager : MonoBehaviour
                 combo++;
                 sicks++;
                 totalNotesHitCorrect++;
-                hitAccuracy = 90.0f;
+                hitAccuracy = 95.0f;
 
                 var sick = Instantiate(ratings[1], ratings[1].transform.position, Quaternion.identity);
                 sick.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
