@@ -128,6 +128,7 @@ public class ScrollEvents : MonoBehaviour
             s.afterImageSpeed = duration;
             s.afterImageColour = col;
             s.afterImageSpeed = speed;
+            s.afterImageDuration = duration;
             if (flipX) s.flipXAfterImage = true;
             if (flipY) s.flipYAfterImage = true;
         }
@@ -138,6 +139,7 @@ public class ScrollEvents : MonoBehaviour
             s.afterImageSpeed = duration;
             s.afterImageColour = col;
             s.afterImageSpeed = speed;
+            s.afterImageDuration = duration;
             if (flipX) s.flipXAfterImage = true;
             if (flipY) s.flipYAfterImage = true;
         }
