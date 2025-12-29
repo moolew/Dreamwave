@@ -28,9 +28,9 @@ zIndex=0
 display=true
 speed=5
 duration=0.2
-red=253
-green=61
-blue=144
+red=102
+green=46
+blue=143
 alpha=0.7
 # end
 
