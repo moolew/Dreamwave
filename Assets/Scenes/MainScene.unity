@@ -12893,7 +12893,7 @@ Transform:
   m_GameObject: {fileID: 423526020}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.076, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13132,7 +13132,7 @@ Transform:
   m_GameObject: {fileID: 437957563}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.078, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14066,7 +14066,7 @@ Transform:
   m_GameObject: {fileID: 515493933}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.078, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21593,7 +21593,7 @@ MonoBehaviour:
   _typePlayerOne: 0
   _typePlayerTwo: 0
   _typeNoteAsset: 0
-  _typeNoteParticleAsset: 2
+  _typeNoteParticleAsset: 0
   CustomNoteParticleFileName: 
   _particleSpriteWidth: 1080
   _particleSpriteHeight: 1080
@@ -23749,7 +23749,7 @@ Transform:
   m_GameObject: {fileID: 1061414996}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.076, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24345,7 +24345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2773.7498, y: -27.320312}
+  m_AnchoredPosition: {x: -2773.7495, y: -27.320435}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1076836766
@@ -45764,6 +45764,13 @@ MonoBehaviour:
   AnimationSpeed: 0.1
   AnimationHoldSpeed: 0.1
   SingAnimationHold: 0.3
+  afterImage: 0
+  afterImageSpeed: 0.1
+  afterImageDuration: 0.1
+  afterImageZIndex: 1
+  flipXAfterImage: 0
+  flipYAfterImage: 0
+  afterImageColour: {r: 1, g: 1, b: 1, a: 1}
   LeftAnimations:
   - {fileID: 1087356312, guid: bfa7e4c737c264149906dce81e19fa4b, type: 3}
   - {fileID: -324309359, guid: bfa7e4c737c264149906dce81e19fa4b, type: 3}
@@ -49691,6 +49698,13 @@ MonoBehaviour:
   AnimationSpeed: 0.1
   AnimationHoldSpeed: 0.1
   SingAnimationHold: 0.3
+  afterImage: 0
+  afterImageSpeed: 0.1
+  afterImageDuration: 0.1
+  afterImageZIndex: 1
+  flipXAfterImage: 0
+  flipYAfterImage: 0
+  afterImageColour: {r: 1, g: 1, b: 1, a: 1}
   LeftAnimations:
   - {fileID: 1754866359, guid: 52b6b777950797743b27447d13b85436, type: 3}
   - {fileID: 1661335898, guid: 52b6b777950797743b27447d13b85436, type: 3}

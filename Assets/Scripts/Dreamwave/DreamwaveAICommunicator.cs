@@ -56,6 +56,7 @@ public class DreamwaveAICommunicator : MonoBehaviour
                 case WhichSide.Left:
                     _character.StopAllCoroutines();
                     _character.StartCoroutine(_character.SingAnimation("Left"));
+                    _character.EmitAfterImage("Left");
                     if (GameManager.Instance.shouldDrawNoteSplashes)
                     {
                         var pl = Instantiate(_noteParticle, _noteParticle.transform.position, Quaternion.identity);
@@ -65,6 +66,7 @@ public class DreamwaveAICommunicator : MonoBehaviour
                 case WhichSide.Down:
                     _character.StopAllCoroutines();
                     _character.StartCoroutine(_character.SingAnimation("Down"));
+                    _character.EmitAfterImage("Down");
                     if (GameManager.Instance.shouldDrawNoteSplashes)
                     {
                         var pd = Instantiate(_noteParticle, _noteParticle.transform.position, Quaternion.identity);
@@ -74,6 +76,7 @@ public class DreamwaveAICommunicator : MonoBehaviour
                 case WhichSide.Up:
                     _character.StopAllCoroutines();
                     _character.StartCoroutine(_character.SingAnimation("Up"));
+                    _character.EmitAfterImage("Up");
                     if (GameManager.Instance.shouldDrawNoteSplashes)
                     {
                         var pu = Instantiate(_noteParticle, _noteParticle.transform.position, Quaternion.identity);
@@ -83,6 +86,7 @@ public class DreamwaveAICommunicator : MonoBehaviour
                 case WhichSide.Right:
                     _character.StopAllCoroutines();
                     _character.StartCoroutine(_character.SingAnimation("Right"));
+                    _character.EmitAfterImage("Right");
                     if (GameManager.Instance.shouldDrawNoteSplashes)
                     {
                         var pr = Instantiate(_noteParticle, _noteParticle.transform.position, Quaternion.identity);

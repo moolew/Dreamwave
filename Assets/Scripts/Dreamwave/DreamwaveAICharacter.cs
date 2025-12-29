@@ -103,4 +103,9 @@ public class DreamwaveAICharacter : DreamwaveCharacter
         _isSinging = false;
         yield break;
     }
+
+    public void EmitAfterImage(string dir)
+    {
+        StartCoroutine(AfterImageEffect(dir));
+    }
 }

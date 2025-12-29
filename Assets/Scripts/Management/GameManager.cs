@@ -301,7 +301,7 @@ public class GameManager : MonoBehaviour
                 combo++;
                 cools++;
                 totalNotesHitCorrect++;
-                hitAccuracy = 80.0f;
+                hitAccuracy = 85.0f;
 
                 var cool = Instantiate(ratings[2], ratings[2].transform.position, Quaternion.identity);
                 cool.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");

@@ -196,7 +196,7 @@ public class DreamwaveCharacter : DreamwaveAnimation
         yield break;
     }
     
-    private IEnumerator AfterImageEffect(string dir)
+    protected IEnumerator AfterImageEffect(string dir)
     {
         if (!afterImage) yield break;
         GameObject afterImageObj = new("AfterImage");
