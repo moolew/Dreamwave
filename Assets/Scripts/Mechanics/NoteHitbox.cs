@@ -43,7 +43,7 @@ public class NoteHitbox : MonoBehaviour
 
     private void TryHit()
     {
-        float songTime = StrumManager.SM_Instance.SongTimeMs;
+        float songTime = StrumManager.SM_Instance.JudgementTimeMs;
 
         MsNote best = null;
         float bestDelta = float.MaxValue;
@@ -104,7 +104,7 @@ public class NoteHitbox : MonoBehaviour
         var note = collision.GetComponent<MsNote>();
         if (note == null || note.wasJudged) return;
 
-        float delta = StrumManager.SM_Instance.SongTimeMs - note.noteTimeMs;
+        float delta = StrumManager.SM_Instance.JudgementTimeMs - note.noteTimeMs;
 
         if (delta > ratingThresholds[4])
         {
