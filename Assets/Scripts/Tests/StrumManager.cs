@@ -12,7 +12,7 @@ public class StrumManager : MonoBehaviour
     public float ScrollSpeed;
     public float strumLineY;
 
-    [SerializeField] private float unitsPerSecond = 400f;
+    [SerializeField] private float unitsPerSecond = 200f;
     private float _playerScrollMultiplier = 1f;
 
     private double _songDspStart;
@@ -40,6 +40,8 @@ public class StrumManager : MonoBehaviour
     {
         SongTimeMs = (float)((AudioSettings.dspTime - _songDspStart) * 1000.0 * _audioSource.pitch);
         JudgementTimeMs = SongTimeMs;
+
+        Debug.Log(SongTimeMs);
 
         // Visual smoothing ONLY (no gameplay logic depends on this)
         _visualSongTime = Mathf.Lerp(

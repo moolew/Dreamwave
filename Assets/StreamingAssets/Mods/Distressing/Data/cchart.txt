@@ -6,16 +6,16 @@ event creates an event rather than a note, it takes a type like PF which is for 
 position=0
 type=AFI
 player=right
-flipX=true
+flipX=false
 flipY=false
-zIndex=0
+zIndex=1
 display=true
-speed=5
-duration=0.2
-red=0
-green=0
-blue=0
-alpha=1.0
+speed=1
+duration=0.25
+red=255
+green=255
+blue=255
+alpha=0.1
 # end
 
 # start
@@ -24,14 +24,14 @@ type=AFI
 player=left
 flipX=false
 flipY=false
-zIndex=0
+zIndex=1
 display=true
-speed=5
-duration=0.2
-red=0
-green=0
-blue=0
-alpha=1.0
+speed=1
+duration=0.25
+red=255
+green=255
+blue=255
+alpha=0.1
 # end
 
 # start
@@ -82,5 +82,34 @@ effectName=saturation
 effectValue=100
 effectSpeed=2
 # end
+
+# start
+position=26000
+type=R
+repeatRate=2
+repeatTime=4
+# end
+
+# start
+position=26375
+type=R
+repeatRate=3
+repeatTime=4
+# end
+
+# start
+position=26750
+type=R
+repeatRate=2
+repeatTime=4
+# end
+
+# start
+position=26937.5
+type=R
+repeatRate=1
+repeatTime=2
+# end
+
 
 
