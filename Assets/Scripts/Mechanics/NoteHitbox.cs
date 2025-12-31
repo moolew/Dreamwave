@@ -18,11 +18,11 @@ public class NoteHitbox : MonoBehaviour
 
     private void Awake()
     {
-        ratingThresholds[0] = 60;
-        ratingThresholds[1] = 100;
-        ratingThresholds[2] = 140;
-        ratingThresholds[3] = 180;
-        ratingThresholds[4] = 220;
+        ratingThresholds[0] = 25;
+        ratingThresholds[1] = 45;
+        ratingThresholds[2] = 65;
+        ratingThresholds[3] = 85;
+        ratingThresholds[4] = 105;
     }
 
     private void Start()
@@ -45,6 +45,26 @@ public class NoteHitbox : MonoBehaviour
     {
         float songTime = StrumManager.SM_Instance.JudgementTimeMs;
 
+        // Hard prune notes that are already too late
+        for (int i = notesWithinHitBox.Count - 1; i >= 0; i--)
+        {
+            var n = notesWithinHitBox[i];
+            if (n == null || n.wasJudged)
+            {
+                notesWithinHitBox.RemoveAt(i);
+                continue;
+            }
+
+            if (songTime - n.noteTimeMs > ratingThresholds[4])
+            {
+                n.wasJudged = true;
+                NoteHit?.Invoke("Missed", songTime - n.noteTimeMs, 0f, keyForSide.ToString() + "miss");
+                n.enabled = false;
+                n.GetComponent<SpriteRenderer>().enabled = false;
+                notesWithinHitBox.RemoveAt(i);
+            }
+        }
+
         MsNote best = null;
         float bestDelta = float.MaxValue;
 
@@ -64,6 +84,8 @@ public class NoteHitbox : MonoBehaviour
         if (best == null) return;
 
         string rating = GetRating(bestDelta);
+
+        Debug.Log(GetRating(bestDelta) + " " + bestDelta);
 
         if (rating == "Missed") return;
 

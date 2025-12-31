@@ -276,7 +276,7 @@ public class GameManager : MonoBehaviour
                 hitScore = scores[4];
                 combo = 0;
                 shits++;
-                hitAccuracy = 40.0f;
+                hitAccuracy = 60.0f;
 
                 var shit = Instantiate(ratings[4], ratings[4].transform.position, Quaternion.identity);
                 shit.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
@@ -288,7 +288,7 @@ public class GameManager : MonoBehaviour
                 hitScore = scores[3];
                 combo++;
                 bads++;
-                hitAccuracy = 60.0f;
+                hitAccuracy = 80.0f;
 
                 var bad = Instantiate(ratings[3], ratings[3].transform.position, Quaternion.identity);
                 bad.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
@@ -301,7 +301,7 @@ public class GameManager : MonoBehaviour
                 combo++;
                 cools++;
                 totalNotesHitCorrect++;
-                hitAccuracy = 85.0f;
+                hitAccuracy = 90.0f;
 
                 var cool = Instantiate(ratings[2], ratings[2].transform.position, Quaternion.identity);
                 cool.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
@@ -314,7 +314,7 @@ public class GameManager : MonoBehaviour
                 combo++;
                 sicks++;
                 totalNotesHitCorrect++;
-                hitAccuracy = 95.0f;
+                hitAccuracy = 100.0f;
 
                 var sick = Instantiate(ratings[1], ratings[1].transform.position, Quaternion.identity);
                 sick.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "MS: " + msDelay.ToString("F4");
