@@ -30,40 +30,42 @@ public class NoteHitbox : MonoBehaviour
         buttonForSide = side.ToString();
     }
 
-    void Update()
+    private void Update()
     {
         if (PauseMenu.instance._isPaused) return;
-        if (notesWithinHitBox.Count == 0) return;
 
-        if (Input.GetKeyDown(keyForSide) || MobileControls.instance.GetButtonsPressed(buttonForSide))
-        {
-            TryHit();
-        }
-    }
-
-    private void TryHit()
-    {
         float songTime = StrumManager.SM_Instance.JudgementTimeMs;
 
-        // Hard prune notes that are already too late
         for (int i = notesWithinHitBox.Count - 1; i >= 0; i--)
         {
-            var n = notesWithinHitBox[i];
-            if (n == null || n.wasJudged)
+            var note = notesWithinHitBox[i];
+            if (note == null || note.wasJudged)
             {
                 notesWithinHitBox.RemoveAt(i);
                 continue;
             }
 
-            if (songTime - n.noteTimeMs > ratingThresholds[4])
+            float delta = songTime - note.noteTimeMs;
+
+            if (delta > ratingThresholds[4])
             {
-                n.wasJudged = true;
-                NoteHit?.Invoke("Missed", songTime - n.noteTimeMs, 0f, keyForSide.ToString() + "miss");
-                n.enabled = false;
-                n.GetComponent<SpriteRenderer>().enabled = false;
+                note.wasJudged = true;
+                NoteHit?.Invoke("Missed", delta, 0f, keyForSide.ToString() + "miss");
+                note.enabled = false;
+                note.GetComponent<SpriteRenderer>().enabled = false;
                 notesWithinHitBox.RemoveAt(i);
             }
         }
+
+        if (notesWithinHitBox.Count == 0) return;
+
+        if (Input.GetKeyDown(keyForSide) || MobileControls.instance.GetButtonsPressed(buttonForSide))
+            TryHit();
+    }
+
+    private void TryHit()
+    {
+        float songTime = StrumManager.SM_Instance.JudgementTimeMs;
 
         MsNote best = null;
         float bestDelta = float.MaxValue;

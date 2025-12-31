@@ -41,7 +41,7 @@ public class StrumManager : MonoBehaviour
 
     private void Update()
     {
-        SongTimeMs = (float)((AudioSettings.dspTime - _songDspStart) * 1000.0);
+        SongTimeMs = (float)((AudioSettings.dspTime - _songDspStart) * 1000.0 * _audioSource.pitch);
         JudgementTimeMs = SongTimeMs;
         _visualSongTime = Mathf.Lerp(_visualSongTime, SongTimeMs, 1f - Mathf.Exp(-Time.deltaTime * 50f)); // interp those notes cause its so fucking jitty otherwise
         // some shit to do with unity transform caching, shader based note scrolling? this shit is so niche ill never figure it out :sob:
