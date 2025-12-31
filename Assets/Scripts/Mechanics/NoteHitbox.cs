@@ -18,11 +18,11 @@ public class NoteHitbox : MonoBehaviour
 
     private void Awake()
     {
-        ratingThresholds[0] = 40;
-        ratingThresholds[1] = 80;
-        ratingThresholds[2] = 120;
-        ratingThresholds[3] = 150;
-        ratingThresholds[4] = 180;
+        ratingThresholds[0] = 60;
+        ratingThresholds[1] = 100;
+        ratingThresholds[2] = 140;
+        ratingThresholds[3] = 180;
+        ratingThresholds[4] = 220;
     }
 
     private void Start()
@@ -74,6 +74,7 @@ public class NoteHitbox : MonoBehaviour
             Instantiate(NoteHitParticle, NoteHitParticle.transform.position, Quaternion.identity).SetActive(true);
         }
 
+        best.wasJudged = true;
         best.GetComponent<SpriteRenderer>().enabled = false;
         best.enabled = false;
         notesWithinHitBox.Remove(best);
@@ -101,16 +102,20 @@ public class NoteHitbox : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         var note = collision.GetComponent<MsNote>();
-        if (note == null) return;
+        if (note == null || note.wasJudged) return;
 
-        if (notesWithinHitBox.Contains(note))
+        float delta = StrumManager.SM_Instance.SongTimeMs - note.noteTimeMs;
+
+        if (delta > ratingThresholds[4])
         {
-            NoteHit?.Invoke("Missed",
-                Mathf.Abs(note.noteTimeMs - StrumManager.SM_Instance.SongTimeMs),
-                0f,
-                keyForSide.ToString() + "miss");
+            note.wasJudged = true;
+
+            NoteHit?.Invoke("Missed", delta, 0f, keyForSide.ToString() + "miss");
 
             notesWithinHitBox.Remove(note);
+            note.enabled = false;
+            note.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
+
 }

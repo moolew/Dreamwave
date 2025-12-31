@@ -163,10 +163,12 @@ public class DreamwaveModLoader : MonoBehaviour
                                 body.transform.localScale.z
                             );
                             body.layer = layer;
+                            body.SetActive(false); // disable until fixed
 
                             var endNote = Instantiate(endPrefab, note.transform);
                             endNote.transform.localPosition = new Vector3(0f, -visualLength, 0f);
                             endNote.layer = layer;
+                            endNote.SetActive(false); // disable until fixed
                         }
                     }
                 }
