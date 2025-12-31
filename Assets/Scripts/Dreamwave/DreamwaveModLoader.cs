@@ -156,7 +156,7 @@ public class DreamwaveModLoader : MonoBehaviour
                             float visualLength = holdLength * StrumManager.SM_Instance.ScrollSpeed;
 
                             var body = Instantiate(chunkPrefab, note.transform);
-                            body.transform.localPosition = new Vector3(0f, -visualLength * 0.5f, 0f);
+                            body.transform.localPosition = new Vector3(0f, -visualLength, 0f);
                             body.transform.localScale = new Vector3(
                                 body.transform.localScale.x,
                                 visualLength,
