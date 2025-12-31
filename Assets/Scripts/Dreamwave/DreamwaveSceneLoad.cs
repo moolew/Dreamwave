@@ -41,7 +41,7 @@ public class DreamwaveSceneLoad : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(2f);
 
-        if (SceneManager.GetActiveScene().name == "MainScene")
+        if (SceneManager.GetActiveScene().name == "MainScene" && scene == "MainScene")
         {
             yield return new WaitUntil(() => StrumManager.SM_Instance != null);
             yield return new WaitUntil(() => TempoManager.instance != null);
