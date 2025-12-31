@@ -8281,8 +8281,8 @@ Transform:
   m_GameObject: {fileID: 229887434}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5449413, z: 1}
+  m_LocalPosition: {x: 0, y: -0.89471, z: 0}
+  m_LocalScale: {x: 1, y: 0.6768171, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 41508192}
@@ -8302,16 +8302,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 3
   notesWithinHitBox: []
-  centre: {fileID: 41508191}
-  delayInMs: 0
   ratingThresholds:
-  - 0
-  - 0.4
-  - 0.7
-  - 0.9
-  - 1.2
-  - 1.4
-  keyForSide: 0
+  - 30
+  - 60
+  - 90
+  - 140
+  - 200
+  keyForSide: 39
   buttonForSide: 
   NoteHitParticle: {fileID: 3778646841318257463}
 --- !u!61 &229887437
@@ -13490,8 +13487,8 @@ Transform:
   m_GameObject: {fileID: 468820205}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5449413, z: 1}
+  m_LocalPosition: {x: -0.000000051878, y: -0.91994, z: 0}
+  m_LocalScale: {x: 1, y: 0.6768171, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1741764302}
@@ -13511,16 +13508,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   notesWithinHitBox: []
-  centre: {fileID: 1741764301}
-  delayInMs: 0
   ratingThresholds:
-  - 0
-  - 0.4
-  - 0.7
-  - 0.9
-  - 1.2
-  - 1.4
-  keyForSide: 0
+  - 30
+  - 60
+  - 90
+  - 140
+  - 200
+  keyForSide: 115
   buttonForSide: 
   NoteHitParticle: {fileID: 1821306573}
 --- !u!61 &468820208
@@ -13567,7 +13561,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 7.13}
+  m_Size: {x: 1, y: 7.3}
   m_EdgeRadius: 0
 --- !u!50 &468820209
 Rigidbody2D:
@@ -19864,8 +19858,8 @@ Transform:
   m_GameObject: {fileID: 868015676}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5449413, z: 1}
+  m_LocalPosition: {x: 0.000000051878, y: -0.91994, z: 0}
+  m_LocalScale: {x: 1, y: 0.6768171, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2092693563}
@@ -19885,16 +19879,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 2
   notesWithinHitBox: []
-  centre: {fileID: 2092693562}
-  delayInMs: 0
   ratingThresholds:
-  - 0
-  - 0.4
-  - 0.7
-  - 0.9
-  - 1.2
-  - 1.4
-  keyForSide: 0
+  - 30
+  - 60
+  - 90
+  - 140
+  - 200
+  keyForSide: 59
   buttonForSide: 
   NoteHitParticle: {fileID: 1444186459}
 --- !u!61 &868015679
@@ -19941,7 +19932,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 7.13}
+  m_Size: {x: 1, y: 7.3}
   m_EdgeRadius: 0
 --- !u!50 &868015680
 Rigidbody2D:
@@ -23116,8 +23107,8 @@ Transform:
   m_GameObject: {fileID: 1024807876}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5449413, z: 1}
+  m_LocalPosition: {x: 0, y: -0.89471, z: 0}
+  m_LocalScale: {x: 1, y: 0.6768171, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 444542578}
@@ -23210,16 +23201,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 0
   notesWithinHitBox: []
-  centre: {fileID: 444542577}
-  delayInMs: 0
   ratingThresholds:
-  - 0
-  - 0.4
-  - 0.7
-  - 0.9
-  - 1.2
-  - 1.4
-  keyForSide: 0
+  - 30
+  - 60
+  - 90
+  - 140
+  - 200
+  keyForSide: 97
   buttonForSide: 
   NoteHitParticle: {fileID: 300072332}
 --- !u!1 &1027174688
