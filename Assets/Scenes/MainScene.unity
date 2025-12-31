@@ -24040,6 +24040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1069307947}
   - component: {fileID: 1069307948}
+  - component: {fileID: 1069307949}
   m_Layer: 6
   m_Name: Chart Scroller
   m_TagString: ChartScroller
@@ -24072,7 +24073,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069307946}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 605679eb41582274d951518c291cc14e, type: 3}
   m_Name: 
@@ -24081,6 +24082,24 @@ MonoBehaviour:
   smoothingFactor: 5
   tempoManager: {fileID: 1475031430}
   CanScroll: 1
+--- !u!114 &1069307949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069307946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14f785afbb03db45971f9d4c9eae610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrumManager
+  _audioSource: {fileID: 1475031433}
+  SongTimeMs: 0
+  ScrollSpeed: 0
+  strumLineY: 0
+  unitsPerSecond: 5
+  activeNotes: []
 --- !u!1 &1076052200
 GameObject:
   m_ObjectHideFlags: 0

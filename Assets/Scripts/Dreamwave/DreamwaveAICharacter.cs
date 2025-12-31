@@ -1,6 +1,6 @@
 /*****************************************************************************
 **                                         
-**  Dreamverse Character
+**  Dreamwave Character
 **
 **  Name    :   DreamwaveAICharacter.cs
 **  Author  :   Lewis-Lee

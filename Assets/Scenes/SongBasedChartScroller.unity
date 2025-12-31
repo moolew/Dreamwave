@@ -235,7 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 12000
+  noteTimeMs: 12000
+  cachedTransform: {fileID: 0}
 --- !u!1001 &60879412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -352,7 +353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 4000
+  noteTimeMs: 4000
+  cachedTransform: {fileID: 0}
 --- !u!1 &162751896
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162751898}
   - component: {fileID: 162751897}
+  - component: {fileID: 162751899}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -450,6 +453,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &162751899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162751896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1001 &171170743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,7 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 3000
+  noteTimeMs: 3000
+  cachedTransform: {fileID: 0}
 --- !u!1 &218839711
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +747,7 @@ MonoBehaviour:
   ScrollSpeed: 3
   strumLineY: 0
   unitsPerSecond: 5
+  activeNotes: []
 --- !u!1 &274211258
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 8000
+  noteTimeMs: 8000
+  cachedTransform: {fileID: 0}
 --- !u!1001 &316674566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -990,7 +1025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 5000
+  noteTimeMs: 5000
+  cachedTransform: {fileID: 0}
 --- !u!1001 &528920246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1107,7 +1143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 7000
+  noteTimeMs: 7000
+  cachedTransform: {fileID: 0}
 --- !u!1 &614988604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 10000
+  noteTimeMs: 10000
+  cachedTransform: {fileID: 0}
 --- !u!1 &1111354095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 9000
+  noteTimeMs: 9000
+  cachedTransform: {fileID: 0}
 --- !u!1001 &1292050528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1582,7 +1621,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 1000
+  noteTimeMs: 1000
+  cachedTransform: {fileID: 0}
 --- !u!1 &1522599964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,7 +1876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 6000
+  noteTimeMs: 6000
+  cachedTransform: {fileID: 0}
 --- !u!1001 &1710036004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1953,7 +1994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 11000
+  noteTimeMs: 11000
+  cachedTransform: {fileID: 0}
 --- !u!1001 &1759843000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2070,7 +2112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
-  _noteMsTime: 2000
+  noteTimeMs: 2000
+  cachedTransform: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

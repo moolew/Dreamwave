@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -95,6 +95,7 @@ public class DreamwaveModLoader : MonoBehaviour
                 currentNote = new GameObject("NoteHolder");
                 currentNote.transform.SetParent(chartParent);
                 currentNote.transform.localPosition = Vector3.zero;
+                currentNote.AddComponent<MsNote>();
                 holdLength = 0f;
                 noteType = "";
             }
@@ -105,7 +106,6 @@ public class DreamwaveModLoader : MonoBehaviour
                     Vector3 spawnPosition = currentNote.transform.localPosition;
                     string noteKey = $"{chartParent.GetInstanceID()}_{lane}_{spawnPosition.y:F3}"
 ;
-
                     if (usedNotes.Contains(noteKey))
                     {
                         Debug.LogWarning($"Duplicate note detected at lane {lane}, position {spawnPosition.y:F3}, skipping.");
@@ -146,30 +146,27 @@ public class DreamwaveModLoader : MonoBehaviour
                     if (prefab != null)
                     {
                         var note = Instantiate(prefab, chartParent);
+                        note.GetComponent<MsNote>().noteTimeMs = -spawnPosition.y;
                         note.transform.localPosition = spawnPosition;
                         note.layer = layer;
                         note.tag = (layer == 6) ? "Note" : "EnemyNote";
 
                         if (noteType == "H" && chunkPrefab != null && endPrefab != null)
                         {
-                            float chunkStep = 0.39f;
-                            float startY = spawnPosition.y;
-                            float endY = spawnPosition.y - holdLength;
-                            for (float y = startY - chunkStep; y > endY; y -= chunkStep)
-                            {
-                                var chunk = Instantiate(chunkPrefab, chartParent);
-                                chunk.transform.localPosition = new Vector3(spawnPosition.x, y, 0);
-                                chunk.layer = layer;
+                            float visualLength = holdLength * StrumManager.SM_Instance.ScrollSpeed;
 
-                                var docc = chunk.GetComponent<DisableOnCollision>();
-                                docc._ai = (chartParent == EnemyChart);
-                            }
-                            var endNote = Instantiate(endPrefab, chartParent);
-                            endNote.transform.localPosition = new Vector3(spawnPosition.x, endY, 0);
+                            var body = Instantiate(chunkPrefab, note.transform);
+                            body.transform.localPosition = new Vector3(0f, -visualLength * 0.5f, 0f);
+                            body.transform.localScale = new Vector3(
+                                body.transform.localScale.x,
+                                visualLength,
+                                body.transform.localScale.z
+                            );
+                            body.layer = layer;
+
+                            var endNote = Instantiate(endPrefab, note.transform);
+                            endNote.transform.localPosition = new Vector3(0f, -visualLength, 0f);
                             endNote.layer = layer;
-
-                            var doce = endNote.GetComponent<DisableOnCollision>();
-                            doce._ai = (chartParent == EnemyChart);
                         }
                     }
                 }
@@ -193,8 +190,8 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (line.StartsWith("position="))
             {
                 float y = -float.Parse(line.Split('=')[1]);
-                y *= PlayerPrefs.GetFloat("scrollSpeed");
-
+                var ms = currentNote.GetComponent<MsNote>();
+                ms.noteTimeMs = -y;
                 currentNote.transform.localPosition = new Vector3(currentNote.transform.localPosition.x, y, 0);
             }
             else if (line.StartsWith("type="))
@@ -204,7 +201,6 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (line.StartsWith("length=") && noteType == "H")
             {
                 holdLength = float.Parse(line.Split('=')[1]);
-                holdLength *= PlayerPrefs.GetFloat("scrollSpeed"); // Scale hold length
             }
         }
     }
@@ -229,6 +225,7 @@ public class DreamwaveModLoader : MonoBehaviour
                 currentEvent = new GameObject("EventHolder");
                 currentEvent.transform.SetParent(chartParent);
                 currentEvent.transform.localPosition = Vector3.zero;
+                currentEvent.AddComponent<MsNote>();
                 eventType = "";
                 currentEventI = null;
             }
@@ -242,8 +239,8 @@ public class DreamwaveModLoader : MonoBehaviour
             else if (line.StartsWith("position="))
             {
                 float y = -float.Parse(line.Split('=')[1]);
-                y *= PlayerPrefs.GetFloat("scrollSpeed");
-
+                var c = currentEvent.GetComponent<MsNote>();
+                c.noteTimeMs = -y;
                 currentEvent.transform.localPosition = new Vector3(0, y, 0);
             }
             else if (line.StartsWith("type="))
@@ -355,9 +352,7 @@ public class DreamwaveModLoader : MonoBehaviour
 
                 if (currentEventI.Axis.ToUpper() == "X")
                     axis = "x";
-                else if (currentEventI.Axis.ToUpper() == "X")
-                    axis = "y";
-                else
+                else if (currentEventI.Axis.ToUpper() == "Y")
                     axis = "y";
             }
             else if (eventType == "MOV" && line.StartsWith("moveAmount="))

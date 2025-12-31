@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7188800556214389389
 Transform:
@@ -123,6 +123,27 @@ MonoBehaviour:
   ZoomAmount: 0
   ZoomSpeed: 0
   BpmBump: 0
+  RepeatRate: 0
+  RepeatTime: 0
+  Axis: 
+  RotateAmount: 0
+  RotateTime: 0
+  MoveAmount: 0
+  MoveTime: 0
+  PostProcessEffectName: 
+  PostProcessEffectValue: 0
+  PostProcessEffectSpeed: 0
+  whichPlayerToAfterImage: 
+  displayAfterImage: 0
+  afterImageSpeed: 0
+  afterImageColourR: 0
+  afterImageColourG: 0
+  afterImageColourB: 0
+  afterImageColourA: 0
+  afterImageDuration: 0
+  afterImageZIndex: 0
+  flipXAfterImage: 0
+  flipYAfterImage: 0
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
   _cutscenePath: 

@@ -152,8 +152,8 @@ public class NoteHitbox : MonoBehaviour
         }
     }
 
-    private void HandleNoteVisibility(GameObject noteObject)
+    private void HandleNoteVisibility(GameObject noteObject) // updated for hold notes new logic
     {
-        noteObject.SetActive(false);
+        noteObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 }
