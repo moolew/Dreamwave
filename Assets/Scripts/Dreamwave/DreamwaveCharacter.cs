@@ -1,6 +1,6 @@
 /*****************************************************************************
 **                                         
-**  Dreamverse Character
+**  Dreamwave Character
 **
 **  Name    :   DreamwaveCharacter.cs
 **  Author  :   Lewis-Lee
@@ -114,8 +114,10 @@ public class DreamwaveCharacter : DreamwaveAnimation
         switch (scoreType)
         {
             case "Shit": // will handle miss sprites another time
+                _isSinging = false;
                 break;
-            case "Miss":
+            case "Missed":
+                _isSinging = false;
                 break;
             default:
                 if (direction == GameManager.Instance.left.ToString())
