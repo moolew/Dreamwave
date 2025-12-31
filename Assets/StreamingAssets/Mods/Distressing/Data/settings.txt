@@ -1,5 +1,5 @@
 startScrollAtStep=0
 scrollSpeedMultiplier=4.654
-songPitch=0.8
+songPitch=1.0
 cameraXOffset=0
 cameraYOffset=0.5
