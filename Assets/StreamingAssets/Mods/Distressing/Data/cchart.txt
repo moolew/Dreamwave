@@ -12,10 +12,10 @@ zIndex=0
 display=true
 speed=5
 duration=0.2
-red=253
-green=61
-blue=144
-alpha=0.7
+red=0
+green=0
+blue=0
+alpha=1.0
 # end
 
 # start
@@ -28,262 +28,59 @@ zIndex=0
 display=true
 speed=5
 duration=0.2
-red=102
-green=46
-blue=143
-alpha=0.7
-# end
-
-
-# start
-position=2
-type=PF-e
+red=0
+green=0
+blue=0
+alpha=1.0
 # end
 
 # start
-position=74
-type=PF-p
+position=0
+type=PP
+effectName=saturation
+effectValue=-100
+effectSpeed=100
 # end
 
 # start
-position=149
-type=PF-e
+position=0
+type=RC
+rotateAmount=70
+rotateTime=100
 # end
 
 # start
-position=220
+position=0
 type=PF-c
 # end
 
 # start
-position=290
-type=PF-e
+position=0
+type=R
+repeatRate=5
+repeatTime=100
 # end
 
 # start
-position=444
-type=PF-p
+position=1
+type=R
+repeatRate=1
+repeatTime=0.15
 # end
 
 # start
-position=593
-type=PF-e
+position=1
+type=RC
+rotateAmount=0
+rotateTime=0.3
 # end
 
 # start
-position=742
-type=PF-p
-# end
-
-# start
-position=889
-type=PF-e
-# end
-
-# start
-position=926
-type=PF-p
+position=16000
+type=PP
+effectName=saturation
+effectValue=100
+effectSpeed=0.5
 # end
 
 
-# start
-position=964
-type=PF-e
-# end
-
-# start
-position=1000
-type=PF-p
-# end
-
-# start
-position=1188
-type=PF-e
-# end
-
-# start
-position=1262
-type=PF-p
-# end
-
-# start
-position=1325
-type=PF-c
-# end
-
-# start
-position=1341
-type=PF-e
-# end
-
-# start
-position=1370
-type=PF-c
-# end
-
-# start
-position=1410
-type=PF-p
-# end
-
-# start
-position=1485
-type=PF-e
-# end
-
-# start
-position=1520
-type=PF-c
-# end
-
-# start
-position=1560
-type=PF-p
-# end
-
-# start
-position=1595
-type=PF-c
-# end
-
-
-
-// LIKE U PRO
-
-# start
-position=522
-type=Z
-amount=2.4
-speed=10
-bpmBump=false
-# end
-
-# start
-position=524
-type=Z
-amount=2
-speed=10
-bpmBump=false
-# end
-
-# start
-position=526
-type=Z
-amount=1.6
-speed=10
-bpmBump=false
-# end
-
-# start
-position=532
-type=Z
-amount=3
-speed=15
-bpmBump=true
-# end
-
-// LIKE U PRO
-
-
-
-// IM NOT CUTE
-
-
-# start
-position=820
-type=Z
-amount=2.4
-speed=10
-bpmBump=false
-# end
-
-# start
-position=822
-type=Z
-amount=2
-speed=10
-bpmBump=false
-# end
-
-# start
-position=824
-type=Z
-amount=1.6
-speed=10
-bpmBump=false
-# end
-
-# start
-position=828
-type=Z
-amount=3
-speed=15
-bpmBump=true
-# end
-
-
-// IM NOT CUTE
-
-
-// JEEZ
-
-# start
-position=850
-type=Z
-amount=2
-speed=10
-bpmBump=false
-# end
-
-# start
-position=854
-type=Z
-amount=3
-speed=15
-bpmBump=true
-# end
-
-// JEEZ
-
-
-
-// SIGH 1
-
-# start
-position=377
-type=Z
-amount=2
-speed=10
-bpmBump=false
-# end
-
-# start
-position=381
-type=Z
-amount=3
-speed=15
-bpmBump=true
-# end
-
-// SIGH 1
-
-
-// SIGH 2
-
-# start
-position=675
-type=Z
-amount=2
-speed=10
-bpmBump=false
-# end
-
-# start
-position=679
-type=Z
-amount=3
-speed=15
-bpmBump=true
-# end
-
-// SIGH 2

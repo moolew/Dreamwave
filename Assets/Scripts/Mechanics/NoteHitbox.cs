@@ -18,11 +18,11 @@ public class NoteHitbox : MonoBehaviour
 
     private void Awake()
     {
-        ratingThresholds[0] = 25;
-        ratingThresholds[1] = 45;
-        ratingThresholds[2] = 65;
-        ratingThresholds[3] = 85;
-        ratingThresholds[4] = 105;
+        ratingThresholds[0] = 30;
+        ratingThresholds[1] = 55;
+        ratingThresholds[2] = 75;
+        ratingThresholds[3] = 95;
+        ratingThresholds[4] = 115;
     }
 
     private void Start()

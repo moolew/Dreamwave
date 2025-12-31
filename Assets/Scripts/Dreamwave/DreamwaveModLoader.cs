@@ -255,6 +255,10 @@ public class DreamwaveModLoader : MonoBehaviour
                 {
                     string focus = splitEv.Length > 1 ? splitEv[1] : "";
                     var r = Instantiate(Event, chartParent);
+                    var evNote = r.AddComponent<MsNote>();
+                    evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
+                    evNote.wasJudged = true; // never score events
+                    StrumManager.SM_Instance.activeNotes.Add(evNote);
                     r.transform.localPosition = currentEvent.transform.localPosition;
                     r.layer = 6;
                     currentEventI = r.GetComponent<ScrollEvents>();
@@ -265,6 +269,10 @@ public class DreamwaveModLoader : MonoBehaviour
                 else if (ev == "Z") // FOV ZOOM
                 {
                     var r = Instantiate(Event, chartParent);
+                    var evNote = r.AddComponent<MsNote>();
+                    evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
+                    evNote.wasJudged = true; // never score events
+                    StrumManager.SM_Instance.activeNotes.Add(evNote);
                     r.transform.localPosition = currentEvent.transform.localPosition;
                     r.layer = 6;
                     currentEventI = r.GetComponent<ScrollEvents>();
@@ -273,6 +281,10 @@ public class DreamwaveModLoader : MonoBehaviour
                 else if (ev == "R") // REPEATED TILE ZOOM
                 {
                     var r = Instantiate(Event, chartParent);
+                    var evNote = r.AddComponent<MsNote>();
+                    evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
+                    evNote.wasJudged = true; // never score events
+                    StrumManager.SM_Instance.activeNotes.Add(evNote);
                     r.transform.position = currentEvent.transform.position;
                     r.layer = 6;
                     currentEventI = r.GetComponent<ScrollEvents>();
@@ -281,6 +293,10 @@ public class DreamwaveModLoader : MonoBehaviour
                 else if (ev == "RC") // ROTATE REPEATED TILE
                 {
                     var rc = Instantiate(Event, chartParent);
+                    var evNote = rc.AddComponent<MsNote>();
+                    evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
+                    evNote.wasJudged = true; // never score events
+                    StrumManager.SM_Instance.activeNotes.Add(evNote);
                     rc.transform.position = currentEvent.transform.position;
                     rc.layer = 6;
                     currentEventI = rc.GetComponent<ScrollEvents>();
@@ -289,6 +305,10 @@ public class DreamwaveModLoader : MonoBehaviour
                 else if (ev == "MOV") // MOVE REPEATED TILES
                 {
                     var rc = Instantiate(Event, chartParent);
+                    var evNote = rc.AddComponent<MsNote>();
+                    evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
+                    evNote.wasJudged = true; // never score events
+                    StrumManager.SM_Instance.activeNotes.Add(evNote);
                     rc.transform.position = currentEvent.transform.position;
                     rc.layer = 6;
                     currentEventI = rc.GetComponent<ScrollEvents>();
@@ -302,6 +322,10 @@ public class DreamwaveModLoader : MonoBehaviour
                 else if (splitEv[0] == "PP") // POST PROCESS EFFECT
                 {
                     var ppe = Instantiate(Event, chartParent);
+                    var evNote = ppe.AddComponent<MsNote>();
+                    evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
+                    evNote.wasJudged = true; // never score events
+                    StrumManager.SM_Instance.activeNotes.Add(evNote);
                     ppe.transform.position = currentEvent.transform.position;
                     ppe.layer = 6;
                     currentEventI = ppe.GetComponent<ScrollEvents>();
@@ -314,6 +338,10 @@ public class DreamwaveModLoader : MonoBehaviour
                 else if (ev == "AFI")
                 {
                     var afi = Instantiate(Event, chartParent);
+                    var evNote = afi.AddComponent<MsNote>();
+                    evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
+                    evNote.wasJudged = true; // never score events
+                    StrumManager.SM_Instance.activeNotes.Add(evNote);
                     afi.transform.position = currentEvent.transform.position;
                     afi.layer = 6;
                     currentEventI = afi.GetComponent<ScrollEvents>();
@@ -422,5 +450,7 @@ public class DreamwaveModLoader : MonoBehaviour
                 currentEventI.afterImageZIndex = int.Parse(line.Split('=')[1]);
             }
         }
+
+        StrumManager.SM_Instance.activeNotes.AddRange(EventsChart.GetComponentsInChildren<MsNote>());
     }
 }

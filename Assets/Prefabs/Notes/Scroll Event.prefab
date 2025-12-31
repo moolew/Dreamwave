@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7556634422175977307}
   - component: {fileID: 2519736876984934375}
   - component: {fileID: 8364984775331827611}
+  - component: {fileID: -6312022062948532460}
   m_Layer: 6
   m_Name: Scroll Event
   m_TagString: Untagged
@@ -147,3 +148,18 @@ MonoBehaviour:
   scrollSpeedModificationAmount: 0
   eventAnim: {fileID: 0}
   _cutscenePath: 
+--- !u!114 &-6312022062948532460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3938566980516334676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da89ec4549bea9a44b1a061087d7e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MsNote
+  noteTimeMs: 0
+  cachedTransform: {fileID: 0}
+  wasJudged: 1
