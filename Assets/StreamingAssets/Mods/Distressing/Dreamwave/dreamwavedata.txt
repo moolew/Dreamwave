@@ -2,8 +2,8 @@
 
 // song name is used to save/load scores so ensure you dont use the same name multiple times
 
-songName=deb8
-creator=BoxOfGolds
+songName=Distressing
+creator=FerX359
 difficulty=Normal
 
 bannerLocation=banner.png
