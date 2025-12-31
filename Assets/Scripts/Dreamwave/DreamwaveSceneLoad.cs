@@ -47,6 +47,8 @@ public class DreamwaveSceneLoad : MonoBehaviour
             yield return new WaitUntil(() => TempoManager.instance != null);
 
             yield return new WaitForSecondsRealtime(1f);
+
+            yield return new WaitUntil(() => GameObject.FindObjectOfType<FanfareEvent>().InFanfare);
         }
 
         Debug.Log("Loading scene: " + scene);
