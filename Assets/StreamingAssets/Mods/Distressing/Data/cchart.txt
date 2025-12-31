@@ -22,7 +22,7 @@ alpha=1.0
 position=0
 type=AFI
 player=left
-flipX=true
+flipX=false
 flipY=false
 zIndex=0
 display=true
@@ -65,14 +65,14 @@ repeatTime=100
 position=1
 type=R
 repeatRate=1
-repeatTime=0.15
+repeatTime=0.25
 # end
 
 # start
 position=1
 type=RC
 rotateAmount=0
-rotateTime=0.3
+rotateTime=0.25
 # end
 
 # start
@@ -80,7 +80,7 @@ position=16000
 type=PP
 effectName=saturation
 effectValue=100
-effectSpeed=0.5
+effectSpeed=2
 # end
 
 

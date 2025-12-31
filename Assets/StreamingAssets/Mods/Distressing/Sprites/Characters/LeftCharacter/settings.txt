@@ -3,6 +3,6 @@ spriteHeight=2160
 spriteScale=1.7
 spritePositionX=-3.2
 spritePositionY=0.75
-shouldFlip=false
+shouldFlip=true
 antiAliasing=true
 frameRate=20

@@ -7,7 +7,9 @@ public class NoteHitbox : MonoBehaviour
     public WhichSide side;
 
     public List<MsNote> notesWithinHitBox = new();
-    public float[] ratingThresholds;
+
+    // Timing windows (ms)
+    public float[] ratingThresholds = new float[5];
 
     public delegate void HitNote(string scoreType, float msDelay, float dummy, string direction);
     public static event HitNote NoteHit;
@@ -18,11 +20,11 @@ public class NoteHitbox : MonoBehaviour
 
     private void Awake()
     {
-        ratingThresholds[0] = 30;
-        ratingThresholds[1] = 55;
-        ratingThresholds[2] = 75;
-        ratingThresholds[3] = 95;
-        ratingThresholds[4] = 115;
+        ratingThresholds[0] = 25f;   // Dreamy
+        ratingThresholds[1] = 50f;   // Sick
+        ratingThresholds[2] = 70f;   // Cool
+        ratingThresholds[3] = 100f;  // Bad
+        ratingThresholds[4] = 160f;  // Shit / Miss cutoff
     }
 
     private void Start()
@@ -32,13 +34,16 @@ public class NoteHitbox : MonoBehaviour
 
     private void Update()
     {
-        if (PauseMenu.instance._isPaused) return;
+        if (PauseMenu.instance._isPaused)
+            return;
 
         float songTime = StrumManager.SM_Instance.JudgementTimeMs;
 
+        // MISS HANDLING
         for (int i = notesWithinHitBox.Count - 1; i >= 0; i--)
         {
             var note = notesWithinHitBox[i];
+
             if (note == null || note.wasJudged)
             {
                 notesWithinHitBox.RemoveAt(i);
@@ -49,18 +54,19 @@ public class NoteHitbox : MonoBehaviour
 
             if (delta > ratingThresholds[4])
             {
-                note.wasJudged = true;
-                NoteHit?.Invoke("Missed", delta, 0f, keyForSide.ToString() + "miss");
-                note.enabled = false;
-                note.GetComponent<SpriteRenderer>().enabled = false;
+                Judge(note, "Missed", delta, true);
                 notesWithinHitBox.RemoveAt(i);
             }
         }
 
-        if (notesWithinHitBox.Count == 0) return;
+        if (notesWithinHitBox.Count == 0)
+            return;
 
-        if (Input.GetKeyDown(keyForSide) || MobileControls.instance.GetButtonsPressed(buttonForSide))
+        if (Input.GetKeyDown(keyForSide) ||
+            MobileControls.instance.GetButtonsPressed(buttonForSide))
+        {
             TryHit();
+        }
     }
 
     private void TryHit()
@@ -72,9 +78,10 @@ public class NoteHitbox : MonoBehaviour
 
         foreach (var note in notesWithinHitBox)
         {
-            if (note == null) continue;
+            if (note == null || note.wasJudged)
+                continue;
 
-            float delta = Mathf.Abs(note.noteTimeMs - songTime);
+            float delta = Mathf.Abs(songTime - note.noteTimeMs);
 
             if (delta < bestDelta)
             {
@@ -83,25 +90,36 @@ public class NoteHitbox : MonoBehaviour
             }
         }
 
-        if (best == null) return;
+        if (best == null)
+            return;
 
         string rating = GetRating(bestDelta);
 
-        Debug.Log(GetRating(bestDelta) + " " + bestDelta);
-
-        if (rating == "Missed") return;
-
-        NoteHit?.Invoke(rating, bestDelta, 0f, keyForSide.ToString());
-
-        if ((rating == "Dreamy" || rating == "Sick" || rating == "Cool") && GameManager.Instance.shouldDrawNoteSplashes)
-        {
-            Instantiate(NoteHitParticle, NoteHitParticle.transform.position, Quaternion.identity).SetActive(true);
-        }
-
-        best.wasJudged = true;
-        best.GetComponent<SpriteRenderer>().enabled = false;
-        best.enabled = false;
+        Judge(best, rating, bestDelta, false);
         notesWithinHitBox.Remove(best);
+    }
+
+    private void Judge(MsNote note, string rating, float delta, bool isMiss)
+    {
+        note.wasJudged = true;
+        note.enabled = false;
+
+        var sr = note.GetComponent<SpriteRenderer>();
+        if (sr != null)
+            sr.enabled = false;
+
+        NoteHit?.Invoke(rating, delta, 0f, keyForSide.ToString());
+
+        if (!isMiss &&
+            (rating == "Dreamy" || rating == "Sick" || rating == "Cool") &&
+            GameManager.Instance.shouldDrawNoteSplashes)
+        {
+            Instantiate(
+                NoteHitParticle,
+                NoteHitParticle.transform.position,
+                Quaternion.identity
+            ).SetActive(true);
+        }
     }
 
     private string GetRating(float delta)
@@ -111,35 +129,25 @@ public class NoteHitbox : MonoBehaviour
         if (delta <= ratingThresholds[2]) return "Cool";
         if (delta <= ratingThresholds[3]) return "Bad";
         if (delta <= ratingThresholds[4]) return "Shit";
-
         return "Missed";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var note = collision.GetComponent<MsNote>();
-        if (note == null) return;
+        if (note == null || note.wasJudged)
+            return;
 
-        notesWithinHitBox.Add(note);
+        if (!notesWithinHitBox.Contains(note))
+            notesWithinHitBox.Add(note);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         var note = collision.GetComponent<MsNote>();
-        if (note == null || note.wasJudged) return;
+        if (note == null || note.wasJudged)
+            return;
 
-        float delta = StrumManager.SM_Instance.JudgementTimeMs - note.noteTimeMs;
-
-        if (delta > ratingThresholds[4])
-        {
-            note.wasJudged = true;
-
-            NoteHit?.Invoke("Missed", delta, 0f, keyForSide.ToString() + "miss");
-
-            notesWithinHitBox.Remove(note);
-            note.enabled = false;
-            note.GetComponent<SpriteRenderer>().enabled = false;
-        }
+        notesWithinHitBox.Remove(note);
     }
-
 }

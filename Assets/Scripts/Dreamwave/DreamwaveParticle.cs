@@ -16,7 +16,7 @@ public class DreamwaveParticle : DreamwaveAnimation
         transform.SetParent(parent);
         transform.localScale = scale;
         Renderer = GetComponent<SpriteRenderer>();
-        Renderer.sortingOrder = 1;
+        Renderer.sortingOrder = 20;
 
         if (ParticleAnimation == null || ParticleAnimation.Count == 0)
         {

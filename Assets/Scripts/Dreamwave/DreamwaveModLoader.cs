@@ -257,7 +257,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     var r = Instantiate(Event, chartParent);
                     var evNote = r.AddComponent<MsNote>();
                     evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
-                    evNote.wasJudged = true; // never score events
+                    evNote.isEvent = true; // never score events
                     StrumManager.SM_Instance.activeNotes.Add(evNote);
                     r.transform.localPosition = currentEvent.transform.localPosition;
                     r.layer = 6;
@@ -271,7 +271,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     var r = Instantiate(Event, chartParent);
                     var evNote = r.AddComponent<MsNote>();
                     evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
-                    evNote.wasJudged = true; // never score events
+                    evNote.isEvent = true; // never score events
                     StrumManager.SM_Instance.activeNotes.Add(evNote);
                     r.transform.localPosition = currentEvent.transform.localPosition;
                     r.layer = 6;
@@ -283,7 +283,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     var r = Instantiate(Event, chartParent);
                     var evNote = r.AddComponent<MsNote>();
                     evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
-                    evNote.wasJudged = true; // never score events
+                    evNote.isEvent = true; // never score events
                     StrumManager.SM_Instance.activeNotes.Add(evNote);
                     r.transform.position = currentEvent.transform.position;
                     r.layer = 6;
@@ -295,7 +295,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     var rc = Instantiate(Event, chartParent);
                     var evNote = rc.AddComponent<MsNote>();
                     evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
-                    evNote.wasJudged = true; // never score events
+                    evNote.isEvent = true; // never score events
                     StrumManager.SM_Instance.activeNotes.Add(evNote);
                     rc.transform.position = currentEvent.transform.position;
                     rc.layer = 6;
@@ -307,7 +307,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     var rc = Instantiate(Event, chartParent);
                     var evNote = rc.AddComponent<MsNote>();
                     evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
-                    evNote.wasJudged = true; // never score events
+                    evNote.isEvent = true; // never score events
                     StrumManager.SM_Instance.activeNotes.Add(evNote);
                     rc.transform.position = currentEvent.transform.position;
                     rc.layer = 6;
@@ -324,7 +324,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     var ppe = Instantiate(Event, chartParent);
                     var evNote = ppe.AddComponent<MsNote>();
                     evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
-                    evNote.wasJudged = true; // never score events
+                    evNote.isEvent = true; // never score events
                     StrumManager.SM_Instance.activeNotes.Add(evNote);
                     ppe.transform.position = currentEvent.transform.position;
                     ppe.layer = 6;
@@ -340,7 +340,7 @@ public class DreamwaveModLoader : MonoBehaviour
                     var afi = Instantiate(Event, chartParent);
                     var evNote = afi.AddComponent<MsNote>();
                     evNote.noteTimeMs = currentEvent.GetComponent<MsNote>().noteTimeMs;
-                    evNote.wasJudged = true; // never score events
+                    evNote.isEvent = true;
                     StrumManager.SM_Instance.activeNotes.Add(evNote);
                     afi.transform.position = currentEvent.transform.position;
                     afi.layer = 6;

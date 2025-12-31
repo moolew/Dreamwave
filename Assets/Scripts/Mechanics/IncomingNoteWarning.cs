@@ -50,6 +50,17 @@ public class IncomingNoteWarning : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Note") | collision.gameObject.CompareTag("EnemyNote") | collision.gameObject.CompareTag("Note Hold Parent"))
+        {
+            if (collision.gameObject.GetComponent<MsNote>().wasJudged)
+            {
+                _notesInSection.Remove(collision.gameObject);
+            }
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Note") | collision.gameObject.CompareTag("EnemyNote") | collision.gameObject.CompareTag("Note Hold Parent"))
