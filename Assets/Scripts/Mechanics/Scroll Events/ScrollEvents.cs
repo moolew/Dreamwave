@@ -150,26 +150,48 @@ public class ScrollEvents : MonoBehaviour
 
     private void ChangeSongSpeed() => Instance.scrollManager.scrollSpeedMultiplier = scrollSpeedModificationAmount;
 
+    private bool _fired = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("ScrollEventTrigger"))
         {
-            switch (typeOfScrollEvent)
+            if (!_fired)
             {
-                case TypeOfScrollEvent.FocusCentre: FocusCentre(); break;
-                case TypeOfScrollEvent.FocusPlayerRight: FocusRightPlayer(); break;
-                case TypeOfScrollEvent.FocusPlayerLeft: FocusLeftPlayer(); break;
-                case TypeOfScrollEvent.CameraFov: CameraFov(); break;
-                case TypeOfScrollEvent.ChangeSongSpeed: ChangeSongSpeed(); break;
-                case TypeOfScrollEvent.Animation: eventAnim.Play(); break;
-                case TypeOfScrollEvent.InstantRestart: SceneManager.LoadScene(SceneManager.GetActiveScene().name); break;
-                case TypeOfScrollEvent.Cutscene: Instance.DreamwaveVideoStreamer.InitLoad(_cutscenePath); break;
-                case TypeOfScrollEvent.RepeatedTile: CameraZoomRepeat(RepeatRate, RepeatTime); break;
-                case TypeOfScrollEvent.RotateTile: CameraRotateTile(RotateAmount, RotateTime); break;
-                case TypeOfScrollEvent.MoveTiles: CameraMoveTile(Axis, MoveAmount, MoveTime); break;
-                case TypeOfScrollEvent.PostProcessEffect: PostProcessEffect(PostProcessEffectName, PostProcessEffectValue, PostProcessEffectSpeed); break;
-                case TypeOfScrollEvent.AfterImageEffect: AfterImageEffect(whichPlayerToAfterImage, displayAfterImage, flipXAfterImage, flipYAfterImage, afterImageZIndex, afterImageDuration, afterImageSpeed, afterImageColourR, afterImageColourG, afterImageColourB, afterImageColourA); break;
+                FireEvent(typeOfScrollEvent);
+                _fired = true;
             }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ScrollEventTrigger"))
+        {
+            if (!_fired)
+            {
+                FireEvent(typeOfScrollEvent);
+                _fired = true;
+            }
+        }
+    }
+
+    private void FireEvent(TypeOfScrollEvent ev)
+    {
+        switch (ev)
+        {
+            case TypeOfScrollEvent.FocusCentre: FocusCentre(); break;
+            case TypeOfScrollEvent.FocusPlayerRight: FocusRightPlayer(); break;
+            case TypeOfScrollEvent.FocusPlayerLeft: FocusLeftPlayer(); break;
+            case TypeOfScrollEvent.CameraFov: CameraFov(); break;
+            case TypeOfScrollEvent.ChangeSongSpeed: ChangeSongSpeed(); break;
+            case TypeOfScrollEvent.Animation: eventAnim.Play(); break;
+            case TypeOfScrollEvent.InstantRestart: SceneManager.LoadScene(SceneManager.GetActiveScene().name); break;
+            case TypeOfScrollEvent.Cutscene: Instance.DreamwaveVideoStreamer.InitLoad(_cutscenePath); break;
+            case TypeOfScrollEvent.RepeatedTile: CameraZoomRepeat(RepeatRate, RepeatTime); break;
+            case TypeOfScrollEvent.RotateTile: CameraRotateTile(RotateAmount, RotateTime); break;
+            case TypeOfScrollEvent.MoveTiles: CameraMoveTile(Axis, MoveAmount, MoveTime); break;
+            case TypeOfScrollEvent.PostProcessEffect: PostProcessEffect(PostProcessEffectName, PostProcessEffectValue, PostProcessEffectSpeed); break;
+            case TypeOfScrollEvent.AfterImageEffect: AfterImageEffect(whichPlayerToAfterImage, displayAfterImage, flipXAfterImage, flipYAfterImage, afterImageZIndex, afterImageDuration, afterImageSpeed, afterImageColourR, afterImageColourG, afterImageColourB, afterImageColourA); break;
         }
     }
 }

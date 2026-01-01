@@ -450,7 +450,5 @@ public class DreamwaveModLoader : MonoBehaviour
                 currentEventI.afterImageZIndex = int.Parse(line.Split('=')[1]);
             }
         }
-
-        StrumManager.SM_Instance.activeNotes.AddRange(EventsChart.GetComponentsInChildren<MsNote>());
     }
 }

@@ -110,7 +110,7 @@ public class TempoManager : MonoBehaviour
                     break;
             }
 
-            //if (SceneManager.GetActiveScene().name == "MainScene") _metronomeS.PlayOneShot(_metronome);
+            /*if (SceneManager.GetActiveScene().name == "MainScene" && currentStep == 1 || currentStep == 3) _metronomeS.PlayOneShot(_metronome);*/
         }
     }
 
