@@ -266,3 +266,33 @@ type=PF-c
 # end
 
 
+
+# start
+position=90000
+type=R
+repeatRate=2
+repeatTime=4
+# end
+
+# start
+position=90050
+type=R
+repeatRate=3
+repeatTime=4
+# end
+
+# start
+position=91100
+type=R
+repeatRate=2
+repeatTime=4
+# end
+
+# start
+position=91200
+type=R
+repeatRate=1
+repeatTime=2
+# end
+
+
