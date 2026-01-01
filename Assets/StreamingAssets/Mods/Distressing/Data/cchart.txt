@@ -9,7 +9,7 @@ player=right
 flipX=false
 flipY=false
 zIndex=1
-display=true
+display=false
 speed=1
 duration=0.25
 red=255
@@ -25,7 +25,7 @@ player=left
 flipX=false
 flipY=false
 zIndex=1
-display=true
+display=false
 speed=1
 duration=0.25
 red=255
@@ -111,5 +111,158 @@ repeatRate=1
 repeatTime=2
 # end
 
+
+
+# start
+position=64000
+type=AFI
+player=left
+flipX=false
+flipY=false
+zIndex=1
+display=true
+speed=1
+duration=0.25
+red=255
+green=255
+blue=255
+alpha=0.1
+# end
+
+# start
+position=64000
+type=PF-e
+# end
+
+# start
+position=64000
+type=Z
+amount=2
+speed=3
+bpmBump=true
+# end
+
+# start
+position=64000
+type=MOV
+axis=X
+moveAmount=-0.1
+moveTime=3
+# end
+
+# start
+position=64000
+type=RC
+rotateAmount=10
+rotateTime=0.3
+# end
+
+# start
+position=72000
+type=AFI
+player=left
+flipX=false
+flipY=false
+zIndex=1
+display=false
+speed=1
+duration=0.25
+red=255
+green=255
+blue=255
+alpha=0.1
+# end
+
+
+
+# start
+position=72000
+type=AFI
+player=right
+flipX=false
+flipY=false
+zIndex=1
+display=true
+speed=1
+duration=0.25
+red=255
+green=255
+blue=255
+alpha=0.1
+# end
+
+# start
+position=72000
+type=PF-p
+# end
+
+# start
+position=72000
+type=Z
+amount=2.5
+speed=3
+bpmBump=true
+# end
+
+# start
+position=72000
+type=MOV
+axis=X
+moveAmount=0.1
+moveTime=3
+# end
+
+# start
+position=72000
+type=RC
+rotateAmount=-10
+rotateTime=0.3
+# end
+
+# start
+position=80000
+type=AFI
+player=right
+flipX=false
+flipY=false
+zIndex=1
+display=false
+speed=1
+duration=0.25
+red=255
+green=255
+blue=255
+alpha=0.1
+# end
+
+
+
+# start
+position=80000
+type=Z
+amount=3
+speed=1
+bpmBump=true
+# end
+
+# start
+position=80000
+type=MOV
+axis=X
+moveAmount=0
+moveTime=1
+# end
+
+# start
+position=80000
+type=RC
+rotateAmount=360
+rotateTime=3
+# end
+
+# start
+position=80000
+type=PF-c
+# end
 
 
