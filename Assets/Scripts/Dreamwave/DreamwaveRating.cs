@@ -32,41 +32,33 @@ public class DreamwaveRating : DreamwaveAnimation
 
     private IEnumerator RepeatAnimation()
     {
-        yield return new WaitUntil(() => frames.Count > 0 && offsets.Count > 0);
+        yield return new WaitUntil(() => frames.Count != 0 && offsets.Count != 0);
 
-        while (repeatAnim)
-        {
-            _complete = false;
-            rrenderer.enabled = true;
+        _complete = false;
+        PlayAnimation(rrenderer, frames, offsets, timeToFlick);
 
-            PlayAnimation(rrenderer, frames, offsets, timeToFlick);
+        yield return new WaitUntil(() => _complete);
 
-            yield return new WaitUntil(() => _complete);
-
-            timer = lastingTime;
-
-            yield return new WaitUntil(() => timer <= 0f);
-        }
+        if (repeatAnim)
+            StartCoroutine(RepeatAnimation());
     }
+
 
     private float timer;
     private Color color;
     private void Update()
     {
-        if (!rrenderer.enabled) return;
-
         timer -= Time.deltaTime;
 
         if (timer <= 0f)
         {
-            color.a = Mathf.Lerp(color.a, 0f, Time.deltaTime * 15f);
+            color.a = Mathf.Lerp(color.a, 0f, Time.deltaTime * 20f);
             rrenderer.color = color;
 
-            if (color.a <= 0.01f)
+            if (color.a <= 0.001f)
             {
-                rrenderer.enabled = false;
+                this.gameObject.SetActive(false);
             }
         }
     }
-
 }
