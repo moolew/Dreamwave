@@ -79,7 +79,7 @@ rotateTime=0.25
 position=16000
 type=PP
 effectName=saturation
-effectValue=100
+effectValue=0
 effectSpeed=2
 # end
 
