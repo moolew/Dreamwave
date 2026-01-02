@@ -2036,8 +2036,7 @@ GameObject:
   - component: {fileID: 133114314}
   - component: {fileID: 133114316}
   - component: {fileID: 133114315}
-  - component: {fileID: 133114317}
-  - component: {fileID: 133114318}
+  - component: {fileID: 133114319}
   m_Layer: 5
   m_Name: Shit
   m_TagString: Untagged
@@ -2103,24 +2102,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133114313}
   m_CullTransparentMesh: 1
---- !u!111 &133114317
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133114313}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
---- !u!114 &133114318
+--- !u!114 &133114319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2129,10 +2111,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 133114313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f294e778b6348334e8b87300b27e0113, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2c3585d109e664ebbdb24867d47ba7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 133114317}
+  m_EditorClassIdentifier: Assembly-CSharp::DreamwaveRating
+  rrenderer: {fileID: 0}
+  entranceFrames: []
+  frames: []
+  exitFrames: []
+  offsets: []
+  timeToFlick: 10
+  lastingTime: 0.5
+  repeatAnim: 1
 --- !u!1 &134070131
 GameObject:
   m_ObjectHideFlags: 0
@@ -11356,8 +11345,7 @@ GameObject:
   - component: {fileID: 366948237}
   - component: {fileID: 366948239}
   - component: {fileID: 366948238}
-  - component: {fileID: 366948240}
-  - component: {fileID: 366948241}
+  - component: {fileID: 366948242}
   m_Layer: 5
   m_Name: Good
   m_TagString: Untagged
@@ -11423,24 +11411,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366948236}
   m_CullTransparentMesh: 1
---- !u!111 &366948240
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366948236}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
---- !u!114 &366948241
+--- !u!114 &366948242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11449,10 +11420,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 366948236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f294e778b6348334e8b87300b27e0113, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2c3585d109e664ebbdb24867d47ba7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 366948240}
+  m_EditorClassIdentifier: Assembly-CSharp::DreamwaveRating
+  rrenderer: {fileID: 0}
+  entranceFrames: []
+  frames: []
+  exitFrames: []
+  offsets: []
+  timeToFlick: 10
+  lastingTime: 0.5
+  repeatAnim: 1
 --- !u!1 &372127849
 GameObject:
   m_ObjectHideFlags: 0
@@ -12276,8 +12254,7 @@ GameObject:
   - component: {fileID: 390432412}
   - component: {fileID: 390432414}
   - component: {fileID: 390432413}
-  - component: {fileID: 390432415}
-  - component: {fileID: 390432416}
+  - component: {fileID: 390432417}
   m_Layer: 5
   m_Name: Sick
   m_TagString: Untagged
@@ -12343,24 +12320,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390432411}
   m_CullTransparentMesh: 1
---- !u!111 &390432415
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390432411}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
---- !u!114 &390432416
+--- !u!114 &390432417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12369,10 +12329,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 390432411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f294e778b6348334e8b87300b27e0113, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2c3585d109e664ebbdb24867d47ba7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 390432415}
+  m_EditorClassIdentifier: Assembly-CSharp::DreamwaveRating
+  rrenderer: {fileID: 0}
+  entranceFrames: []
+  frames: []
+  exitFrames: []
+  offsets: []
+  timeToFlick: 10
+  lastingTime: 0.5
+  repeatAnim: 1
 --- !u!1 &391923778
 GameObject:
   m_ObjectHideFlags: 0
@@ -16309,8 +16276,7 @@ GameObject:
   - component: {fileID: 637291570}
   - component: {fileID: 637291572}
   - component: {fileID: 637291571}
-  - component: {fileID: 637291573}
-  - component: {fileID: 637291574}
+  - component: {fileID: 637291575}
   m_Layer: 5
   m_Name: Bad
   m_TagString: Untagged
@@ -16376,24 +16342,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637291569}
   m_CullTransparentMesh: 1
---- !u!111 &637291573
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637291569}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
---- !u!114 &637291574
+--- !u!114 &637291575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16402,10 +16351,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 637291569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f294e778b6348334e8b87300b27e0113, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2c3585d109e664ebbdb24867d47ba7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 637291573}
+  m_EditorClassIdentifier: Assembly-CSharp::DreamwaveRating
+  rrenderer: {fileID: 0}
+  entranceFrames: []
+  frames: []
+  exitFrames: []
+  offsets: []
+  timeToFlick: 10
+  lastingTime: 0.5
+  repeatAnim: 1
 --- !u!1 &638849788
 GameObject:
   m_ObjectHideFlags: 0
@@ -18752,8 +18708,7 @@ GameObject:
   - component: {fileID: 801129285}
   - component: {fileID: 801129288}
   - component: {fileID: 801129287}
-  - component: {fileID: 801129286}
-  - component: {fileID: 801129289}
+  - component: {fileID: 801129290}
   m_Layer: 5
   m_Name: Missed
   m_TagString: Untagged
@@ -18781,23 +18736,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00004339218, y: 0}
   m_SizeDelta: {x: 1246.421, y: 242}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &801129286
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801129284}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!114 &801129287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18836,7 +18774,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801129284}
   m_CullTransparentMesh: 1
---- !u!114 &801129289
+--- !u!114 &801129290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18845,10 +18783,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 801129284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f294e778b6348334e8b87300b27e0113, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2c3585d109e664ebbdb24867d47ba7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 801129286}
+  m_EditorClassIdentifier: Assembly-CSharp::DreamwaveRating
+  rrenderer: {fileID: 0}
+  entranceFrames: []
+  frames: []
+  exitFrames: []
+  offsets: []
+  timeToFlick: 10
+  lastingTime: 0.5
+  repeatAnim: 1
 --- !u!1 &802187558
 GameObject:
   m_ObjectHideFlags: 0
@@ -21581,6 +21526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42ff566cafdeaf4a99eac30420afb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CompletedLoading: 0
   _typePlayerOne: 0
   _typePlayerTwo: 0
   _typeNoteAsset: 0
@@ -21649,6 +21595,20 @@ MonoBehaviour:
   _playerTwoIconRectX: 0.5
   _playerTwoIconRectY: 0.5
   _playerTwoIconScript: {fileID: 27266911}
+  CustomRatingFilePath: 
+  _ratingsSpriteWidth: 1080
+  _ratingsSpriteHeight: 1080
+  _ratingsRectX: 1
+  _ratingsRectY: 1
+  _shouldFlipRatings: 1
+  _shouldRatingsAntiAlias: 1
+  _ratingScripts:
+  - {fileID: 1511481768}
+  - {fileID: 390432417}
+  - {fileID: 366948242}
+  - {fileID: 637291575}
+  - {fileID: 133114319}
+  - {fileID: 801129290}
   _background: {fileID: 926881139}
   _backgroundFileName: C:\Users\Vaylen\Documents\GitHub\Dreamwave\Assets\StreamingAssets\Mods\deb8\Sprites\Backgrounds\blanco.png
   mp3FileName: C:\Users\Vaylen\Documents\GitHub\Dreamwave\Assets\StreamingAssets\Mods\deb8\Music\Inst.mp3
@@ -41983,8 +41943,7 @@ GameObject:
   - component: {fileID: 1511481763}
   - component: {fileID: 1511481766}
   - component: {fileID: 1511481765}
-  - component: {fileID: 1511481764}
-  - component: {fileID: 1511481767}
+  - component: {fileID: 1511481768}
   m_Layer: 5
   m_Name: Dreamy
   m_TagString: Untagged
@@ -42012,23 +41971,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00004339218, y: 0}
   m_SizeDelta: {x: 1318.283, y: 242}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &1511481764
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511481762}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 39443a54c66d7b841ae4f04ac30221d7, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!114 &1511481765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42067,7 +42009,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511481762}
   m_CullTransparentMesh: 1
---- !u!114 &1511481767
+--- !u!114 &1511481768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42076,10 +42018,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1511481762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f294e778b6348334e8b87300b27e0113, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2c3585d109e664ebbdb24867d47ba7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1511481764}
+  m_EditorClassIdentifier: Assembly-CSharp::DreamwaveRating
+  rrenderer: {fileID: 0}
+  entranceFrames: []
+  frames: []
+  exitFrames: []
+  offsets: []
+  timeToFlick: 10
+  lastingTime: 0.5
+  repeatAnim: 1
 --- !u!1 &1517033105
 GameObject:
   m_ObjectHideFlags: 0

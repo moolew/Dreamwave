@@ -6,7 +6,9 @@ using UnityEngine.Networking;
 using static GameManager;
 using static TempoManager;
 using static DreamwaveGlobal;
+using static DreamwaveImportModAssets;
 using System.Linq;
+using UnityEngine.UI;
 
 /// <summary>
 /// Custom asset loader.
@@ -25,6 +27,8 @@ public enum TypeAsset
 
 public class CustomAssetLoader : MonoBehaviour
 {
+    public bool CompletedLoading = false;
+
     public TypeAsset _typePlayerOne;
     public TypeAsset _typePlayerTwo;
     public TypeAsset _typeNoteAsset;
@@ -117,6 +121,19 @@ public class CustomAssetLoader : MonoBehaviour
     [SerializeField] private DreamwaveIcon _playerTwoIconScript;
     #endregion
 
+    #region Ratings
+    [Space(10)]
+    [Header("Rating Animation Settings")]
+    public string CustomRatingFilePath;
+    public int _ratingsSpriteWidth = 1080;
+    public int _ratingsSpriteHeight = 1080;
+    public float _ratingsRectX = 1f;
+    public float _ratingsRectY = 1f;
+    public bool _shouldFlipRatings = true;
+    public bool _shouldRatingsAntiAlias = true;
+    [SerializeField] private List<DreamwaveRating> _ratingScripts = new();
+    #endregion
+
     [Space(10)]
     [SerializeField] private SpriteRenderer _background;
     [SerializeField] private string _backgroundFileName;
@@ -156,6 +173,9 @@ public class CustomAssetLoader : MonoBehaviour
 
         // dunno what the fuck this was for
         AiCustomNoteHeldFileLocation = mod.enemyNoteControllerSprites;
+
+        // ratings
+        CustomRatingFilePath = mod.ratingSprites;
 
         // music
         mp3FileName = mod.music;
@@ -241,7 +261,7 @@ public class CustomAssetLoader : MonoBehaviour
         {
             case TypeAsset.Custom:
                 {
-                    string filePath = NormalisePath(Path.Combine(Application.streamingAssetsPath, CustomNoteParticleFileName));
+                    string filePath = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, CustomNoteParticleFileName));
                     _noteParticleAnimation.AddRange(LoadSpritesFromPath(filePath, _particleSpriteWidth, _particleSpriteHeight, 0.5f, 0.5f, true));
 
                     for (int i = 0; i < _dreamwaveParticles.Count; i++)
@@ -272,20 +292,20 @@ public class CustomAssetLoader : MonoBehaviour
                     aic._noteSpritesReleased.Clear();
                 }
 
-                string filePathHeld = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomNoteFileLocation, "Held Sprites"));
-                string filePathHeldE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteFileLocation, "Held Sprites"));
+                string filePathHeld = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, PlayerCustomNoteFileLocation, "Held Sprites"));
+                string filePathHeldE = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteFileLocation, "Held Sprites"));
                 
-                string filePathReleased = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomNoteFileLocation, "Release Sprites"));
-                string filePathReleasedE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteFileLocation, "Held Sprites"));
+                string filePathReleased = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, PlayerCustomNoteFileLocation, "Release Sprites"));
+                string filePathReleasedE = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteFileLocation, "Held Sprites"));
 
-                string filePathNoteStreamed = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomStreamedNoteFileLocation));
-                string filePathNoteStreamedE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiPlayerCustomStreamedNoteFileLocation));
+                string filePathNoteStreamed = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, PlayerCustomStreamedNoteFileLocation));
+                string filePathNoteStreamedE = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, AiPlayerCustomStreamedNoteFileLocation));
 
-                string filePathNoteHold = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomChunkNoteFileLocation));
-                string filePathNoteHoldE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteChunkNoteFileLocation));
+                string filePathNoteHold = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, PlayerCustomChunkNoteFileLocation));
+                string filePathNoteHoldE = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteChunkNoteFileLocation));
 
-                string filePathNoteEnd = NormalisePath(Path.Combine(Application.streamingAssetsPath, PlayerCustomHoldNoteEndFileLocation));
-                string filePathNoteEndE = NormalisePath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteHoldNoteEndFileLocation));
+                string filePathNoteEnd = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, PlayerCustomHoldNoteEndFileLocation));
+                string filePathNoteEndE = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, AiCustomNoteHoldNoteEndFileLocation));
 
                 #region controller notes
 
@@ -367,7 +387,7 @@ public class CustomAssetLoader : MonoBehaviour
 
 
                 // Load sprite settings
-                string settingsPath = NormalisePath(Path.Combine(Application.streamingAssetsPath, CustomPlayerOneFileName, "settings.txt"));
+                string settingsPath = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, CustomPlayerOneFileName, "settings.txt"));
                 string[] lines = File.ReadAllLines(settingsPath);
                 foreach (string line in lines)
                 {
@@ -398,6 +418,8 @@ public class CustomAssetLoader : MonoBehaviour
                         _playerOneScript.AnimationSpeed = 1 / float.Parse(line.Split("=")[1]);
                     else if (line.StartsWith("holdFrameRate="))
                         _playerOneScript.AnimationHoldSpeed = 1 / float.Parse(line.Split("=")[1]);
+                    else if (line.StartsWith("animationHold="))
+                        _playerOneScript.SingAnimationHold = float.Parse(line.Split("=")[1]);
                 }
 
                 // Define animation names for Player One
@@ -405,8 +427,8 @@ public class CustomAssetLoader : MonoBehaviour
                 // For each animation, load sprites and offsets from the corresponding subfolder
                 foreach (string animationName in animationNames)
                 {
-                    string animationPath = NormalisePath(Path.Combine(Application.streamingAssetsPath, CustomPlayerOneFileName, animationName));
-                    string offsetPath = NormalisePath(Path.Combine(animationPath, "offsets.txt"));
+                    string animationPath = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, CustomPlayerOneFileName, animationName));
+                    string offsetPath = Path.GetFullPath(Path.Combine(animationPath, "offsets.txt"));
                     var sprites = LoadSpritesFromPath(animationPath, _playerOneSpriteWidth, _playerOneSpriteHeight, _playerOneRectX, _playerOneRectY, _shouldPlayerOneAntiAlias);
                     var offsets = LoadSpriteOffsetsFromPath(offsetPath);
 
@@ -469,7 +491,7 @@ public class CustomAssetLoader : MonoBehaviour
                 _playerTwoIconScript._winningOffsets.Clear();
 
 
-                string aiSettingsPath = NormalisePath(Path.Combine(Application.streamingAssetsPath, CustomAiPlayerTwoFileName, "settings.txt"));
+                string aiSettingsPath = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, CustomAiPlayerTwoFileName, "settings.txt"));
                 string[] aiLines = File.ReadAllLines(aiSettingsPath);
                 foreach (string line in aiLines)
                 {
@@ -500,14 +522,16 @@ public class CustomAssetLoader : MonoBehaviour
                         _playerTwoAiScript.AnimationSpeed = 1 / float.Parse(line.Split("=")[1]);
                     else if (line.StartsWith("holdFrameRate="))
                         _playerTwoAiScript.AnimationHoldSpeed = 1 / float.Parse(line.Split("=")[1]);
+                    else if (line.StartsWith("animationHold="))
+                        _playerTwoAiScript.SingAnimationHold = float.Parse(line.Split("=")[1]);
                 }
 
                 // Define animation names for Player Two
                 string[] aiAnimationNames = { "Idle", "Left", "Down", "Up", "Right" };
                 foreach (string animationName in aiAnimationNames)
                 {
-                    string animationPath = NormalisePath(Path.Combine(Application.streamingAssetsPath, CustomAiPlayerTwoFileName, animationName));
-                    string offsetPath = NormalisePath(Path.Combine(animationPath, "offsets.txt"));
+                    string animationPath = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, CustomAiPlayerTwoFileName, animationName));
+                    string offsetPath = Path.GetFullPath(Path.Combine(animationPath, "offsets.txt"));
                     var sprites = LoadSpritesFromPath(animationPath, _playerTwoAiSpriteWidth, _playerTwoAiSpriteHeight, _playerTwoRectX, _playerTwoRectY, _shouldPlayerTwoAntiAlias);
                     var offsets = LoadSpriteOffsetsFromPath(offsetPath);
 
@@ -544,104 +568,118 @@ public class CustomAssetLoader : MonoBehaviour
                 break;
         }
 
+        #region Ratings
+        string ratingsRoot = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, CustomRatingFilePath));
+
+        foreach (var rating in _ratingScripts)
+        {
+            if (!rating) continue;
+
+            string ratingName = rating.gameObject.name;
+            string ratingFolder = Path.GetFullPath(Path.Combine(ratingsRoot, ratingName));
+            string settingsPath = Path.GetFullPath(Path.Combine(ratingFolder, "settings.txt"));
+            string offsetsPath = Path.GetFullPath(Path.Combine(ratingFolder, "offsets.txt"));
+
+            rating.frames.Clear();
+            rating.offsets.Clear();
+
+            if (!Directory.Exists(ratingFolder))
+            {
+                Debug.LogWarning($"Missing rating folder: {ratingFolder}");
+                continue;
+            }
+
+            // ---------- LOAD SETTINGS ----------
+            if (File.Exists(settingsPath))
+            {
+                string[] lines = File.ReadAllLines(settingsPath);
+
+                foreach (string line in lines)
+                {
+                    if (line.StartsWith("spriteWidth="))
+                        _ratingsSpriteWidth = int.Parse(line.Split('=')[1]);
+
+                    else if (line.StartsWith("spriteHeight="))
+                        _ratingsSpriteHeight = int.Parse(line.Split('=')[1]);
+
+                    else if (line.StartsWith("spriteScaleX="))
+                    {
+                        float scale = float.Parse(line.Split('=')[1]);
+                        RectTransform rt = rating.GetComponent<RectTransform>();
+                        rt.sizeDelta = new Vector2(scale, rt.sizeDelta.y);
+                    }
+                    else if (line.StartsWith("spriteScaleY="))
+                    {
+                        float scale = float.Parse(line.Split('=')[1]);
+                        RectTransform rt = rating.GetComponent<RectTransform>();
+                        rt.sizeDelta = new Vector2(rt.sizeDelta.x, scale);
+                    }
+                    else if (line.StartsWith("shouldFlip="))
+                        _shouldFlipRatings = bool.Parse(line.Split('=')[1]);
+
+                    else if (line.StartsWith("antiAliasing="))
+                        _shouldRatingsAntiAlias = bool.Parse(line.Split('=')[1]);
+
+                    else if (line.StartsWith("frameRate="))
+                        rating.timeToFlick = 1f / float.Parse(line.Split('=')[1]);
+
+                    else if (line.StartsWith("repeat="))
+                        rating.repeatAnim = bool.Parse(line.Split('=')[1]);
+
+                    else if (line.StartsWith("lastingTime="))
+                        rating.lastingTime = float.Parse(line.Split('=')[1]);
+                }
+            }
+
+            // ---------- LOAD SPRITES + OFFSETS ----------
+            rating.frames.AddRange(LoadSpritesFromPath(
+                ratingFolder,
+                _ratingsSpriteWidth,
+                _ratingsSpriteHeight,
+                0.5f,
+                0.5f,
+                _shouldRatingsAntiAlias
+            ));
+
+            rating.offsets.AddRange(LoadSpriteOffsetsFromPath(offsetsPath));
+
+            SetFlipX(rating.gameObject, _shouldFlipRatings);
+
+            var img = rating.GetComponent<Image>();
+            if (img && rating.frames.Count > 0 && rating.offsets.Count > 0)
+            {
+                img.sprite = rating.frames[0];
+                img.rectTransform.anchoredPosition = rating.offsets[0];
+            }
+        }
+
+        #endregion
+
         _loadingAssets = false;
         _background.sprite = LoadStreamedSprite(Application.streamingAssetsPath, _backgroundFileName, (1920 / 2), (1080 / 2));
     }
 
-    public Sprite LoadStreamedSprite(string filepath, string fileName, int width, int height)
+    void SetFlipX(GameObject rating, bool flip)
     {
-        string filePath = NormalisePath(Path.Combine(filepath, fileName));
-
-        if (File.Exists(filePath))
+        var sr = rating.GetComponent<SpriteRenderer>();
+        if (sr)
         {
-            byte[] fileData = File.ReadAllBytes(filePath);
-            Texture2D texture = new Texture2D(width, height, TextureFormat.ARGB32, false);
-            texture.LoadImage(fileData);
-            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            return sprite;
-        }
-        else
-        {
-            Debug.LogError("Could not find any file with the given path " + filePath);
-            return null;
-        }
-    }
-
-    public List<Sprite> LoadSpritesFromPath(string filePath, int width, int height, float rectX, float rectY, bool antiAliasing)
-    {
-        List<Sprite> sprites = new List<Sprite>();
-        filePath = NormalisePath(filePath);
-
-        if (Directory.Exists(filePath))
-        {
-            // Get all .png files in the directory
-            string[] imageFiles = Directory.GetFiles(filePath, "*.png");
-
-            foreach (string file in imageFiles)
-            {
-                string fileName = Path.GetFileNameWithoutExtension(file);
-                if (int.TryParse(fileName, out int index))
-                {
-                    byte[] fileData = File.ReadAllBytes(file);
-                    Texture2D texture = new Texture2D(2, 2, TextureFormat.ARGB32, false);
-                    if (texture.LoadImage(fileData))
-                    {
-                        texture.wrapMode = TextureWrapMode.Clamp;
-                        texture.filterMode = antiAliasing ? FilterMode.Trilinear : FilterMode.Point;
-                        texture.mipMapBias = 0;
-                        texture.anisoLevel = 0;
-                        texture.Apply();
-                        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(rectX, rectY));
-                        sprites.Add(sprite);
-                    }
-                }
-            }
-        }
-        else
-        {
-            Debug.LogError("Directory does not exist: " + filePath);
+            sr.flipX = flip;
+            return;
         }
 
-        return sprites;
-    }
-
-    public List<Vector2> LoadSpriteOffsetsFromPath(string filePath)
-    {
-        List<Vector2> offsets = new List<Vector2>();
-        filePath = NormalisePath(filePath);
-
-        if (File.Exists(filePath))
+        var img = rating.GetComponent<Image>();
+        if (img)
         {
-            string[] lines = File.ReadAllLines(filePath);
-
-            foreach (string line in lines)
-            {
-                string[] values = line.Split(',');
-
-                if (values.Length == 2 &&
-                    float.TryParse(values[0].Trim(), out float x) &&
-                    float.TryParse(values[1].Trim(), out float y))
-                {
-                    Vector2 offset = new Vector2(x, y);
-                    offsets.Add(offset);
-                }
-                else
-                {
-                    Debug.LogWarning("Invalid line in file: " + filePath + " Line: " + line);
-                }
-            }
+            Vector3 s = img.rectTransform.localScale;
+            s.x = Mathf.Abs(s.x) * (flip ? -1 : 1);
+            img.rectTransform.localScale = s;
         }
-        else
-        {
-            Debug.LogError("File does not exist: " + filePath);
-        }
-
-        return offsets;
     }
 
     private IEnumerator LoadMP3()
     {
-        string filePath = NormalisePath(Path.Combine(Application.streamingAssetsPath, mp3FileName));
+        string filePath = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, mp3FileName));
         UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file://" + filePath, AudioType.MPEG);
 
         yield return www.SendWebRequest();
@@ -649,6 +687,7 @@ public class CustomAssetLoader : MonoBehaviour
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Failed to load MP3: " + www.error);
+            CompletedLoading = false;
         }
         else
         {
@@ -658,6 +697,7 @@ public class CustomAssetLoader : MonoBehaviour
             {
                 audioSource.clip = audioClip;
                 audioSource.Play();
+                CompletedLoading = true;
             }
         }
     }

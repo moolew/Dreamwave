@@ -9,11 +9,6 @@ public static class DreamwaveGlobal
     public static ModSong LoadedModSong; // the chosen freaky mod
 
     public static void LoadMod(int index) => LoadedModSong = ModSongs[index]; // assign the freaky mod
-
-    public static string NormalisePath(string toNorm)
-    {
-        return toNorm.Replace("/", "\\");
-    }
 }
 
 // make the freaky mods :)))
@@ -35,6 +30,8 @@ public class ModSong
     public string enemyStreamedNoteSprites;
     public string enemyStreamedNoteHoldChunkSprites;
     public string enemyStreamedNoteHoldEndSprites;
+
+    public string ratingSprites;
 
     public string chartSettings;
     public string playerChart;

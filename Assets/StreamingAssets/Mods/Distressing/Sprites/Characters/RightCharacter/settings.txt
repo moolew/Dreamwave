@@ -6,3 +6,5 @@ spritePositionY=0.3
 shouldFlip=true
 antiAliasing=true
 frameRate=15
+holdFrameRate=30
+animationHold=1

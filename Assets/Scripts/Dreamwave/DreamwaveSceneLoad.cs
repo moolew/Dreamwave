@@ -48,6 +48,7 @@ public class DreamwaveSceneLoad : MonoBehaviour
 
             yield return new WaitForSecondsRealtime(1f);
 
+            yield return new WaitUntil(() => GameObject.FindObjectOfType<CustomAssetLoader>().CompletedLoading);
             yield return new WaitUntil(() => GameObject.FindObjectOfType<FanfareEvent>().InFanfare);
         }
 

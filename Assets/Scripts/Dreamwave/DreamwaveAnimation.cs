@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DreamwaveAnimation : MonoBehaviour
 {
     protected bool _complete = false;
+    private Coroutine _currentAnim;
 
-    protected void PlayAnimation(SpriteRenderer renderer, List<Sprite> sprites, List<Vector2> offsets, float timeToFlick)
+    protected void PlayAnimation(Component target, List<Sprite> sprites, List<Vector2> offsets, float timeToFlick)
     {
-        StopCoroutine(RunAnimation(renderer, sprites, offsets, timeToFlick));
-        StartCoroutine(RunAnimation(renderer, sprites, offsets, timeToFlick));
+        if (_currentAnim != null)
+            StopCoroutine(_currentAnim);
+
+        _currentAnim = StartCoroutine(RunAnimation(target, sprites, offsets, timeToFlick));
     }
 
-    private IEnumerator RunAnimation(SpriteRenderer renderer, List<Sprite> sprites, List<Vector2> offsets, float timeToFlick)
+    private IEnumerator RunAnimation(Component target, List<Sprite> sprites, List<Vector2> offsets, float timeToFlick)
     {
         if (sprites == null || sprites.Count == 0 || (offsets != null && offsets.Count != sprites.Count))
         {
@@ -20,12 +24,28 @@ public class DreamwaveAnimation : MonoBehaviour
             yield break;
         }
 
+        SpriteRenderer sr = target as SpriteRenderer;
+        Image img = target as Image;
+        RectTransform rect = img ? img.rectTransform : null;
+
+        if (!sr && !img)
+        {
+            Debug.LogError("DreamwaveAnimation target must be SpriteRenderer or Image.");
+            yield break;
+        }
+
         for (int i = 0; i < sprites.Count; i++)
         {
-            if (sprites.Count > 0) renderer.sprite = sprites[i];
-
-            if (offsets != null && offsets.Count > i)
-                renderer.transform.localPosition = offsets[i];
+            if (sr)
+            {
+                sr.sprite = sprites[i];
+                if (offsets != null) sr.transform.localPosition = offsets[i];
+            }
+            else
+            {
+                img.sprite = sprites[i];
+                if (offsets != null) rect.anchoredPosition = offsets[i];
+            }
 
             yield return new WaitForSecondsRealtime(timeToFlick);
 

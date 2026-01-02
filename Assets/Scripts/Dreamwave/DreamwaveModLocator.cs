@@ -116,7 +116,7 @@ public class DreamwaveModLocator : MonoBehaviour
         songInformation.text = $"{difficulty} ~ {time} / {ranking} ~ {score} {accuracy}%";
 
         // create that moddie
-        string relativeModPath = Path.GetRelativePath(Application.streamingAssetsPath, modPath);
+        string relativeModPath = modPath;
         ModSong thisMod = new ModSong
         {
             name = song,
@@ -135,6 +135,8 @@ public class DreamwaveModLocator : MonoBehaviour
             enemyStreamedNoteHoldChunkSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Hold Notes", "Left Player", "Chunks"),
             enemyStreamedNoteHoldEndSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Notes", "Hold Notes", "Left Player", "End"),
 
+            ratingSprites = Path.Combine(relativeModPath, "Sprites", "UI", "Ratings"),
+
             chartSettings = Path.Combine(relativeModPath, "Data", "settings.txt"),
             playerChart = Path.Combine(relativeModPath, "Data", "pchart.txt"),
             enemyChart = Path.Combine(relativeModPath, "Data", "echart.txt"),
@@ -143,7 +145,7 @@ public class DreamwaveModLocator : MonoBehaviour
             music = Path.Combine(relativeModPath, "Music", "Inst.mp3")
         };
 
-        Debug.Log($"{thisMod.name} {thisMod.creator} {thisMod.playerSprites} {thisMod.enemySprites} {thisMod.chartSettings} {thisMod.playerChart} {thisMod.enemyChart} {thisMod.eventChart} {thisMod.music}");
+        Debug.Log($"{thisMod.name} {thisMod.creator} {thisMod.playerSprites} {thisMod.enemySprites} {thisMod.ratingSprites} {thisMod.chartSettings} {thisMod.playerChart} {thisMod.enemyChart} {thisMod.eventChart} {thisMod.music}");
 
         ModSongs.Add(thisMod);
 

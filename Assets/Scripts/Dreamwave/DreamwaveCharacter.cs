@@ -195,7 +195,7 @@ public class DreamwaveCharacter : DreamwaveAnimation
         yield return new WaitForSecondsRealtime(SingAnimationHold);
 
         _isSinging = false;
-        yield break;
+        PlayAnimation(Renderer, IdleAnimation, IdleOffsets, AnimationSpeed);
     }
     
     protected IEnumerator AfterImageEffect(string dir)

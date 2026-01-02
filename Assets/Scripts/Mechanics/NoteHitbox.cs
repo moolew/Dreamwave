@@ -21,10 +21,10 @@ public class NoteHitbox : MonoBehaviour
     private void Awake()
     {
         ratingThresholds[0] = 40f;   // Dreamy
-        ratingThresholds[1] = 80f;   // Sick
-        ratingThresholds[2] = 100f;   // Cool
-        ratingThresholds[3] = 120f;  // Bad
-        ratingThresholds[4] = 150f;  // Shit / Miss cutoff
+        ratingThresholds[1] = 60f;   // Sick
+        ratingThresholds[2] = 80f;   // Cool
+        ratingThresholds[3] = 100f;  // Bad
+        ratingThresholds[4] = 120f;  // Shit / Miss cutoff
     }
 
     private void Start()

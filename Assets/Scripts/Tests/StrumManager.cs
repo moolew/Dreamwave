@@ -41,7 +41,7 @@ public class StrumManager : MonoBehaviour
         SongTimeMs = (float)((AudioSettings.dspTime - _songDspStart) * 1000.0 * _audioSource.pitch);
         JudgementTimeMs = SongTimeMs;
 
-        Debug.Log(SongTimeMs);
+        /*Debug.Log(SongTimeMs);*/
 
         // Visual smoothing ONLY (no gameplay logic depends on this)
         _visualSongTime = Mathf.Lerp(
