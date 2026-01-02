@@ -6,4 +6,4 @@ shouldFlip=false
 antiAliasing=true
 frameRate=15
 repeat=true
-lastingTime=0.5
+lastingTime=0.2
