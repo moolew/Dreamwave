@@ -23,8 +23,8 @@ public class NoteHitbox : MonoBehaviour
         ratingThresholds[0] = 40f;   // Dreamy
         ratingThresholds[1] = 60f;   // Sick
         ratingThresholds[2] = 80f;   // Cool
-        ratingThresholds[3] = 100f;  // Bad
-        ratingThresholds[4] = 120f;  // Shit / Miss cutoff
+        ratingThresholds[3] = 110f;  // Bad
+        ratingThresholds[4] = 130f;  // Shit / Miss cutoff
     }
 
     private void Start()
