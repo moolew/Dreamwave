@@ -121,6 +121,7 @@ public class DreamwaveModLocator : MonoBehaviour
         {
             name = song,
             creator = creator,
+            songDifficulty = difficulty,
             backgroundSprite = Path.Combine(relativeModPath, "Sprites", "Backgrounds", "bg.png"),
             playerSprites = Path.Combine(relativeModPath, "Sprites", "Characters", "RightCharacter"),
             enemySprites = Path.Combine(relativeModPath, "Sprites", "Characters", "LeftCharacter"),

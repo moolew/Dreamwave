@@ -16,6 +16,7 @@ public class ModSong
 {
     public string name;
     public string creator;
+    public string songDifficulty;
 
     public string backgroundSprite;
     public string playerSprites;

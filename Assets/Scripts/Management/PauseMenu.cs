@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using static DreamwaveGlobal;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -116,12 +117,14 @@ public class PauseMenu : MonoBehaviour
 
         _pauseAnim.CrossFade("OpenSettings", 0.1f);
         _inSettings = true;
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty})", "Paused");
     }
 
     public void CloseSettings()
     {
         _pauseAnim.CrossFade("CloseSettings", 0.1f);
         _inSettings = false;
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty})", "Slapping their keyboard");
     }
 
     public void OpenModEditor()

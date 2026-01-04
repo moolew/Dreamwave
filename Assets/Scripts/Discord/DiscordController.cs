@@ -9,11 +9,8 @@ public class DiscordController : MonoBehaviour
 {
     public long applicationID;
     [Space]
-    public string state = "";
-    public string details = "";
-    [Space]
     public string largeImage = "";
-    public string largeText = "UFNF";
+    public string largeText = "Dreamwave";
 
 #if !UNITY_ANDROID && !UNITY_IOS
     private Discord.Discord discord;
@@ -31,7 +28,6 @@ public class DiscordController : MonoBehaviour
             this.gameObject.SetActive(false);
         }
 
-#if !UNITY_EDITOR
         if (!instanceExists)
         {
             instanceExists = true;
@@ -42,14 +38,12 @@ public class DiscordController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-#endif
     }
 
     private void Start()
     {
-#if !UNITY_ANDROID && !UNITY_IOS && !UNITY_EDITOR
+#if !UNITY_ANDROID && !UNITY_IOS
         discord = new Discord.Discord(applicationID, (ulong)Discord.CreateFlags.NoRequireDiscord);
-        StartSong();
         SceneManager.sceneLoaded += OnSceneLoaded;
 #endif
     }
@@ -63,7 +57,7 @@ public class DiscordController : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
 
-#if !UNITY_ANDROID && !UNITY_IOS && !UNITY_EDITOR
+#if !UNITY_ANDROID && !UNITY_IOS
         if (discord != null)
         {
             discord.Dispose();
@@ -71,14 +65,9 @@ public class DiscordController : MonoBehaviour
 #endif
     }
 
-    void StartSong()
-    {
-        songStartTime = AudioSettings.dspTime;
-    }
-
     void Update()
     {
-#if !UNITY_ANDROID && !UNITY_IOS && !UNITY_EDITOR
+#if !UNITY_ANDROID && !UNITY_IOS
         try
         {
             discord.RunCallbacks();
@@ -90,43 +79,36 @@ public class DiscordController : MonoBehaviour
 #endif
     }
 
-    private void LateUpdate()
+    public void UpdateState(string details, string state)
     {
-#if !UNITY_ANDROID && !UNITY_IOS && !UNITY_EDITOR
-        StatusUpdate();
-#endif
-    }
-
-#if !UNITY_ANDROID && !UNITY_IOS && !UNITY_EDITOR
-    private void StatusUpdate()
-    {
-        // Calculate the elapsed time since the song started in seconds
-        double elapsedSongTimeInSeconds = (AudioSettings.dspTime - songStartTime) * TempoManager.instance.audioSource.pitch;
-
-        // Convert GameManager's duration from seconds to seconds
-        long songDurationInSeconds = (long)Math.Round(GameManager.Instance.SongDuration);
-
-        // Current playback position in seconds
-        long songPlaybackPositionInSeconds = (long)elapsedSongTimeInSeconds;
-
-        // Calculate the end timestamp
-        long currentTimeInSeconds = DateTimeOffset.Now.ToUnixTimeSeconds();
-        long endTimeInSeconds = currentTimeInSeconds + (songDurationInSeconds - songPlaybackPositionInSeconds);
-
         try
         {
             var activityManager = discord.GetActivityManager();
             var activity = new Discord.Activity
             {
-                Details = state + " Song: " + GameManager.Instance.SongName,
-                State = details + GameManager.Instance.score + " ~ " + GameManager.Instance.accuracy.ToString("F2") + "% ~ " + GameManager.Instance._playerRating.ToString(),
-                Assets = {
+                Details = details,
+                State = state,
+
+                Assets =
+                {
                     LargeImage = largeImage,
                     LargeText = largeText
                 },
-                Timestamps = {
-                    End = endTimeInSeconds
-                }
+
+                Party =
+                {
+                    Id = null,
+                    Size = { CurrentSize = 0, MaxSize = 0 }
+                },
+
+                Secrets =
+                {
+                    Join = null,
+                    Spectate = null,
+                    Match = null
+                },
+
+                Instance = false
             };
 
             activityManager.UpdateActivity(activity, (res) =>
@@ -138,13 +120,11 @@ public class DiscordController : MonoBehaviour
         catch (Exception ex)
         {
             Debug.LogError("Discord update failed: " + ex.Message);
-            Destroy(gameObject);
         }
     }
-#endif
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        StartSong();
+        
     }
 }

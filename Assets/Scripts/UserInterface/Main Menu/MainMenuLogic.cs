@@ -28,6 +28,7 @@ public class MainMenuLogic : MonoBehaviour
     private void Awake()
     {
         StartCoroutine("DisableMenuSelection");
+        DiscordController.instance.UpdateState("In the menu", "");
     }
 
     private void Start()
@@ -69,11 +70,13 @@ public class MainMenuLogic : MonoBehaviour
                     _cooldownTime = 0.7f;
                     menuAnim.CrossFade("Outro", 0.1f, 0);
                     _currentActiveMenu = CurrentActiveMenu.Title;
+                    DiscordController.instance.UpdateState("Title screen", "");
                     break;
                 case CurrentActiveMenu.SongSelection:
                     _cooldownTime = 0.5f;
                     menuAnim.CrossFade("Back To Selection", 0.1f, 0);
                     _currentActiveMenu = CurrentActiveMenu.Selection;
+                    DiscordController.instance.UpdateState("In the menu", "");
                     break;
             }
 
@@ -107,6 +110,7 @@ public class MainMenuLogic : MonoBehaviour
         Application.OpenURL("https://github.com/Iouander/Dreamwave");
     }
 
+    private string[] funny = { "Taking their time", "Hurry up!", "Untrained ears" };
     public void SongSelection()
     {
         if (!_canChangeMenu) return;
@@ -114,6 +118,7 @@ public class MainMenuLogic : MonoBehaviour
         _cooldownTime = 0.5f;
         _currentActiveMenu = CurrentActiveMenu.SongSelection;
         menuAnim.CrossFade("Song Selection", 0.2f, 0);
+        DiscordController.instance.UpdateState("Selecting a Mod", funny[UnityEngine.Random.Range(0, funny.Length)]);
     }
 
     public void MenuSelection()
@@ -123,6 +128,7 @@ public class MainMenuLogic : MonoBehaviour
         _cooldownTime = 0.5f;
         _currentActiveMenu = CurrentActiveMenu.Selection;
         menuAnim.CrossFade("Back To Selection", 0.2f, 0);
+        DiscordController.instance.UpdateState("In the menu", "");
     }
 
     public void SetMod(int i)

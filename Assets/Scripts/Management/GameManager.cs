@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static DreamwaveGlobal;
 
 public enum Focus
 {
@@ -165,9 +166,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         psychShader.SetFloat("_Scale", -2.8f);
-#if !UNITY_EDITOR
-        DiscordController.instance.largeImage = SongImageName;
-#endif
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty})", "Slapping their keyboard");
         SongPlaybackPosition = (float)AudioSettings.dspTime;
         SongDuration = TempoManager.instance.audioSource.clip.length;
 

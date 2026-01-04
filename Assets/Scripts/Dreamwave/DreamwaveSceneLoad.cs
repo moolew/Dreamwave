@@ -38,6 +38,7 @@ public class DreamwaveSceneLoad : MonoBehaviour
     {
         Loaded = false;
         Load(true);
+        DiscordController.instance.UpdateState($"Loading", "");
 
         yield return new WaitForSecondsRealtime(2f);
 
