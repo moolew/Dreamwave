@@ -86,8 +86,8 @@ public class DiscordController : MonoBehaviour
             var activityManager = discord.GetActivityManager();
             var activity = new Discord.Activity
             {
-                Details = details,
-                State = state,
+                Details = state,
+                State = details,
 
                 Assets =
                 {
@@ -95,21 +95,16 @@ public class DiscordController : MonoBehaviour
                     LargeText = largeText
                 },
 
-                Party =
-                {
-                    Id = null,
-                    Size = { CurrentSize = 0, MaxSize = 0 }
-                },
-
-                Secrets =
-                {
-                    Join = null,
-                    Spectate = null,
-                    Match = null
-                },
-
                 Instance = false
             };
+
+            activity.Timestamps = new ActivityTimestamps();
+
+            activityManager = discord.GetActivityManager();
+            activityManager.ClearActivity(_ =>
+            {
+                activityManager.UpdateActivity(activity, _ => { });
+            });
 
             activityManager.UpdateActivity(activity, (res) =>
             {
