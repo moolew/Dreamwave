@@ -91,6 +91,7 @@ public class MainMenuLogic : MonoBehaviour
                     _cooldownTime = 0.7f;
                     menuAnim.CrossFade("Intro", 0.1f, 0);
                     _currentActiveMenu = CurrentActiveMenu.Selection;
+                    DiscordController.instance.UpdateState("In the menu", "");
                     break;
             }
 

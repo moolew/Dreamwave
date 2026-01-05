@@ -86,8 +86,8 @@ public class DiscordController : MonoBehaviour
             var activityManager = discord.GetActivityManager();
             var activity = new Discord.Activity
             {
-                Details = state,
-                State = details,
+                Details = details,
+                State = state,
 
                 Assets =
                 {

@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         psychShader.SetFloat("_Scale", -2.8f);
-        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty})", "Slapping their keyboard");
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Slapping their keyboard");
         SongPlaybackPosition = (float)AudioSettings.dspTime;
         SongDuration = TempoManager.instance.audioSource.clip.length;
 
