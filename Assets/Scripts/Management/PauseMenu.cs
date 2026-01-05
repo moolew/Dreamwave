@@ -94,6 +94,7 @@ public class PauseMenu : MonoBehaviour
         _settingsObj.SetActive(false);
         Time.timeScale = 0f;
         Pause(true);
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Paused");
     }
 
     public void UnpauseGame()
@@ -105,6 +106,7 @@ public class PauseMenu : MonoBehaviour
         _settingsObj.SetActive(false);
         Time.timeScale = 1f;
         Pause(false);
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Slapping their keyboard");
     }
 
     #endregion
@@ -117,26 +119,28 @@ public class PauseMenu : MonoBehaviour
 
         _pauseAnim.CrossFade("OpenSettings", 0.1f);
         _inSettings = true;
-        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Paused");
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "In the Settings");
     }
 
     public void CloseSettings()
     {
         _pauseAnim.CrossFade("CloseSettings", 0.1f);
         _inSettings = false;
-        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Slapping their keyboard");
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Paused");
     }
 
     public void OpenModEditor()
     {
         _pauseAnim.CrossFade("OpenModEditor", 0.1f);
         _inModEditor = true;
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "In the Mod Editor");
     }
 
     public void CloseModEditor()
     {
         _pauseAnim.CrossFade("CloseModEditor", 0.1f);
         _inModEditor = false;
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Paused");
     }
 
     public void BackToMenu()
