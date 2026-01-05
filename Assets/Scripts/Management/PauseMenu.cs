@@ -117,14 +117,14 @@ public class PauseMenu : MonoBehaviour
 
         _pauseAnim.CrossFade("OpenSettings", 0.1f);
         _inSettings = true;
-        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty})", "Paused");
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Paused");
     }
 
     public void CloseSettings()
     {
         _pauseAnim.CrossFade("CloseSettings", 0.1f);
         _inSettings = false;
-        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty})", "Slapping their keyboard");
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Slapping their keyboard");
     }
 
     public void OpenModEditor()

@@ -1,0 +1,27 @@
+# start
+lane=2
+position=120
+type=H
+length=7
+# end
+
+
+# start
+lane=0
+position=291
+type=N
+# end
+
+# start
+lane=1
+position=292
+type=N
+# end
+
+# start
+lane=0
+position=293
+type=H
+length=25
+# end
+
