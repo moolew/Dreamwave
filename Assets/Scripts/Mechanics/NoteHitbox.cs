@@ -8,7 +8,7 @@ public class NoteHitbox : MonoBehaviour
 
     public List<MsNote> notesWithinHitBox = new();
 
-    // Timing windows (ms)
+    // timing windows - ms
     public float[] ratingThresholds = new float[5];
 
     public delegate void HitNote(string scoreType, float msDelay, float dummy, string direction);
@@ -39,7 +39,7 @@ public class NoteHitbox : MonoBehaviour
 
         float songTime = StrumManager.SM_Instance.JudgementTimeMs;
 
-        // MISS HANDLING
+        // miss handling - late notes
         for (int i = notesWithinHitBox.Count - 1; i >= 0; i--)
         {
             var note = notesWithinHitBox[i];
@@ -73,30 +73,32 @@ public class NoteHitbox : MonoBehaviour
     {
         float songTime = StrumManager.SM_Instance.JudgementTimeMs;
 
-        MsNote best = null;
-        float bestDelta = float.MaxValue;
+        MsNote earliest = null;
 
+        // always target the earliest unjudged note
         foreach (var note in notesWithinHitBox)
         {
             if (note == null || note.wasJudged)
                 continue;
 
-            float delta = Mathf.Abs(songTime - note.noteTimeMs);
-
-            if (delta < bestDelta)
-            {
-                bestDelta = delta;
-                best = note;
-            }
+            if (earliest == null || note.noteTimeMs < earliest.noteTimeMs)
+                earliest = note;
         }
 
-        if (best == null)
+        if (earliest == null)
             return;
 
-        string rating = GetRating(bestDelta);
+        float signedDelta = songTime - earliest.noteTimeMs;
 
-        Judge(best, rating, bestDelta, false);
-        notesWithinHitBox.Remove(best);
+        // early-hit protection
+        if (signedDelta < -ratingThresholds[4])
+            return;
+
+        float absDelta = Mathf.Abs(signedDelta);
+        string rating = GetRating(absDelta);
+
+        Judge(earliest, rating, absDelta, false);
+        notesWithinHitBox.Remove(earliest);
     }
 
     private void Judge(MsNote note, string rating, float delta, bool isMiss)
@@ -139,7 +141,14 @@ public class NoteHitbox : MonoBehaviour
             return;
 
         if (!notesWithinHitBox.Contains(note))
+        {
             notesWithinHitBox.Add(note);
+
+            // leep notes ordered by time - helps consistency
+            notesWithinHitBox.Sort(
+                (a, b) => a.noteTimeMs.CompareTo(b.noteTimeMs)
+            );
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
