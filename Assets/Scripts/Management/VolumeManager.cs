@@ -22,6 +22,7 @@ public class VolumeManager : MonoBehaviour
         _source.gameObject.transform.SetParent(transform);
         _source.transform.SetAsLastSibling();
         _source.clip = _clip;
+        _source.ignoreListenerPause = true;
     }
 
     private bool _changed = false;
@@ -46,9 +47,9 @@ public class VolumeManager : MonoBehaviour
         AudioListener.volume = Mathf.Clamp01(AudioListener.volume);
 
         if (_changed)
-            _slider.transform.localPosition = Vector3.Lerp(_slider.transform.localPosition, new(0, 520, 0), Time.deltaTime * 15f);
+            _slider.transform.localPosition = Vector3.Lerp(_slider.transform.localPosition, new(0, 520, 0), Time.unscaledDeltaTime * 15f);
         else
-            _slider.transform.localPosition = Vector3.Lerp(_slider.transform.localPosition, new(0, 700, 0), Time.deltaTime * 15f);
+            _slider.transform.localPosition = Vector3.Lerp(_slider.transform.localPosition, new(0, 700, 0), Time.unscaledDeltaTime * 15f);
 
         if (timer > 0.01f)
         {
