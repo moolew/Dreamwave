@@ -1791,6 +1791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VolumeManager
   volumeSprites: []
   visibleTime: 2
+  _clip: {fileID: 8300000, guid: 049e9b2e0e267b6489eae245affa7f14, type: 3}
 --- !u!1 &1817056327
 GameObject:
   m_ObjectHideFlags: 0

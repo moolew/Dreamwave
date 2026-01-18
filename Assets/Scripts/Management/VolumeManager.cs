@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,8 @@ public class VolumeManager : MonoBehaviour
     [SerializeField] private List<Image> volumeSprites = new();
     [SerializeField] private float visibleTime = 2f;
     private Transform _slider;
+    private AudioSource _source;
+    [SerializeField] private AudioClip _clip;
 
     private float timer;
 
@@ -14,6 +17,11 @@ public class VolumeManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         _slider = transform.GetChild(0);
+
+        _source = new GameObject().AddComponent<AudioSource>();
+        _source.gameObject.transform.SetParent(transform);
+        _source.transform.SetAsLastSibling();
+        _source.clip = _clip;
     }
 
     private bool _changed = false;
@@ -24,6 +32,7 @@ public class VolumeManager : MonoBehaviour
             AudioListener.volume += 0.1f;
             timer = visibleTime;
             _changed = true;
+            _source.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.Minus))
@@ -31,6 +40,7 @@ public class VolumeManager : MonoBehaviour
             AudioListener.volume -= 0.1f;
             timer = visibleTime;
             _changed = true;
+            _source.Play();
         }
 
         AudioListener.volume = Mathf.Clamp01(AudioListener.volume);
