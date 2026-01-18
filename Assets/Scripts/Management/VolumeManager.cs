@@ -53,7 +53,7 @@ public class VolumeManager : MonoBehaviour
 
         if (timer > 0.01f)
         {
-            timer -= Time.deltaTime;
+            timer -= Time.unscaledDeltaTime;
         }
 
         if (timer <= 0.01f)
