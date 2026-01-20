@@ -24041,11 +24041,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StrumManager
   _audioSource: {fileID: 1475031433}
+  playerChartRoot: {fileID: 852260799}
+  enemyChartRoot: {fileID: 1981523466}
+  eventChartRoot: {fileID: 1580746756}
   SongTimeMs: 0
   ScrollSpeed: 0
   strumLineY: 0
   unitsPerSecond: 5
   activeNotes: []
+  enablePerNoteOffsets: 0
+  perNoteWindowMs: 2500
 --- !u!1 &1076052200
 GameObject:
   m_ObjectHideFlags: 0

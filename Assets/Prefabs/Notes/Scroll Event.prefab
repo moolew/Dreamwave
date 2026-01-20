@@ -161,5 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MsNote
   noteTimeMs: 0
+  receptorY: 0
   cachedTransform: {fileID: 0}
   wasJudged: 1
+  isEvent: 0
