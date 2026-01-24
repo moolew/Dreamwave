@@ -147,6 +147,8 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         FanfareStart();
+        _playerRating = Ratings.MFC;
+        accuracyText.text = "Accuracy: 100.00%";
     }
 
     public void FanfareStart()
@@ -163,10 +165,41 @@ public class GameManager : MonoBehaviour
         AudioListener.pause = false;
     }
 
+    public string GetFunnyTextForRPC(Ratings rating)
+    {
+        switch (rating)
+        {
+            case Ratings.MFC:
+                return $"SillyFangirl Osu - {rating}";
+            case Ratings.PFC:
+                return $"Cannon BF - {rating}";
+            case Ratings.GFC:
+                return $"Lovely - {rating}";
+            case Ratings.FC:
+                return $"Rappin' aight - {rating}";
+            case Ratings.SDCB:
+                return $"Underachiever - {rating}";
+            case Ratings.S:
+                return $"Slapping their keyboard - {rating}";
+            case Ratings.A:
+                return $"Trying their best - {rating}";
+            case Ratings.B:
+                return $"Noob - {rating}";
+            case Ratings.C:
+                return $"Go play Roblox - {rating}";
+            case Ratings.D:
+                return $"Uninstall pls - {rating}";
+            case Ratings.F:
+                return $"Your gf must hate you - {rating}";
+            default:
+            return $"Slapping their keyboard - {rating}";
+        }
+    }
+
     private void Start()
     {
         psychShader.SetFloat("_Scale", -2.8f);
-        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Slapping their keyboard");
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", GetFunnyTextForRPC(_playerRating));
         SongPlaybackPosition = (float)AudioSettings.dspTime;
         SongDuration = TempoManager.instance.audioSource.clip.length;
 
@@ -357,15 +390,15 @@ public class GameManager : MonoBehaviour
     public void CalculatePlayerRating()
     {
         if (misses == 0 && dreamys > 0 && sicks == 0 && cools == 0 && bads == 0 && shits == 0)
-            _playerRating = Ratings.MFC; // Marvelous Full Combo
+            _playerRating = Ratings.MFC;
         else if (misses == 0 && sicks > 0 && cools == 0 && bads == 0 && shits == 0)
-            _playerRating = Ratings.PFC; // Perfect Full Combo
+            _playerRating = Ratings.PFC;
         else if (misses == 0 && cools > 0 && bads == 0 && shits == 0)
-            _playerRating = Ratings.GFC; // Good Full Combo
+            _playerRating = Ratings.GFC;
         else if (misses == 0 && (bads > 0 || shits > 0))
-            _playerRating = Ratings.FC; // Full Combo
-        else if (misses >= 9)
-            _playerRating = Ratings.SDCB; // Single Digit Combo Break
+            _playerRating = Ratings.FC;
+        else if (misses > 0 && misses < 10)
+            _playerRating = Ratings.SDCB;
         else if (accuracy >= 80f)
             _playerRating = Ratings.S;
         else if (accuracy >= 70f)
@@ -379,8 +412,10 @@ public class GameManager : MonoBehaviour
         else
             _playerRating = Ratings.F;
 
-        ratingText.text = "Rating: " + _playerRating.ToString();
+        ratingText.text = "Rating: " + _playerRating;
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", GetFunnyTextForRPC(_playerRating));
     }
+
 
     #region Player Health
 

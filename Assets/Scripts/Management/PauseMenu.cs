@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using static DreamwaveGlobal;
+using static GameManager;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -106,7 +107,7 @@ public class PauseMenu : MonoBehaviour
         _settingsObj.SetActive(false);
         Time.timeScale = 1f;
         Pause(false);
-        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", "Slapping their keyboard");
+        DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", GameManager.Instance.GetFunnyTextForRPC(GameManager.Instance._playerRating));
     }
 
     #endregion
