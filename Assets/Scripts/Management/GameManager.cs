@@ -551,7 +551,6 @@ public class GameManager : MonoBehaviour
 
     public void ResetSettings()
     {
-        Time.fixedDeltaTime = 1f / 60f;
         PlayerPrefs.SetInt("_preferredFixedFrameRate", 60);
     }
 }
