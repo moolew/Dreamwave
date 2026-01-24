@@ -112,8 +112,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject noteUi;
     [SerializeField] public GameObject noteUiSidePlayer;
     [SerializeField] public GameObject noteUiSidePlayerMiddle;
+    [SerializeField] public GameObject noteUiSidePlayerMiddleDown;
     [SerializeField] public GameObject noteUiSideOpponent;
     [SerializeField] public GameObject noteUiSideOpponentMiddle;
+    [SerializeField] public GameObject noteUiSideOpponentMiddleDown;
     [SerializeField] private GameObject noteRendererPlayerMobile;
     [SerializeField] private GameObject noteRendererPlayer;
     [SerializeField] private GameObject noteRendererOpponent;
@@ -174,7 +176,7 @@ public class GameManager : MonoBehaviour
             case Ratings.PFC:
                 return $"Cannon BF - {rating}";
             case Ratings.GFC:
-                return $"Lovely - {rating}";
+                return $"Rappin' sick - {rating}";
             case Ratings.FC:
                 return $"Rappin' aight - {rating}";
             case Ratings.SDCB:
@@ -453,7 +455,7 @@ public class GameManager : MonoBehaviour
     private void PositionNoteUi()
     {
         //noteUi.transform.localPosition = mobileFocus[0];
-        if (PlayerPrefs.GetString("chartPos") == "middleScroll")
+        if (PlayerPrefs.GetString("chartPos") == "middleScroll" | PlayerPrefs.GetString("chartPos") == "middleDownScroll")
         {
             noteUi.transform.localPosition = Vector3.Lerp(noteUi.transform.localPosition, centreFocus, noteUiSmoothing * Time.deltaTime);
             return;

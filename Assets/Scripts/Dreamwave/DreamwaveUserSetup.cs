@@ -43,6 +43,17 @@ public class DreamwaveUserSetup : MonoBehaviour
             GameManager.Instance.noteUiSideOpponent.SetActive(false);
             GameManager.Instance.noteUiSidePlayerMiddle.SetActive(true);
             GameManager.Instance.noteUiSideOpponentMiddle.SetActive(true);
+            GameManager.Instance.noteUiSidePlayerMiddleDown.SetActive(false);
+            GameManager.Instance.noteUiSideOpponentMiddleDown.SetActive(false);
+        }
+        else if (PlayerPrefs.GetString("chartPos") == "middleBottomScroll")
+        {
+            GameManager.Instance.noteUiSidePlayer.SetActive(false);
+            GameManager.Instance.noteUiSideOpponent.SetActive(false);
+            GameManager.Instance.noteUiSidePlayerMiddle.SetActive(false);
+            GameManager.Instance.noteUiSideOpponentMiddle.SetActive(false);
+            GameManager.Instance.noteUiSidePlayerMiddleDown.SetActive(true);
+            GameManager.Instance.noteUiSideOpponentMiddleDown.SetActive(true);
         }
         else if (PlayerPrefs.GetString("chartPos") == "downScroll")
         {
@@ -52,6 +63,8 @@ public class DreamwaveUserSetup : MonoBehaviour
             GameManager.Instance.noteUiSideOpponent.SetActive(true);
             GameManager.Instance.noteUiSidePlayerMiddle.SetActive(false);
             GameManager.Instance.noteUiSideOpponentMiddle.SetActive(false);
+            GameManager.Instance.noteUiSidePlayerMiddleDown.SetActive(false);
+            GameManager.Instance.noteUiSideOpponentMiddleDown.SetActive(false);
         }
         else if (PlayerPrefs.GetString("chartPos") == "upScroll")
         {
@@ -61,6 +74,8 @@ public class DreamwaveUserSetup : MonoBehaviour
             GameManager.Instance.noteUiSideOpponent.SetActive(true);
             GameManager.Instance.noteUiSidePlayerMiddle.SetActive(false);
             GameManager.Instance.noteUiSideOpponentMiddle.SetActive(false);
+            GameManager.Instance.noteUiSidePlayerMiddleDown.SetActive(false);
+            GameManager.Instance.noteUiSideOpponentMiddleDown.SetActive(false);
         }
     }
 
@@ -71,7 +86,7 @@ public class DreamwaveUserSetup : MonoBehaviour
 
     private void ShouldOpponentNotesRender()
     {
-        if (PlayerPrefs.GetString("chartPos") == "middleScroll") return;
+        if (PlayerPrefs.GetString("chartPos") == "middleScroll" | PlayerPrefs.GetString("chartPos") == "middleBottomScroll") return;
 
         var _pref = PlayerPrefs.GetInt("opponentEnabled");
 

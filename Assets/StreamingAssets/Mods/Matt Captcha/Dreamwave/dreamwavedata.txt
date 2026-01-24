@@ -2,9 +2,9 @@
 
 // song name is used to save/load scores so ensure you dont use the same name multiple times
 
-songName=Matt Captcha
+songName=Been Patient
 creator=TheOnlyVolume
-difficulty=Normal
+difficulty=Hard
 
 bannerLocation=banner.png
 
