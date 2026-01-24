@@ -13151,7 +13151,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.54}
   m_EdgeRadius: 0
 --- !u!50 &423526024
 Rigidbody2D:
@@ -13390,7 +13390,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.54}
   m_EdgeRadius: 0
 --- !u!50 &437957567
 Rigidbody2D:
@@ -14322,7 +14322,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.54}
   m_EdgeRadius: 0
 --- !u!50 &515493937
 Rigidbody2D:
@@ -24178,7 +24178,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.54}
   m_EdgeRadius: 0
 --- !u!50 &1061415000
 Rigidbody2D:
@@ -24480,6 +24480,7 @@ MonoBehaviour:
   positionEpsilon: 0.01
   physicsSimWindowMs: 500
   unitsPerSecond: 5
+  _playerScrollMultiplier: 1
   activeNotes: []
 --- !u!1 &1076052200
 GameObject:
