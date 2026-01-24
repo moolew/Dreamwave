@@ -418,7 +418,6 @@ public class GameManager : MonoBehaviour
         DiscordController.instance.UpdateState($"Song: {LoadedModSong.name} ({LoadedModSong.songDifficulty}) ~ [By: {LoadedModSong.creator}]", GetFunnyTextForRPC(_playerRating));
     }
 
-
     #region Player Health
 
     private int _lastHealthValue;

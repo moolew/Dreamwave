@@ -52,9 +52,11 @@ public class Settings : MonoBehaviour
         _incomingNoteWarning = PlayerPrefs.GetInt("incomingNoteWarning");
         _autoPause = PlayerPrefs.GetInt("autoPause");
         _noteSplashes = PlayerPrefs.GetInt("noteSplashes");
+        _scrollSpeed = PlayerPrefs.GetFloat("scrollSpeed");
 
         settingsTextAssets[0].text = localFps.ToString("F0");
         settingsTextAssets[1].text = localFfps.ToString();
+        settingsTextAssets[10].text = _scrollSpeed.ToString();
 
         #region Setup Switches
 
@@ -192,6 +194,9 @@ public class Settings : MonoBehaviour
                 break;
             case 9:
                 EnableNoteSplashes();
+                break;
+            case 10:
+                ChangeScrollSpeed();
                 break;
         }
     }
@@ -611,6 +616,31 @@ public class Settings : MonoBehaviour
 
     #endregion
 
+
+    #region Scroll Speed Section
+    private float _scrollSpeed = 1f;
+    public void ChangeScrollSpeed()
+    {
+        if (Input.GetKeyDown(navLeft))
+        {
+            _scrollSpeed -= 0.1f;
+            settingsTextAssets[10].text = _scrollSpeed.ToString("F1");
+            PlayerPrefs.SetFloat("scrollSpeed", _scrollSpeed);
+            PlayerPrefs.Save();
+            StrumManager.SM_Instance.ReSetSpeed();
+            DreamwaveUserSetup.instance.LoadUserSettings();
+        }
+        else if (Input.GetKeyDown(navRight))
+        {
+            _scrollSpeed += 0.1f;
+            settingsTextAssets[10].text = _scrollSpeed.ToString("F1");
+            PlayerPrefs.SetFloat("scrollSpeed", _scrollSpeed);
+            PlayerPrefs.Save();
+            StrumManager.SM_Instance.ReSetSpeed();
+            DreamwaveUserSetup.instance.LoadUserSettings();
+        }
+    }
+    #endregion
 
     #region Settings Applier
 

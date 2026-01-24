@@ -26,6 +26,7 @@ public class DreamwaveUserSetup : MonoBehaviour
         EnableIncomingNoteWarning();
         ShouldAllowAutoPause();
         ShouldAllowNoteSplashes();
+        UpdateScrollSpeed();
         UpdateUserKeybinds();
     }
 
@@ -132,6 +133,13 @@ public class DreamwaveUserSetup : MonoBehaviour
 
         if (_pref == 1) GameManager.Instance.shouldDrawNoteSplashes = true;
         else GameManager.Instance.shouldDrawNoteSplashes = false;
+    }
+
+    private void UpdateScrollSpeed()
+    {
+        var _pref = PlayerPrefs.GetFloat("scrollSpeed");
+
+        StrumManager.SM_Instance._playerScrollMultiplier = _pref;
     }
 
     private void UpdateUserKeybinds()

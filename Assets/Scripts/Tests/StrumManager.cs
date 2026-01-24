@@ -17,7 +17,7 @@ public class StrumManager : MonoBehaviour
     [SerializeField] private float physicsSimWindowMs = 500f; // only simulate physics for notes within this smaller window
 
     [SerializeField] private float unitsPerSecond = 200f;
-    private float _playerScrollMultiplier = 1f;
+    public float _playerScrollMultiplier = 1f;
 
     private double _songDspStart;
     private float _visualSongTime;
@@ -29,6 +29,12 @@ public class StrumManager : MonoBehaviour
     private void Awake()
     {
         SM_Instance = this;
+    }
+
+    public void ReSetSpeed()
+    {
+        _playerScrollMultiplier = PlayerPrefs.GetFloat("scrollSpeed", 1f);
+        ScrollSpeed = (unitsPerSecond / 1000f) * _playerScrollMultiplier;
     }
 
     private void Start()
